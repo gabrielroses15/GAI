@@ -5,9 +5,8 @@ from tkinter import filedialog
 import spacy
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
+import CalculaSentimento
 
-# Carregar o modelo do spaCy para a língua desejada (por exemplo, inglês)
-# chamada de voz perdida
 nlp = spacy.load("en_core_web_sm")
 
 # Função para carregar dados de um arquivo JSON
@@ -16,6 +15,7 @@ def carregar_dados(nome_arquivo):
         linhas = f.readlines()
 
     data = []
+    sentimentos = []
     last_mensageiro = None
     msg = ""
 
@@ -23,6 +23,8 @@ def carregar_dados(nome_arquivo):
         if "<arquivo de mídia oculto>" in linha.lower():
             continue
         if "Mensagem apagada" in linha:
+            continue
+        if "chamada de voz perdida" in linha:
             continue
         elif " - " in linha:
             linha = linha.lower()
@@ -40,6 +42,7 @@ def carregar_dados(nome_arquivo):
             else:
                 if last_mensageiro is not None:
                     data.append((last_mensageiro, msg))
+                    sentimentos.append(CalculaSentimento.CalcFeeling(msg, False))
                 msg = mensagem
                 last_mensageiro = mensageiro
         else:
@@ -47,15 +50,16 @@ def carregar_dados(nome_arquivo):
 
     if last_mensageiro is not None:
         data.append((last_mensageiro, msg))
+        sentimentos.append(CalculaSentimento.CalcFeeling(msg, False))
 
     mensagens, rotulos = zip(*data)
-    return mensagens, rotulos
+    return mensagens, rotulos, sentimentos
 
 # Função para salvar dados em um arquivo JSON
-def salvar_dados(nome_arquivo, mensagens, rotulos):
+def salvar_dados(nome_arquivo, mensagens, rotulos, sentimentos):
     with open(nome_arquivo, 'a', encoding='utf-8') as f:
-        for mensagem, remetente in zip(mensagens, rotulos):
-            f.write(f"{remetente} - {mensagem}\n")
+        for mensagem, remetente, sentimento in zip(mensagens, rotulos, sentimentos):
+            f.write(f"{remetente} - {mensagem} - {sentimento}\n")
 
 # Inicialize os dados como uma lista vazia
 data = []
@@ -68,11 +72,11 @@ while True:
     if not nome_arquivo:
         break
 
-    mensagens, rotulos = carregar_dados(nome_arquivo)
+    mensagens, rotulos, sentimentos = carregar_dados(nome_arquivo)
     data.extend(list(zip(rotulos, mensagens)))
 
 # Salvar os dados em um arquivo (modo de adição)
-salvar_dados("dados_combinados.txt", [item[1] for item in data], [item[0] for item in data])
+salvar_dados("dados_combinados.txt", [item[1] for item in data], [item[0] for item in data], sentimentos)
 
 # Vetorização de texto usando bag of words (BoW)
 vectorizer = CountVectorizer()
@@ -83,7 +87,8 @@ def lematizar_texto(texto):
     lemas = [token.lemma_ for token in tokens]
     return " ".join(lemas)
 
-X = vectorizer.fit_transform([lematizar_texto(item[1]) for item in data])
+X = vectorizer.fit_transform([f"{lematizar_texto(item[1])} {sentimento}" for item, sentimento in zip(data, sentimentos)])
+
 
 # Treinamento do classificador (Neste exemplo, usamos o Naive Bayes)
 classifier = MultinomialNB()
