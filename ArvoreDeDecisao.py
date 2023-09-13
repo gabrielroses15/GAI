@@ -1,41 +1,99 @@
 import spacy
+from googletrans import Translator
+from sklearn.feature_extraction.text import CountVectorizer
+from sklearn.naive_bayes import MultinomialNB
+from sklearn.pipeline import make_pipeline
 
-nlp = spacy.load("pt_core_news_sm") 
+nlp = spacy.load("en_core_web_sm")
 
-prompts = ["Olá bom dia", "Qual é o seu nome?", "Onde você mora?", "Quando você viu isto?", "Como é que é?", "Quanto fica dois desse?", "Por que você não me disse antes"]
+#Função pra traduzir um prompt
+def trad(text):
+    translator = Translator()
+    translated_text = translator.translate(text, src='auto', dest='en').text
+    return translated_text
 
-def AnalisaFrase(prompt: str):
-
-    doc = nlp(prompt)
-
-    tipo = []
-    importantInfo = []
-
-    keyWords = {
-        "saudacao": ["oi", "oii", "oie", "olá", "ola", "eae"],
-        "dia": ["bom dia"],
-        "tarde": ["boa tarde"],
-        "noite": ["boa noite"],
-        "qual": ["qual"],
-        "onde": ["onde"],
-        "quando": ["quando"],
-        "como": ["como"],
-        "porque": ["porque", "porquê", "pq"],
-        "quanto": ["quanto"],
-        "você": ["você", "voce", "vc"]
-    }
-
-    for keyword, words in keyWords.items():
-        if any(word in prompt.lower() for word in words):
-            tipo.append(keyword)
-        
+#VerificaSaudação
+def is_saudacao(prompt):
+    doc = nlp(prompt.lower())
+    
+    saudacoes = ["hi", "hello", "hey"]
+    
     for token in doc:
-        if token.dep_ == "nsubj" or token.dep_ == "dobj" or token.ent_type_ == "PER":
-            importantInfo.append(token.text)
+        if token.text in saudacoes:
+            return True
+    
+    return False
 
-    return "Tipo: {}\nInformações Importantes: {}".format(", ".join(tipo), ", ".join(importantInfo))
+# Início da árvore de Decisão:
 
-for prompt in prompts:
-    resultado = AnalisaFrase(prompt)
-    print(resultado)
-    print("-" * 30)
+def choose(prompt=str):
+    #Criando uma lista de tipos, buscando otimização no entendimento do contexto.
+    #Considero que seja melhor dar um append do que verificar tipo a tipo.
+    tipos = []
+
+    #Dicionário de palavras
+    key_saudacoes =  ["oiee","oie","oii","oi","eae","olá","ola","salve","e ai","e aí","saudações", 
+                   "saudaçoes", "saudacões", "saudacoes", "saudacao", "saudacão"]
+    
+    key_question = ["quem", "como", "quando", "pq", "onde", "qual"]
+
+    key_thx = ["obrigado", "valeu", "obrigada", "vlw"]
+
+    dicio = [key_saudacoes, key_question, key_thx]
+    
+    #Início padrão
+    start = "considerando sua frase, "
+    saudacao = "Olá, "
+
+    #Verificações baseadas no dicionário
+    for lista in dicio:
+        if any(item in prompt.lower() for item in lista):
+            if lista == key_saudacoes:
+                tipos.append("saudacao")
+                saudacao = next((item for item in lista if item in prompt.lower()), None)
+            elif lista == key_question:
+                tipos.append("question")
+                start = "Considerando sua pergunta, "
+            elif lista == key_thx:
+                tipos.append("thx")
+                #Ele deverá escolher entre as variantes, pois pode ser apenas "obrigado"
+                #Ou ser "obrigado, mas gostaria de saber..."
+                # start = "De nada"
+                # start = "De nada, "
+                #Deve-se  considerar também frases como "bom dia, obrigado por..." ondne há mais de um start
+                #Necessário para "suprir" a frase.
+    
+    #Verifica dia/tarde/noite
+
+    if "bom dia" in prompt.lower():
+        tipos.append("dia")
+        start = "Bom dia, "
+
+    if "boa tarde" in prompt.lower():
+        tipos.append("tarde")
+        start = "Boa tarde, "
+
+    if "boa noite" in prompt.lower():
+        tipos.append("noite")
+        start = "Boa noite, "
+
+    
+    #Construção do "start"
+
+    if saudacao == "Olá, ":
+        start = saudacao + start
+    else:
+        if "thx" in tipos:
+            start = saudacao + "É um prazer te ajudar, " + start
+        start = saudacao + start
+
+
+
+    print("tipo = {} e start = {}".format(tipos, start))
+
+x = 0
+
+while x<5:
+    x = x+1
+    frase = input("Escreva:\n")
+    choose(frase)
