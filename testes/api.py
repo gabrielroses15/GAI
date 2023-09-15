@@ -28,7 +28,8 @@ class decisoes:
         #Considero que seja melhor dar um append do que verificar tipo a tipo.
         tipos = []
 
-        maybeQuestion = []
+        pronome_encontrado = False
+        contexto = []
 
         #Dicionário de palavras
         key_saudacoes =  ["oiee","oie","oii","oi","eae","olá","ola","salve","e ai","e aí","saudações", 
@@ -39,6 +40,8 @@ class decisoes:
         key_thx = ["obrigado", "valeu", "obrigada", "vlw"]
 
         key_pronome = ["eu", "tu", "ele", "nós", "vós", "eles", "ela"]
+
+        key_verbo = ["fazer"]
 
         resultado = []
 
@@ -74,8 +77,8 @@ class decisoes:
                             tipos.append("thx")
                         break
                 if palavra.lower().endswith("ia"):
-                    maybeQuestion.append(palavra)
-                    
+                    verbos = []
+                    verbos.append(palavra)
         
         palavras = prompt.split()
         for i, palavra in enumerate(palavras):
@@ -118,4 +121,4 @@ class decisoes:
             start = saudacao + start
 
         print("tipo = {}\n Start = {}".format(tipos, start))
-        print(maybeQuestion)
+        print(contexto)
