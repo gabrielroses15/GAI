@@ -48,6 +48,7 @@ class decisoes:
         dicio = [key_saudacoes, key_question, key_thx]
         
         #Início padrão
+        start = "considerando sua frase, "
         saudacao = "Olá, "
 
         #Verificações baseadas no dicionário
@@ -93,6 +94,13 @@ class decisoes:
                 contexto.append(verbo)
                 break
         
+        if "thx" in tipos and "question" in tipos:
+            start = "Fico feliz em ajudar, considerando sua pergunta, "
+        elif "thx" in tipos:
+            start = "Fico feliz em ajudar você!"
+        elif "question" in tipos:
+            start = "Considerando sua pergunta, "
+        
         #Verifica dia/tarde/noite
 
         if "bom dia" in prompt.lower():
@@ -103,45 +111,14 @@ class decisoes:
 
         if "boa noite" in prompt.lower():
             tipos.append("noite")
-            
-        #Construção da resposta "middle"
-        
-        middle = "resposta baseada no banco"
 
         
-        #Construção do "start" (início e fim padrão do sistema baseado no prompt)
-        
-        if tipos:
-            if len(tipos) == 1:
-                if "dia" in tipos:
-                    start = "bom dia"
-                elif "tarde" in tipos:
-                    start = "boa tarde"
-                elif "noite" in tipos:
-                    start = "boa noite"
-                else:
-                    if prompt:
-                        print(prompt, "O prompt ao lado não foi corretamente entendido.")
-                    else:
-                        print("Deu merda legal aqui")
-            else:
-                importancia = ["saudacao", "dia", "tarde", "noite", "question", "thx"] #Ordem de importancia das coisasa
-                tipos_organizados = [item for item in importancia if item in tipos] #Organiza os tipos em ordem de importancia
-                
-                mensagens = {
-                    "saudacao": saudacao,
-                    "thx": "é sempre um prazer te ajudar.",
-                    "question": "considerando sua pergunta, {}".format(middle),
-                    "dia": "bom dia ",
-                    "tarde": "boa tarde ",
-                    "noite": "boa noite "
-                }
-                
-                mensagens_tipos = [mensagens[tipo] for tipo in tipos_organizados] #Organiza as mensagens na ordem dos tipos organizados
-                start = "".join(mensagens_tipos)
-                
+        #Construção do "start"
+
+        if "thx" in tipos:
+            start = start
         else:
-            start = "{}não entendi exatamente o que você quis dizer com {}.".format(saudacao.title(), prompt)
+            start = saudacao + start
 
         print("tipo = {}\n Start = {}".format(tipos, start))
         print(contexto)
