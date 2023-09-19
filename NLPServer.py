@@ -106,6 +106,11 @@ def handle_client(cliente, endereco):
     classifier.fit(X, [item[0] for item in data])
 
     while True:
+        
+        mensagem_pronta = "Pronto para mais TXT\n"
+        
+        cliente.send(mensagem_pronta.encode())
+        
         nova_mensagem = input("Escreva algo (ou 'sair' para encerrar): ").lower()
 
         if nova_mensagem.lower() == 'sair':
@@ -132,7 +137,7 @@ def handle_client(cliente, endereco):
 
 # Configurações do servidor
 host = '0.0.0.0'  # Use '0.0.0.0' para aceitar conexões de qualquer IP
-porta = 12345
+porta = 65535
 
 # Crie um socket do servidor
 servidor = socket.socket(socket.AF_INET, socket.SOCK_STREAM)

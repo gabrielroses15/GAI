@@ -6,6 +6,7 @@ import spacy
 from sklearn.feature_extraction.text import CountVectorizer
 from sklearn.naive_bayes import MultinomialNB
 import CalculaSentimento
+import RecoTheme
 
 nlp = spacy.load("en_core_web_sm")
 
@@ -16,6 +17,8 @@ def carregar_dados(nome_arquivo):
 
     data = []
     sentimentos = []
+    temas = []  # Adicione esta lista para armazenar os temas
+
     last_mensageiro = None
     msg = ""
 
@@ -37,8 +40,13 @@ def carregar_dados(nome_arquivo):
             linha = linha.replace(mensageiro, "")
             mensagem = linha.replace(":", "")
 
+            # Chamada para RecoTheme para obter o tema
+            tema = RecoTheme.RecoKeys(mensagem, True)
+            if tema:
+                temas.append(tema)
+
             if mensageiro == last_mensageiro:
-                msg += mensagem 
+                msg += mensagem
             else:
                 if last_mensageiro is not None:
                     data.append((last_mensageiro, msg))
@@ -53,13 +61,13 @@ def carregar_dados(nome_arquivo):
         sentimentos.append(CalculaSentimento.CalcFeeling(msg, False))
 
     mensagens, rotulos = zip(*data)
-    return mensagens, rotulos, sentimentos
+    return mensagens, rotulos, sentimentos, temas
 
 # Função para salvar dados em um arquivo JSON
-def salvar_dados(nome_arquivo, mensagens, rotulos, sentimentos):
+def salvar_dados(nome_arquivo, mensagens, rotulos, sentimentos, temas):
     with open(nome_arquivo, 'a', encoding='utf-8') as f:
-        for mensagem, remetente, sentimento in zip(mensagens, rotulos, sentimentos):
-            f.write(f"{remetente} - {mensagem} - {sentimento}\n")
+        for mensagem, remetente, sentimento, tema in zip(mensagens, rotulos, sentimentos, temas):
+            f.write(f"{remetente} - {mensagem} - {sentimento} - {tema}\n")
 
 # Inicialize os dados como uma lista vazia
 data = []
@@ -72,11 +80,11 @@ while True:
     if not nome_arquivo:
         break
 
-    mensagens, rotulos, sentimentos = carregar_dados(nome_arquivo)
+    mensagens, rotulos, sentimentos, temas = carregar_dados(nome_arquivo)
     data.extend(list(zip(rotulos, mensagens)))
-
+    
 # Salvar os dados em um arquivo (modo de adição)
-salvar_dados("dados_combinados.txt", [item[1] for item in data], [item[0] for item in data], sentimentos)
+salvar_dados("dados_combinados.txt", [item[1] for item in data], [item[0] for item in data], sentimentos, temas)
 
 # Vetorização de texto usando bag of words (BoW)
 vectorizer = CountVectorizer()

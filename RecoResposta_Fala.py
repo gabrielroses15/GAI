@@ -25,9 +25,9 @@ def BuildAwnswer(texto):
             anos = perguntar()
             anos = int(anos)
             if anos >= 18:
-                resposta = "Nossa que legal você já tem {} anos, e isto te torna legalmente de maior. Parabéns, infelizmente meu banco de dados só suporta a nossa conversa até aqui. se possível me ajude aprender mais, para que um dia eu possa me tornar tão grande e forte quanto você, até breve!".format(anos)
+                resposta = "Nossa que legal você já tem {} anos, e isto te torna legalmente maior. Parabéns, infelizmente meu banco de dados só suporta a nossa conversa até aqui. se possível me ajude aprender mais, para que um dia eu possa me tornar tão grande e forte quanto você, até breve!".format(anos)
                 responder(resposta)
             if anos < 18:
-                resposta = "Nossa que legal você já tem {} anos, e isto te torna legalmente de menor. infelizmente meu banco de dados só suporta a nossa conversa até aqui. se possível me ajude aprender mais, para que um dia eu possa me tornar tão grande e forte quanto você, até breve!".format(anos)
+                resposta = "Nossa que legal você já tem {} anos, e isto te torna legalmente menor. infelizmente meu banco de dados só suporta a nossa conversa até aqui. se possível me ajude aprender mais, para que um dia eu possa me tornar tão grande e forte quanto você, até breve!".format(anos)
                 responder(resposta)
             break
