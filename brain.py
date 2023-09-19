@@ -12,4 +12,4 @@ else:
 # ------------------------------Informações Legais------------------------------
 # Projeto iniciado a aproximadamente 1 semana, hoje é dia 15 de agosto de 2023
 # Total de horas estará errado pois comeceu a contar ontem a noite, porém é legal pra ter uma idéia
-# Total de horas gastas no projeto: 22hr48min
+# Total de horas gastas no projeto: 30hr30min

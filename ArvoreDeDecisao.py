@@ -1,4 +1,59 @@
 class decisoes:
+    
+    def caracteres_especiais(prompt: str, tipos: list):
+        if "?" in prompt:
+            tipos.append("question")
+            prompt.replace("?", "")
+        if "!" in prompt:
+            tipos.append("happy")
+            prompt.replace("!", "")
+        if "." in prompt:
+            prompt.replace(".", "")
+        prompt = "".join(prompt)
+        return prompt, tipos
+    
+    #Função pra retirar o contexto da frase
+    def extrair_contexto(prompt: str):
+        import spacy
+        nlp = spacy.load("pt_core_news_lg")
+        doc = nlp(prompt.lower())
+        pessoas = []
+        pronomes = []
+        verbos = []
+        pron = ["eu", "tu", "ele", "nós", "vós", "eles", "nos", "vos", "nois", "você", "vc", "voce", "ela", "elx", "ela", "vocês", "vcs", "voces"]
+        nomes = ["salomão", "miguel", "gabriel",
+        "lucas", "joão", "davi", "pedro", "enzo",
+        "gustavo", "eduardo", "nicolas", "yuri", "caio", "vitor",
+        "antonio", "vinicius", "william", "paulo",
+        "daniel", "marcos", "fernando", "rodrigo", "anderson",
+        "andre", "julio", "renan", "valmir",
+        "luis", "leonardo", "fabio", "nome", "arthur", "giovanna", "lais", "marina", "raissa", "thiago", "laura",
+        "laisa", "sophia", "joao", "henrique", "samuel", "matheus", "luiza",
+        "marcela", "leticia", "beatriz", "mirella", "clara", "isabella", "livia",
+        "mateus", "guilherme", "marcelo", "jose", "gabriela", "rafaela", "raul",
+        "gabrielle", "julia", "victor", "valentina", "viviane", "isabel", "isabelle", "thais",
+        "nathalia", "nathalie", "diego", "bruno", "vivian", "marcio", "amanda", "carolina", "erica", "hugo", "joaquin",
+        "karina", "lucia", "mario", "nadia", "patricia", "rafael", "sergio", "tomas",
+        "ursula", "viviana", "yolanda", "sebastian", "valeria", "xavier",
+        "martin", "pablo", "natalia", "manuel", "francisco",
+        "ricardo", "veronica", "felipe", "alejandro", "carlos", "fernanda", "diana", "thaynara"]
+
+        for token in doc:
+            if token.text in pron:
+                pronomes.append(token.text)
+            elif token.pos_ == 'PRON' and token.text != "quem": #question
+                pessoas.append(token.text)
+            elif token.pos_ == 'VERB':
+                verbos.append(token.lemma_)#Verbo raiz
+            elif token.text == "foi":
+                verbos.append(token.lemma_)#Verbo raiz
+        if len(pessoas) == 1:
+            contexto = ' '.join(pronomes + verbos + pessoas)
+        else:
+            contexto = ' '.join(pronomes + verbos)
+            for pessoa in pessoas:
+                contexto = ' '.join("Pessoa = " + pessoa)
+        return contexto
 
     #translate_en
     def trad(text):
@@ -7,7 +62,7 @@ class decisoes:
         translated_text = translator.translate(text, src='auto', dest='en').text
         return translated_text
 
-    #VerificaSaudação
+    #VerificaSaudação en
     def is_saudacao(prompt):
         import spacy
         nlp = spacy.load("pt_core_news_lg")
@@ -39,16 +94,13 @@ class decisoes:
 
         key_thx = ["obrigado", "valeu", "obrigada", "vlw"]
 
-        key_pronome = ["eu", "tu", "ele", "nós", "vós", "eles", "ela"]
-
-        key_verbo = ["fazer"]
-
-        resultado = []
-
         dicio = [key_saudacoes, key_question, key_thx]
         
         #Início padrão
         saudacao = "Olá, "
+        start = "Start inicial"
+        
+        prompt, tipos = decisoes.caracteres_especiais(prompt, tipos)
 
         #Verificações baseadas no dicionário
 
@@ -79,19 +131,7 @@ class decisoes:
                     verbos = []
                     verbos.append(palavra)
         
-        palavras = prompt.split()
-        for i, palavra in enumerate(palavras):
-            if palavra.lower().endswith("ia"):
-                verbo = palavra.lower()
-                for j in range(i-1, -1, -1):
-                    if palavras[j].lower() in key_pronome:
-                        pronome_contexto = palavras[j].lower()
-                        contexto.insert(0, palavras[j])
-                        pronome_encontrado = palavras[j]
-                        break
-                    contexto.insert(0, palavras[j])
-                contexto.append(verbo)
-                break
+        contexto = decisoes.extrair_contexto(prompt)
         
         #Verifica dia/tarde/noite
 
@@ -119,6 +159,8 @@ class decisoes:
                     start = "boa tarde"
                 elif "noite" in tipos:
                     start = "boa noite"
+                elif "question" in tipos:
+                    start = "{}considerando sua pergunta, ".format(saudacao)
                 else:
                     if prompt:
                         print(prompt, "O prompt ao lado não foi corretamente entendido.")
@@ -143,5 +185,5 @@ class decisoes:
         else:
             start = "{}não entendi exatamente o que você quis dizer com {}.".format(saudacao.title(), prompt)
 
-        print("tipo = {}\n Start = {}".format(tipos, start))
-        print(contexto)
+        print("tipos = {}\n Start = {}".format(tipos, start))
+        print(contexto) 
