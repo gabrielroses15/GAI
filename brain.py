@@ -1,11 +1,11 @@
 import RecoFala
-import ArvoreDeDecisao as chooses
+from DecisionModules import ArvoreDeDecisao as chooses
 
 FalaOuTexto = input("Coloque:\nT = texto\nF = Fala\n")
 
 if str(FalaOuTexto).upper() == "T":
     prompt = input("Faça uma pergunta: ")
-    chooses.decisoes.choose(prompt)
+    chooses.choose(prompt)
 else:
     RecoFala.voiceRecord(True)
                 
