@@ -1,19 +1,30 @@
 from DecisionModules import extrair_contexto as context
 from DecisionModules import caracteres_especiais
+from DecisionModules import verificaByDicio as verifica
+from DecisionModules import calculaComplexidade as complexity
 
 def choose(prompt):
     tipos = []
-
-    pronome_encontrado = False
-    contexto = []
-    
-    #Início padrão
-    saudacao = "Olá, "
+    resposta = "Por favor reformule."
     start = "Tudo bem?"
     
-    prompt, tipos = caracteres_especiais.specialCharacters(prompt, tipos)
+    complexidade = complexity.CalcComplex(prompt, tipos)
     
-    contexto, tipos, saudacao = context.extrair_contexto(prompt, saudacao, tipos)
+    if complexidade == "Por favor reformule.":
+        return resposta
+    else:
+        if complexidade == 1:
+            contexto, resposta = context.extrair_contexto(prompt, tipos, complexidade, resposta)
+            if contexto == "responder": #Tlvz seja melhor a arvore de decisão passar uma sequencia de nmrs q podem ser 0 ou 1, pra cada neuronio, 0 significa q o neuronio com o mesmo indice q o 0 não será usado, se  for 1 quer dizer q será usado, ele apenas retornará respostas se elas forem óbvias, tipo bom dia, boa tarde, boa noite(complexidade 1)
+                #Inclusive vale a penar já deixar mapeado frases de coplexidade nível 1 pra não demorar na resposta de coisas simples.
+                return resposta
+        
+        if "A frase " in contexto and "ainda não foi mapeada, favor mapear!" in contexto:
+                resposta = pormpt
+                return resposta
+    #prompt, tipos = caracteres_especiais.specialCharacters(prompt, tipos)
+    
+    #contexto, tipos, saudacao = context.extrair_contexto(prompt, saudacao, tipos)
     
     print("tipos:{} \n contexto:{} \n saudacao:{}".format(tipos, contexto, saudacao))
     input("a")

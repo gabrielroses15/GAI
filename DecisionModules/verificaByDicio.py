@@ -1,3 +1,5 @@
+from DecisionModules import assisteVideo as watch
+
 #Dicionário de palavras
 key_saudacoes =  ["oiee","oie","oii","oi","eae","olá","ola","salve","e ai","e aí","saudações", 
             "saudaçoes", "saudacões", "saudacoes", "saudacao", "saudacão"]
@@ -26,6 +28,8 @@ def verificaByDicio(prompt, tipos, saudacao):
                     wordsQuestion.append(palavra)
                 elif lista == key_thx:
                     tipos.append("thx")
+                if "https://www.youtube.com/watch?v=" in palavra:
+                    watch.transcrever_video(palavra)
                 break
         indice += 1
     if len(wordsQuestion) == 1:
