@@ -15,12 +15,12 @@ def choose(prompt):
     else:
         if complexidade == 1:
             contexto, resposta = context.extrair_contexto(prompt, tipos, complexidade, resposta)
-            if contexto == "responder": #Tlvz seja melhor a arvore de decisão passar uma sequencia de nmrs q podem ser 0 ou 1, pra cada neuronio, 0 significa q o neuronio com o mesmo indice q o 0 não será usado, se  for 1 quer dizer q será usado, ele apenas retornará respostas se elas forem óbvias, tipo bom dia, boa tarde, boa noite(complexidade 1)
+            if contexto == "responder":
                 #Inclusive vale a penar já deixar mapeado frases de coplexidade nível 1 pra não demorar na resposta de coisas simples.
                 return resposta
         
         if "A frase " in contexto and "ainda não foi mapeada, favor mapear!" in contexto:
-                resposta = pormpt
+                resposta = prompt
                 return resposta
     #prompt, tipos = caracteres_especiais.specialCharacters(prompt, tipos)
     
