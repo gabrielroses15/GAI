@@ -60,7 +60,7 @@ def runN(lista):
             import Resposta_Audio as respostaAudio
             #respostaAudio.AwnswerAudio
 
-lista = [1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1, 1]
+lista = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
 runN(lista)
 
 #N tem TIPO DE PERGUNTA PQ ACHEI INUTIL JÁ Q O EXTRATOR DE CONTEXTO JÁ PEGA O TIPO DE PERGUNTA
