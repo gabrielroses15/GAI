@@ -1,4 +1,4 @@
-from youtube_transcript_api import YouTubeTranscriptApi
+#from youtube_transcript_api import YouTubeTranscriptApi
 
 def transcrever_video(url):
     video_id = url.split('v=')[1]
