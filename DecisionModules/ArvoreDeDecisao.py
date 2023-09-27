@@ -3,35 +3,59 @@ from DecisionModules import caracteres_especiais
 from DecisionModules import verificaByDicio as verifica
 from DecisionModules import calculaComplexidade as complexity
 
-def choose(prompt):
+def choose(prompt:str, resposta:str):
     tipos = []
-    resposta = "Por favor reformule."
     start = "Tudo bem?"
     
-    complexidade = complexity.CalcComplex(prompt, tipos)
+    prompt, tipos = caracteres_especiais.specialCharacters(prompt, tipos) #Utilizar os tipos para melhor compreensão de contexto.
+    
+    complexidade = complexity.CalcComplex(prompt)
     
     if complexidade == "Por favor reformule.":
         return resposta
     else:
+        from DecisionModules import frasesMapeadas as fMap
+        banco = fMap.dicio(complexidade)
+        prompt = caracteres_especiais.clearPrompt(prompt)
+        prompt = prompt.lower()
+        resposta404 = 'A frase "{}" ainda não foi mapeada, favor mapear!'.format(prompt.lower().title())
         if complexidade == 1:
-            contexto, resposta = context.extrair_contexto(prompt, tipos, complexidade, resposta)
-            if contexto == "responder":
-                #Inclusive vale a penar já deixar mapeado frases de coplexidade nível 1 pra não demorar na resposta de coisas simples.
-                return resposta
-        
-        if "A frase " in contexto and "ainda não foi mapeada, favor mapear!" in contexto:
-                resposta = prompt
-                return resposta
-    #prompt, tipos = caracteres_especiais.specialCharacters(prompt, tipos)
+            if (prompt == "bom dia" or prompt == "boa tarde" or prompt == "boa noite"):
+                resposta = "{}, tudo bem?".format(prompt.lower().title()) #pode pedir para retornar uma resposta de um dicionário de respostas pra bom dia//tarde//noite
+                print("resposta === ", resposta)
+            elif (prompt == "oie blz" or prompt == "ola blz" or prompt == "oii blz" or prompt == "olá blz" or prompt == "eae blz" or prompt == "slv blz" or prompt == "salve blz"):
+                resposta = "{} estou bem sim, e você?".format(prompt.split()[0].lower().title())
+            elif (prompt == "tudo bem" or prompt == "td bem"):
+                resposta = "Tudo sim e com você?"
+            else:
+                for chaves, valor in banco.items():
+                    if prompt in chaves:
+                        resposta = "Pergunta incompleta."
+                        break
+                    else:
+                        resposta = resposta404
+            return resposta
+        elif complexidade > 1 and complexidade < 10:
+            for chaves, valor in banco.items():
+                for chave in chaves:
+                    if chave in prompt:
+                        resposta = valor + " " + prompt.split(chave)[-1].strip()
+                        if prompt.split(chave)[-1].strip() == "ele":
+                            print("a")
+                        return resposta
+                    else:
+                        resposta = resposta404
+            return resposta
     
     #contexto, tipos, saudacao = context.extrair_contexto(prompt, saudacao, tipos)
+    #Só vai usar o extrair_contexto pelo mapa binário, enviado para o controlador.
     
     print("tipos:{} \n contexto:{} \n saudacao:{}".format(tipos, contexto, saudacao))
     input("a")
         
     #Construção da resposta "middle"
     
-    middle = "resposta baseada no banco"
+    middle = "resposta baseada no banco" #O middle é opcional
 
     
     #Construção do "start" (início e fim padrão do sistema baseado no prompt)

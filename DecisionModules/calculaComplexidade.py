@@ -1,5 +1,3 @@
-from DecisionModules import caracteres_especiais as special
-
 breakPhrases = ["o que é a vida", "o que e a vida", "o q é a vida", "o q e a vida", "oq e a vida", 
                 "oq é a vida", "como é morrer", "como e morrer", "cm é morrer", "cm e morrer", 
                 "sentido da vida", "qual o sentido da vida", "qual é o sentido da vida", 
@@ -19,7 +17,7 @@ repairAnswers = ["Uma sucessão de fatos.", "Uma busca energética por mais ener
                  #Se a pessoa demonstrar sentimentos de depressão ou coisas que podem ser incontroláveis, o bot deve perceber e ativar uma trava para apennas falar sobre assuntos positivos
                  #A trava pode ser apenas um "Por favor, pergunte sobere outro tema ou procure um profissional em saúde mental para auxiliar-lo à encontrar a resposta correta."
 
-def CalcComplex(prompt: str, tipos):
+def CalcComplex(prompt: str):
     for index, breaks in enumerate(breakPhrases):
         if breaks in prompt:
             resposta = repairAnswers[index]
@@ -34,7 +32,6 @@ def CalcComplex(prompt: str, tipos):
         
     if verificacao:
         num_palavras = len(palavras)
-        prompt, tipos = special.specialCharacters(prompt, tipos)
         if num_palavras == 2:
             complexidade = 1
         elif num_palavras == 3:
