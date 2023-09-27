@@ -1,13 +1,13 @@
-import RecoFala
-from DecisionModules import ArvoreDeDecisao as chooses
+#import RecoFala
+from DecisionModules import controlador as controller
 
 FalaOuTexto = input("Coloque:\nT = texto\nF = Fala\n")
 
 if str(FalaOuTexto).upper() == "T":
     prompt = input("Faça uma pergunta: ")
-    resposta = chooses.choose(prompt)
-else:
-    RecoFala.voiceRecord(True)
+    resposta = controller.controller(prompt)
+#else:
+    #RecoFala.voiceRecord(True)
     
 print(resposta)
                 
