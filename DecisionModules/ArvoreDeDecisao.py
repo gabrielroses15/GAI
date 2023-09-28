@@ -40,14 +40,18 @@ def choose(prompt:str, resposta:str):
                             for nome in nomes:
                                 if nome in prompt:
                                     comparar = "meu nome é" + prompt.split("meu nome é")[1].lower()
-                                    if ("meu nome é " + nome) not in comparar and ("meu nome é " + nome.title()) not in comparar:
+                                    if ("meu nome é " + nome) not in comparar and ("meu nome é " + nome.title()) not in comparar: #salomão e salomao tem q ser considerado o msm nome, ai q entra o corretor pq o corretor ja faria vir correto.
                                         nomes_encontrados.add(nome)
                             resposta = valor + " " + prompt.split(chave)[-1].strip()
                             #return resposta
-
     print("Nomes encontrados: {} \nChaves encontradas: {}".format(nomes_encontrados, chaves_encontradas))
     from DecisionModules import Chaves_NomesCompair as compair
-    compair.comparaTamanhos(nomes_encontrados, chaves_encontradas, "Chaves e Nomes")
+    compara = compair.comparaTamanhos(nomes_encontrados, chaves_encontradas, "Chaves e Nomes")
+    if compara == "Listas iguais":
+        for nome_encontrado in nomes_encontrados:
+            for letra in nome_encontrado:
+                
+
 
     complexidade = complexity.CalcComplex(prompt)
     
