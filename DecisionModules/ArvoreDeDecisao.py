@@ -26,6 +26,8 @@ def choose(prompt:str, resposta:str):
             for chaves, valor in banco.items():
                 for chave in chaves:
                     if chave in prompt:
+                        if (chave+pronome) in prompt:
+                            print("a")
                         if prompt.split(chave)[-1].strip() == "ele":
                             nomes = fMap.nomes()
                             palavras = prompt.split()
@@ -39,7 +41,12 @@ def choose(prompt:str, resposta:str):
                             nomes = fMap.nomes()
                             for nome in nomes:
                                 if nome in prompt:
-                                    comparar = "meu nome é" + prompt.split("meu nome é")[1].lower()
+                                    if (chave+pronome) in prompt:
+                                        print("a")
+                                    try:
+                                        comparar = "meu nome é" + prompt.split("meu nome é")[1].lower()
+                                    except:
+                                        pass
                                     if ("meu nome é " + nome) not in comparar and ("meu nome é " + nome.title()) not in comparar: #salomão e salomao tem q ser considerado o msm nome, ai q entra o corretor pq o corretor ja faria vir correto.
                                         nomes_encontrados.add(nome)
                             resposta = valor + " " + prompt.split(chave)[-1].strip()
@@ -50,7 +57,7 @@ def choose(prompt:str, resposta:str):
     if compara == "Listas iguais":
         for nome_encontrado in nomes_encontrados:
             for letra in nome_encontrado:
-                
+                print(letra)
 
 
     complexidade = complexity.CalcComplex(prompt)
