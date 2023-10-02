@@ -22,7 +22,7 @@ def nomes():
     "karina", "lucia", "mario", "nadia", "patricia", "rafael", "sergio", "tomas",
     "ursula", "viviana", "yolanda", "sebastian", "valeria", "xavier",
     "martin", "pablo", "natalia", "manuel", "francisco",
-    "ricardo", "veronica", "felipe", "alejandro", "carlos", "fernanda", "diana", "thaynara", "salomao"]
+    "ricardo", "veronica", "felipe", "alejandro", "carlos", "fernanda", "diana", "thaynara", "salomao", "einsten", "charles", "darwin", "napoleao"]
     return nomes
 
 def pronomes():
