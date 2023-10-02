@@ -28,6 +28,15 @@ def choose(prompt:str, resposta:str):
                     if chave in prompt:
                         if (chave+pronome) in prompt:
                             print("a")
+
+                        #;;;
+                        dicioPron = {("ele", "dele", "ela", "dela"): "Singular", ("eles", "deles", "elas", "delas", "nós", "vós"): "plural"}
+                        for key, value in dicioPron:
+                            if key in prompt:
+                                print("Valor = "+ value)
+                            else:
+                                print("Chave " + key + "não corresponde ao valor " + value)#;;;
+
                         if prompt.split(chave)[-1].strip() == "ele":
                             nomes = fMap.nomes()
                             palavras = prompt.split()
@@ -51,6 +60,35 @@ def choose(prompt:str, resposta:str):
                                         nomes_encontrados.add(nome)
                             resposta = valor + " " + prompt.split(chave)[-1].strip()
                             #return resposta
+                    else:#;;;
+                        from DecisionModules import TemposVerbais
+                        tempoVerbal = TemposVerbais.singPlurar(prompt)
+                        if tempoVerbal == "Singular":
+                            print("Singular")
+                            #Lógica pra caso seja Singular
+                            #Singular quer dizer que procuraremos por um único nome
+                        else:
+                            tempPrompt = prompt.lower().split(TemposVerbais.singPlurar(prompt, False))
+                            nomes = fMap.nomes()
+                            resposta = TemposVerbais.intercalar_busca(tempPrompt[0], tempPrompt[1], nomes)
+                            if resposta:
+                                return resposta
+                            #Lógica caso seja Plural
+                            #Plural quer dizer que serão procurados mais de um nome
+                            #A confirmação do ínicio e do fim de um plural é um plural
+                            #As estatuas de ... quem são eles, "as" e "eles" indicam o
+                            #Intermédio de uma frase a chamada "middlePhrase" ou "infoPhrase"
+                            #Talvez tenha q separar em nenurônios por tipo e criar um mapa binário do tipo
+                            #Um neurônio q reconheçe o tipo da frase dentre "esporte", "duvida simples",
+                            #"duvida média", "dúvida complexa", "automobilismo", "relacionamento", "finanças"
+                            #Então ele cria um mapa binário, o controlador passa pra um run neurons, com
+                            #First como true, os respectivos neurôinos retornam valores de busca no banco
+                            #Baseado no prompt, como por exemplo "biografia de xyz", "carro x", "casa xyz"
+                            #Então se possível, a resposta já é retornada, caso contrário, criaremos um 
+                            #Mapa binário e passariámos para um próximo runNeurons com first como False
+                            #O comportamento seria outro, importando e ativado outros neurônios.
+                            #;;;
+
     print("Nomes encontrados: {} \nChaves encontradas: {}".format(nomes_encontrados, chaves_encontradas))
     from DecisionModules import Chaves_NomesCompair as compair
     compara = compair.comparaTamanhos(nomes_encontrados, chaves_encontradas, "Chaves e Nomes")
