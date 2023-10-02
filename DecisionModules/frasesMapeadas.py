@@ -7,7 +7,7 @@ def dicio(complexity):
             return frases_mapeadas
 
 def nomes():
-    nomes = ["salomão", "miguel", "gabriel",
+    nomes = ["salomão", "miguel", "gabriel", "josé", "jose",
     "lucas", "joão", "davi", "pedro", "enzo",
     "gustavo", "eduardo", "nicolas", "yuri", "caio", "vitor",
     "antonio", "vinicius", "william", "paulo",
@@ -22,7 +22,8 @@ def nomes():
     "karina", "lucia", "mario", "nadia", "patricia", "rafael", "sergio", "tomas",
     "ursula", "viviana", "yolanda", "sebastian", "valeria", "xavier",
     "martin", "pablo", "natalia", "manuel", "francisco",
-    "ricardo", "veronica", "felipe", "alejandro", "carlos", "fernanda", "diana", "thaynara"]
+    "ricardo", "veronica", "felipe", "alejandro", "carlos", "fernanda", "diana", "thaynara", 
+    "salomao", "elizeu", "eliza", "elizabeth", "beth", "gregory", "greg"]
     return nomes
 
 def pronomes():

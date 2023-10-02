@@ -11,7 +11,7 @@ def runN(lista):
     if len(lista) == len(neuronList):
         for index, num in enumerate(lista):
             if num != 1 and num != 0:
-                print("O número {} não corresponde ao padrão binário esperado".format(num))
+                print("O número {} não corresponde ao padrão binário esperado".format(num))#Assistir primeiro ou entender o sentimento do video?
             else:
                 if num == 1:
                     activatedNeurons.append(neuronList[index])
@@ -61,6 +61,6 @@ def runN(lista):
             #respostaAudio.AwnswerAudio
 
 lista = [0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0, 0]
-runN(lista)
+runN(lista)#criar listas de listas de binários
 
 #N tem TIPO DE PERGUNTA PQ ACHEI INUTIL JÁ Q O EXTRATOR DE CONTEXTO JÁ PEGA O TIPO DE PERGUNTA
