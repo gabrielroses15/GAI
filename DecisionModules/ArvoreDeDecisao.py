@@ -87,7 +87,8 @@ def choose(prompt:str, resposta:str):
             for chaves, valor in banco.items():
                 for chave in chaves:
                     if chave in prompt:
-                        chaves_encontradas.add(chave)
+                        if (chave+pronome) in prompt:
+                            print("a")
                         if prompt.split(chave)[-1].strip() == "ele":
                             pron = True
                             nomes = fMap.nomes()
@@ -103,12 +104,14 @@ def choose(prompt:str, resposta:str):
                             nomes = fMap.nomes()
                             for nome in nomes:
                                 if nome in prompt:
-                                    if "meu nome é" in prompt:
-                                        comparar = prompt.split("meu nome é", 1)[1].lower()
-
-                                    #comparar = "meu nome é" + prompt.split("meu nome é")[1].lower()
-                                    #if ("meu nome é " + nome) not in comparar and ("meu nome é " + nome.title()) not in comparar: #salomão e salomao tem q ser considerado o msm nome, ai q entra o corretor pq o corretor ja faria vir correto.
-                                        #nomes_encontrados.add(nome)
+                                    if (chave+pronome) in prompt:
+                                        print("a")
+                                    try:
+                                        comparar = "meu nome é" + prompt.split("meu nome é")[1].lower()
+                                    except:
+                                        pass
+                                    if ("meu nome é " + nome) not in comparar and ("meu nome é " + nome.title()) not in comparar: #salomão e salomao tem q ser considerado o msm nome, ai q entra o corretor pq o corretor ja faria vir correto.
+                                        nomes_encontrados.add(nome)
                             resposta = valor + " " + prompt.split(chave)[-1].strip()
                             #return resposta
     print("Nomes encontrados: {} \nChaves encontradas: {}, Pron: {}\n Comparar: {}".format(nomes_encontrados, chaves_encontradas, pron, comparar))
@@ -117,7 +120,8 @@ def choose(prompt:str, resposta:str):
     if compara == "Listas iguais":
         for nome_encontrado in nomes_encontrados:
             for letra in nome_encontrado:
-                print("a")
+                print(letra)
+
 
     return ""
     complexidade = complexity.CalcComplex(prompt)
