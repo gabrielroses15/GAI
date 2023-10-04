@@ -150,16 +150,32 @@ def runN(lista, tree:bool = False, respo:str = "runNeurons não obteve resposta,
              morte, arte, historia, matematica, geografia, portugues, geometria, reflexao, badVibes,
              solidao, amigos, NPCTalk, Normal]
         index = 0
-        for run in lista:
-            if run == 0:
-                index += 1
-            else:
-                if type(chooseList[index]()) == str:
-                    resposta = chooseList[index]()
-                elif type(chooseList[index]()) == list:
-                    if chooseList[index]()[0] == "prompt":
-                        prompt = chooseList[index]()[1]
-                index += 1
+        contador = lista.count(1)
+        if contador > 1:
+            respostas = []
+            for run in lista:
+                if run == 0:
+                    index += 1
+                else:
+                    if type(chooseList[index]()) == str:
+                        resposta = chooseList[index]()
+                    elif type(chooseList[index]()) == list:
+                        if chooseList[index]()[0] == "prompt":
+                            prompt = chooseList[index]()[1]
+                    index += 1
+                    respostas.append(resposta)
+            return respostas
+        else:
+            for run in lista:
+                if run == 0:
+                    index += 1
+                else:
+                    if type(chooseList[index]()) == str:
+                        resposta = chooseList[index]()
+                    elif type(chooseList[index]()) == list:
+                        if chooseList[index]()[0] == "prompt":
+                            prompt = chooseList[index]()[1]
+                    index += 1
         
     # if type(resposta) == str:
     #     print("str")
