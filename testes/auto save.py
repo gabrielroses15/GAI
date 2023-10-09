@@ -14,6 +14,10 @@ def abrir_git_bash(caminho):
     comando = f'cd "{caminho}" && start "" "C:\\Users\\gabriel.rosa\\AppData\\Local\\Programs\\Git\\git-bash.exe"'
     subprocess.Popen(comando, shell=True)
 
+def obter_mensagem_commit():
+    mensagem = simpledialog.askstring("Mensagem de Commit", "Digite a mensagem do commit:")
+    return mensagem
+
 pasta = escolher_pasta()
 abrir_git_bash(pasta)
 time.sleep(1)
@@ -21,7 +25,8 @@ pyautogui.typewrite("git status\n")
 time.sleep(0.5)
 pyautogui.typewrite("git add .\n")
 time.sleep(0.5)
-mensagem = simpledialog.askstring("Mensagem de Commit", "Digite a mensagem do commit:")
+mensagem = ""
+mensagem = obter_mensagem_commit()
 time.sleep(0.5)
 pyautogui.typewrite('git commit -m "{}"\n'.format(mensagem))
 time.sleep(0.5)
