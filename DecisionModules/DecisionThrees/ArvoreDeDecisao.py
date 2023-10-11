@@ -8,7 +8,6 @@ import re
 def choose(prompt:str, resposta:str):
     tipos = []
     start = "Tudo bem?"
-    pron = False
     
     prompt, tipos = caracteres_especiais.specialCharacters(prompt, tipos) #Utilizar os tipos para melhor compreensão de contexto.
     
@@ -27,11 +26,33 @@ def choose(prompt:str, resposta:str):
     tempPrompt = prompt.lower()
     data = fMap.dicio(3)
 
+    def teste(frase:str):
+        frase = frase.lower()
+        for chaves, valor in data.items():
+            for key in chaves:
+                if key in frase:
+                    start_idx = frase.split().index(key.split()[0])
+
+                    #palavra anterior
+                    if start_idx > 0:
+                        palavra_anterior = frase.split()[start_idx - 1]
+                        if palavra_anterior in names:
+                            resposta = valor + " " + palavra_anterior
+                            return resposta
+
+                    # Palavra seguinte à chave
+                    if start_idx < len(frase.split()) - 1:
+                        palavra_seguinte = frase.split()[start_idx + len(key.split())]
+                        if palavra_seguinte in names:
+                            resposta = valor + " " + palavra_seguinte
+                            return resposta
+
+                    print("Chave: {}\n Valor: {}.".format(key, valor))
+                    frase = frase.replace(key, "")
+
     for chaves, valor in data.items(): #AI QUE CHATO
         for key in chaves:
             if key in tempPrompt:
-                Phrases = tempPrompt.split(key)
-
                 start_idx = tempPrompt.split().index(key.split()[0])
 
                 #palavra anterior
@@ -39,6 +60,19 @@ def choose(prompt:str, resposta:str):
                     palavra_anterior = tempPrompt.split()[start_idx - 1]
                     if palavra_anterior in names:
                         resposta = valor + " " + palavra_anterior
+                        respostaTemp = resposta
+
+                        print("passa aq")
+
+                        if len(prompt.split(key)) > 1:
+                            novaLista = prompt.split(key)[1:]
+                            for lista in novaLista:
+                                print(teste(lista))
+
+
+                        #achar lista por valor da key e junta-la com outras, refazendo a análise
+                        #dps devo otimizar pra analiar junto ou algo ass pq
+                        #as vezes a 1° frase é simples e a segunda n
                         return resposta
 
                 # Palavra seguinte à chave
@@ -69,7 +103,6 @@ def choose(prompt:str, resposta:str):
                                 print("Chave " + key + "não corresponde ao valor " + value)#;;;
 
                         if prompt.split(chave)[-1].strip() == "ele":
-                            pron = True
                             nomes = fMap.nomes()
                             palavras = prompt.split()
                             for nome in nomes:
