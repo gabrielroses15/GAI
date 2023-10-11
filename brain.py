@@ -1,4 +1,4 @@
-#import RecoFala
+import RecoFala
 from DecisionModules import controlador as controller
 
 FalaOuTexto = input("Coloque:\nT = texto\nF = Fala\n")
@@ -6,8 +6,8 @@ FalaOuTexto = input("Coloque:\nT = texto\nF = Fala\n")
 if str(FalaOuTexto).upper() == "T":
     prompt = input("Faça uma pergunta: ")
     resposta = controller.controller(prompt)#Charles Darwin
-#else:
-    #RecoFala.voiceRecord(True)
+else:
+    RecoFala.voiceRecord(True)
     
 #Eu estava andando no museu da praça jose e vi um quadro de napoleao quem foi ele
 print(resposta)

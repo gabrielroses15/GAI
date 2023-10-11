@@ -10,7 +10,7 @@ def choose(prompt:str, resposta:str):
                     "oq é a vida", "como é morrer", "como e morrer", "cm é morrer", "cm e morrer",
                     "sentido da vida", "qual o sentido da vida", "qual é o sentido da vida",
                     "qual e o sentido da vida", "qual é o sentido de viver",
-                    "qual e o sentido viver"]  # da pra usar um dicionario de palavras, pra otimizar o tempo gasto tbm
+                    "qual e o sentido viver"]  # Da pra usar um dicionario de palavras, pra otimizar o tempo gasto tbm
 
     repairAnswers = ["Uma sucessão de fatos.", "Uma busca energética por mais energia",
                      "Também estou tentando entender",

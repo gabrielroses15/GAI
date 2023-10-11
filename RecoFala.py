@@ -1,5 +1,6 @@
 import speech_recognition as sr
 import RecoResposta_Fala
+import pyaudio
 
 def voiceRecord(passagem):
     CHUNK = 1024
