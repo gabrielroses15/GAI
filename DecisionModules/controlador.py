@@ -6,11 +6,34 @@ def controller(prompt:str):
     prompt = prompt.lower()
     prompt = special.clearPrompt(prompt)
     words = prompt.split()#cortar as palavras apenas uma vez, poupando RAM
+    pronomes = ["você", "voce", "vc", "tu", "gai"]
+    eh = ["é", "e", "eh", "éh", "ehh", "éhh"]
+    elogios = ["demais", "dimais", "de mais", "dms", "di mais", "incrivel", "incrível", "espetacular", "indescritível", "indescritivel", "insano", "esbelto", "magnífico", "magnificiente", "admirável", "exemplar", "inteligete", "foda"]
+    xingamentos = ["um merda", "um bosta", "horrível", "zoado", "hororroso", "horrendo", "um desgraçado", "desgraçado", "um fudido", "um fodido", "fudido", "fodido"]
+
+    for pronome in pronomes:
+        for e in eh:
+            for elogio in elogios:
+                frase = pronome + " " + e + " " + elogio
+                if frase in prompt:
+                    resposta = "Obrigado, vc que é {}, além de ser minha inspiração!".format(elogio)
+                    return resposta
+            for xingamento in xingamentos:
+                frase = pronome + " " + e + " " + xingamento
+                if frase in prompt:
+                    resposta = "Ei, não chame as pessoas de {}, isto não é legal!".format(xingamento)
+                    return resposta
+
     miniCorretor = {"você": ["vc", "voce", "voçe", "voçê", "tu"],
                     "vo": ["avô", "vovô"],
                     "porshe": ["porche", "porhsi", "pórche", "pórcshi"],
                     "vidro": ["vrido"], "pedra": ["preda"],
-                    "são": ["sao"]} #Dicionário pra correção
+                    "são": ["sao"],
+                    "qual é o seu nome": ["qual o seu nome", "qual e o seu nome",
+                                          "qual é o seu nm", "cual é o seu nome",
+                                          "cual e o seu nome", "cual é u seu nome",
+                                          "cual e u seu nome", "qual é seu nome",
+                                          "qual seu nome"]} #Dicionário pra correção #"te achei {}"
     for valor, palavras in miniCorretor.items():
         for palavra in palavras:
             for word in words:
@@ -22,7 +45,7 @@ def controller(prompt:str):
                     "sentido da vida", "qual o sentido da vida", "qual é o sentido da vida",
                     "qual e o sentido da vida", "qual é o sentido de viver",
                     "qual e o sentido viver", "qual o sentido de viver", "bom dia", "boa tarde", 
-                    "boa noite", "tudo sim e você"]
+                    "boa noite", "tudo sim e você", "qual é o seu nome", "você é legal"]
     #Usar o corretor ortográfico emmm
     repairAnswers = ["Uma sucessão de fatos.", "Uma busca energética por mais energia",
                      "Também estou tentando entender",
@@ -39,7 +62,7 @@ def controller(prompt:str):
                      "Ei, isto não estava no roteiro.",
                      "Hmmm, carregando?", "São tantos sentidos, que não posso resumi-los em palavras.",
                      "bom dia, tudo bem?", "boa tarde, tudo bem?", "boa noite, tudo bem?", 
-                     "Contente em falar com você!"]
+                     "Contente em falar com você!", "Meu nome é GAI!"]
                     #Dps é legal customizar variantes de respostas padrões baseadas nos padrões da pessoa de escrita.
                     #Criar uma trava caso a pessoa seja reconhecida como depressiva, criar tipos mapeados de pessoas assim como personalidades, modos de escrita, modos de pergunta e etc
                     #Alocar os usuários as listas pré prontas de "tipos de pessoas" e caso o usuário não se encaixar em nenhuma lista, entender como ele é e criar uma lista para ele.

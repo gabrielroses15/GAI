@@ -4,6 +4,7 @@ def Geografia(prompt):
     prompt = prompt.replace("dona", "")
     prompt = prompt.replace("  ", " ")
     prompt = prompt.replace("joao", "joão")
+    prompt = prompt.replace("são", "")
     geoList = ["avenida", "rua", "local", "quadra", "mercado", "hospital"]
     nomes_encontrados = []
     palavras = prompt.lower().split()

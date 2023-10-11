@@ -8,7 +8,7 @@ if str(FalaOuTexto).upper() == "T":
     while x < 100:
         prompt = input("Faça uma pergunta: ")
         resposta = controller.controller(prompt)#Charles Darwin
-        #print(resposta)
+        print(resposta)
         x += 1
 #else:
     #RecoFala.voiceRecord(True)
@@ -26,8 +26,11 @@ if str(FalaOuTexto).upper() == "T":
 # venida maria e vi as estátuas de davi e salomão, quem foram eles?"
 # GAI já entende q se refere a biografia de davi e salomão, mesmo contendo o nome maria em seu banco
 
+#09:58 ->
 
 #THE 100 QUESTS TEST:
+#estava andando na praia e vi a estátua de salomão quem foi ele? me lembro de ver tbm a estátua de davi e joão, quem foram eles ah eu vi tbm outra estátua do joão q n sei qm é, quem foi, vi tbm os seus pais, quem foram eles
+#estava andando na praia e vi a estátua de salomão quem foi ele? me lembro de ver tbm a estátua de davi e joão, quem foram eles
 #Estou te testando sabia
 #o que é você
 #quem é você
