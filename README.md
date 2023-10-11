@@ -9,4 +9,4 @@ Here is the ideas to optimize, make more effective and a bestt project(I'll add 
 
 -Search things that he doesn't know on Google.
 
--print answer
+-corrigir a reação a várias perguntas em uma
