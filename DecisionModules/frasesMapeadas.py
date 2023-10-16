@@ -3,8 +3,8 @@ def dicio(complexity):
        return "Erro na classificação de complexidade da frase."
     else:
         if complexity > 1 and complexity < 10:
-            frases_mapeadas = {("quem foi", "quem era", "qm era", "qm foi"): "biografia de", ("história de", "história do", "historia da", "história di", "história du", "historia do", "história de", "historia da", "história di", "historia du", "hist da", "hist de", "hist di", "hist di", "hist do", "hist du"): "história"}
-            return frases_mapeadas
+            frases_mapeadas = {("quem foi", "quem era", "qm era", "qm foi", "qm foram", "quem foram"): "biografia de", ("história de", "história do", "historia da", "história di", "história du", "historia do", "história de", "historia da", "história di", "historia du", "hist da", "hist de", "hist di", "hist di", "hist do", "hist du"): "história"}
+            return frases_mapeadas#qm foram? plural?
 
 def nomes():
     nomes = ["salomão", "miguel", "gabriel", "josé", "jose",
@@ -23,7 +23,8 @@ def nomes():
     "ursula", "viviana", "yolanda", "sebastian", "valeria", "xavier",
     "martin", "pablo", "natalia", "manuel", "francisco",
     "ricardo", "veronica", "felipe", "alejandro", "carlos", "fernanda", "diana", "thaynara", 
-    "salomao", "elizeu", "eliza", "elizabeth", "beth", "gregory", "greg"]
+    "salomao", "elizeu", "eliza", "elizabeth", "beth", "gregory", "greg", "maria", "charles", "darwin",
+    "saulo", "cleber"]
     return nomes
 
 def pronomes():
