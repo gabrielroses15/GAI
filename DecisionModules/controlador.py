@@ -3,9 +3,13 @@ from DecisionModules import caracteres_especiais as special
 
 lastAsks = []
 def controller(prompt:str):
+    words = prompt.split()  # cortar as palavras apenas uma vez, poupando RAM
+    if len(words) <= 1:
+        resposta = "Pergunta pequena demais."
+        return resposta
+
     prompt = prompt.lower()
     prompt = special.clearPrompt(prompt)
-    words = prompt.split()#cortar as palavras apenas uma vez, poupando RAM
     pronomes = ["você", "voce", "vc", "tu", "gai"]
     eh = ["é", "e", "eh", "éh", "ehh", "éhh"]
     elogios = ["demais", "dimais", "de mais", "dms", "di mais", "incrivel", "incrível", "espetacular", "indescritível", "indescritivel", "insano", "esbelto", "magnífico", "magnificiente", "admirável", "exemplar", "inteligete", "foda"]
@@ -63,26 +67,25 @@ def controller(prompt:str):
                      "Hmmm, carregando?", "São tantos sentidos, que não posso resumi-los em palavras.",
                      "bom dia, tudo bem?", "boa tarde, tudo bem?", "boa noite, tudo bem?", 
                      "Contente em falar com você!", "Meu nome é GAI!"]
-                    #Dps é legal customizar variantes de respostas padrões baseadas nos padrões da pessoa de escrita.
-                    #Criar uma trava caso a pessoa seja reconhecida como depressiva, criar tipos mapeados de pessoas assim como personalidades, modos de escrita, modos de pergunta e etc
-                    #Alocar os usuários as listas pré prontas de "tipos de pessoas" e caso o usuário não se encaixar em nenhuma lista, entender como ele é e criar uma lista para ele.
-                    #Se a pessoa demonstrar sentimentos de depressão ou coisas que podem ser incontroláveis, o bot deve perceber e ativar uma trava para apennas falar sobre assuntos positivos
-                    #A trava pode ser apenas um "Por favor, pergunte sobere outro tema ou procure um profissional em saúde mental para auxiliar-lo à encontrar a resposta correta."
+                     #Dps é legal customizar variantes de respostas padrões baseadas nos padrões da pessoa de escrita.
+                     #Criar uma trava caso a pessoa seja reconhecida como depressiva, criar tipos mapeados de pessoas assim como personalidades, modos de escrita, modos de pergunta e etc
+                     #Alocar os usuários as listas pré prontas de "tipos de pessoas" e caso o usuário não se encaixar em nenhuma lista, entender como ele é e criar uma lista para ele.
+                     #Se a pessoa demonstrar sentimentos de depressão ou coisas que podem ser incontroláveis, o bot deve perceber e ativar uma trava para apennas falar sobre assuntos positivos
+                     #A trava pode ser apenas um "Por favor, pergunte sobere outro tema ou procure um profissional em saúde mental para auxiliar-lo à encontrar a resposta correta."
     for index, breaks in enumerate(breakPhrases):
         if breaks in prompt:
-            resposta = repairAnswers[index]
+            resposta = repairAnswers[index] #TBM TEM Q RESPONDER SE A PERGUNTA FOR GRANDE MAS CONTIVER OU RESPODER TBM MSM Q HAJA 2 PERGUNTAS, OU VÁRIAS PERGUNTAS
+            #SENDO A VER OU N
             return resposta
 
     resposta = "O contexto da frase escrita não foi compreenndido"
-
-    if len(words) <= 1:
-        resposta = "Pergunta pequena demais"
-        return resposta
 
     binaryMapOne = Theme.recognizeTheme(prompt)
 
     from DecisionModules import runNeurons as run
     resposta = run.runN(binaryMapOne, True, resposta, prompt)
+    if len(resposta) == 2:
+        resposta = resposta[1]
 
     #Lógica pra entender e se lembrar de como o usuário fala
     maxMemory = 98

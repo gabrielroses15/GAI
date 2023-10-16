@@ -1,7 +1,11 @@
 def Geografia(prompt):
     from DecisionModules import frasesMapeadas as fMap
     nomes = fMap.nomes()
+    if "rua de" in prompt:
+        prompt = prompt.replace("rua de", "rua")
     prompt = prompt.replace("dona", "")
+    prompt = prompt.replace("dom", "")
+    prompt = prompt.replace("don", "")
     prompt = prompt.replace("  ", " ")
     prompt = prompt.replace("joao", "joão")
     prompt = prompt.replace("são", "")
@@ -31,7 +35,8 @@ def Geografia(prompt):
                         else:
                             break
                     for find in nomes_encontrados:
-                        prompt = prompt.replace(find, "")
+                        if item + " " + find in prompt:
+                            prompt = prompt.replace(item + " " + find, "")
                 else:
                     prompt = prompt.replace(frase, "")
 
