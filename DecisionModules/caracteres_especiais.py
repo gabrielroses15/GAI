@@ -11,13 +11,9 @@ def specialCharacters(prompt: str, tipos: list):
         prompt = prompt.replace(",", "")
     return prompt, tipos
 
-def clearPrompt(prompt:str):
-    if "?" in prompt:
-        prompt = prompt.replace("?", "")
-    if "!" in prompt:
-        prompt = prompt.replace("!", "")
-    if "." in prompt:
-        prompt = prompt.replace(".", "")
-    if "," in prompt:
-        prompt = prompt.replace(",", "")
+
+def clearPrompt(prompt: str, especialCharacters:list=["?", ".", "!", ",", ";", ":", "'", '"', "(", ")", "[", "]", "{", "}", "<", ">", "/", "\\", "|", "_", "-", "+", "=", "*", "&", "%", "$", "#", "@", "~", "`", "^"]):
+    for especial in especialCharacters:
+        if especial in prompt:
+            prompt = prompt.replace(especial, "")
     return prompt

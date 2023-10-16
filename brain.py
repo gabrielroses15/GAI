@@ -1,34 +1,36 @@
-#import RecoFala
-from DecisionModules import controlador as controller
-
 FalaOuTexto = input("Coloque:\nT = texto\nF = Fala\n")
 
 if str(FalaOuTexto).upper() == "T":
+    from DecisionModules import controlador as controller
     x = 0
     while x < 100:
         prompt = input("Faça uma pergunta: ")
-        resposta = controller.controller(prompt)#Charles Darwin
+        resposta = controller.controller(prompt.lower())#Charles Darwin
         print(resposta)
         x += 1
 #else:
+    #import RecoFala
     #RecoFala.voiceRecord(True)
     
 #Eu estava andando no museu da praça jose e vi um quadro de napoleao quem foi ele
 #print(resposta)
                 
 # ------------------------------Informações Legais------------------------------
-# Projeto iniciado a aproximadamente 1 semana, hoje é dia 15 de agosto de 2023
+# Projeto iniciado a aproximadamente dia 15 de agosto de 2023
 # Total de horas estará errado pois comeceu a contar ontem a noite, porém é legal pra ter uma idéia
-# Total de horas gastas no projeto: 51hr00min
+# Total de horas gastas no projeto: 64hr09min
 # --------------------------------------I---------------------------------------
-# Após 49:30min de projeto, GAI finalmente tem divisores por themas realmente funcionais e consegue
+# Após 53:00min de projeto, GAI finalmente tem divisores por themas realmente funcionais e consegue
 # Entender algumas frases que definitivamente não são tão simples como por exemplo "Estava na a
 # venida maria e vi as estátuas de davi e salomão, quem foram eles?"
 # GAI já entende q se refere a biografia de davi e salomão, mesmo contendo o nome maria em seu banco
 
-#09:58 ->
-
 #THE 100 QUESTS TEST:
+#quantos anos tinha rei salomão quando morreu
+#fui na rua de dom joão e vi as estátuas de davi e maria, ah eu também passei na avenida cleber e vi a estátua do cleber, quem foram eles
+#fui na rua de dom joão e vi as estátuas de davi e maria, ah eu também passei na avenida gabriel e vi a estátua do cleber e do seu pai joão, quem foram eles
+#fui na rua de dom joão e vi as estátuas de davi e maria, ah eu também passei na avenida gabriel e vi a estátua do cleber e do seu amigo jonas, quem foram eles
+#meu amigo gabriel me contou uma história, depois fomos em uma livraria, e lá encontrei o livro de provérbios, escrito por salomão, quem foi ele?
 #estava andando na praia e vi a estátua de salomão quem foi ele? me lembro de ver tbm a estátua de davi e joão, quem foram eles ah eu vi tbm outra estátua do joão q n sei qm é, quem foi, vi tbm os seus pais, quem foram eles
 #estava andando na praia e vi a estátua de salomão quem foi ele? me lembro de ver tbm a estátua de davi e joão, quem foram eles
 #Estou te testando sabia
