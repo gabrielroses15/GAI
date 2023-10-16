@@ -8,5 +8,3 @@ Here is the ideas to optimize, make more effective and a bestt project(I'll add 
 -Have a binary map to be read and run the neurons based on the binary map.
 
 -Search things that he doesn't know on Google.
-
--corrigir a reação a várias perguntas em uma
