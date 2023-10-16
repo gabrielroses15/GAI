@@ -142,6 +142,9 @@ def runN(lista, tree:bool = False, respo:str = "runNeurons não obteve resposta,
             from DecisionModules.DecisionThrees import ArvoreNPCTalk as NPCTalk
             NPCTalk.NPCTalk(prompt)
         def Normal():
+            from DecisionModules.DecisionThrees import ArvoreNormal as choose
+            resposta = choose.escolhas(prompt, respo)
+            return resposta
             from DecisionModules.DecisionThrees import ArvoreDeDecisao as choose
             resposta = choose.choose(prompt, respo)
             return resposta
@@ -176,7 +179,6 @@ def runN(lista, tree:bool = False, respo:str = "runNeurons não obteve resposta,
                         if chooseList[index]()[0] == "prompt":
                             prompt = chooseList[index]()[1]
                     index += 1
-        
     # if type(resposta) == str:
     #     print("str")
     # else:
