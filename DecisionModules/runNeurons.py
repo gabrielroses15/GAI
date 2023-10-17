@@ -144,10 +144,10 @@ def runN(lista, tree:bool = False, respo:str = "runNeurons não obteve resposta,
         def Normal():
             from DecisionModules.DecisionThrees import ArvoreNormal as choose
             resposta = choose.escolhas(prompt, respo)
-            return resposta
-            from DecisionModules.DecisionThrees import ArvoreDeDecisao as choose
-            resposta = choose.choose(prompt, respo)
-            return resposta
+            return resposta[1]
+            # from DecisionModules.DecisionThrees import ArvoreDeDecisao as choose
+            # resposta = choose.choose(prompt, respo)
+            # return resposta
         chooseList = [carros, esportes, casa, perguntaSimples, perguntaMedia, perguntaDificil, 
              financas, relacionamento, amor, sexo, antiNSFW, informacoesSimples, programacao,
              morte, arte, historia, matematica, geografia, portugues, geometria, reflexao, badVibes,
