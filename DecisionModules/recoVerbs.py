@@ -3,23 +3,10 @@ def recoVerbs(words:list, respo:str):
     verbos_encontrados = []
     contexto = ""
 
-    verbosList = {
-    "fazer": ["faço", "fazia", "fazeis", "feito"],
-    "ir": ["vou", "ia", "ides"],
-    "ter": ["tenho", "tinha", "tendes"],
-    "ser": ["sou", "era", "sereis"],
-    "estar": ["estou", "estava", "esteis"],
-    "poder": ["posso", "podia", "podeis"],
-    "dizer": ["digo", "dizia", "dizeis"],
-    "ver": ["vejo", "via", "veis"],
-    "dar": ["dou", "dava", "dais"],
-    "saber": ["sei", "sabia", "sabeis"],
-    "coseguir": ["cosegue", "conseguia", "consegues"],
-    "escrever": ["escreveu", "escrito", "escrevido"],
-    "produzir": ["produzido"],
-    "recomendar": ["recomendou", "recomendaste", "recomendado"],
-    "falar": ["falou", "fala", "falaste"]
-    }
+    from DecisionModules import frasesMapeadas as fMap
+    from DecisionModules import StrongVerbs as sVerbs
+
+    verbosList = fMap.verbosList()
 
     actionVerbs = {0.62: "recomendar", 0.70: "falar",
                  0.80: "fazer", 0.75: "ir", 0.75: "ter",
@@ -28,12 +15,11 @@ def recoVerbs(words:list, respo:str):
                  0.65: "saber", 0.60: "coseguir", 0.78: "escrever",
                  0.80: "produzir"}#Pode salvar isso me uma memória e chamar dependendo da complexidade!
     
-    from DecisionModules import frasesMapeadas as fMap
-    from DecisionModules import StrongVerbs as sVerbs
     resposta = sVerbs.StrongVerbs(" ".join(words), actionVerbs, fMap.dicio(3), words, fMap.nomes())
     
-    if resposta[0] == "resposta":
-        return "resposta", resposta
+    if resposta != None:
+        if resposta[0] == "resposta":
+            return "resposta", resposta
     
     #ele = 1 nome(+ provável) eles = mais de 1 nome (+ provável)
 

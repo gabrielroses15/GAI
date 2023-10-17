@@ -80,7 +80,8 @@ def controller(prompt:str):
 
     resposta = "O contexto da frase escrita não foi compreenndido"
 
-    binaryMapOne = Theme.recognizeTheme(prompt)
+    from DecisionModules import frasesMapeadas as fMap
+    binaryMapOne = Theme.recognizeTheme(prompt, verbos=fMap.verbosList(), nomes=fMap.nomes())
 
     if binaryMapOne[0] == "resposta":
         return binaryMapOne[1]

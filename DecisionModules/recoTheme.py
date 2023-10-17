@@ -1,19 +1,29 @@
-def recognizeTheme(prompt):
+def recognizeTheme(prompt: str, inicio: list = ["quem", "quando", "onde", "por que", "qm", "ond"], verbos: list = ["escreveu", "escrito", "recomendou", "fez"], nomes: list = ["salomão", "davi", "gabriel"]):
     media = False
-    def perguntaMedia(frase):
+    def perguntaMedia(frase:str, inicio: list, verbos: list, nomes: list):
         palavras = frase.lower().split()
-        inicio_valido = ["quem", "quando", "onde", "por que", "qm", "ond"]
-        verbos_validos = ["escreveu", "escrito", "recomendou", "fez"]
 
-        if palavras[0] in inicio_valido:
-            for verbo in verbos_validos:
+        if palavras[0] in inicio:
+            for verbo in verbos:
                 if verbo in palavras:
                     index_verbo = palavras.index(verbo)
                     if len(palavras) - index_verbo <= 7:
                         return True
+        if len(frase.split()) < 13:
+            contador = 0
+            for verbo in verbos:
+                for palavra in frase.lower().split():
+                    if palavra == verbo:
+                        contador += 1
+                    else:
+                        for nome in nomes:
+                            if nome == palavra:
+                                contador += 1
+            if contador < 8: #valor de 8 apenas para teste (peso 8 teste)
+                return True
         return False
 
-    if perguntaMedia(prompt):
+    if perguntaMedia(prompt, inicio, verbos, nomes):
         media = True
 
 
