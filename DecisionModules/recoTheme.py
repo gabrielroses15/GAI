@@ -1,4 +1,22 @@
 def recognizeTheme(prompt):
+    media = False
+    def perguntaMedia(frase):
+        palavras = frase.lower().split()
+        inicio_valido = ["quem", "quando", "onde", "por que", "qm", "ond"]
+        verbos_validos = ["escreveu", "escrito", "recomendou", "fez"]
+
+        if palavras[0] in inicio_valido:
+            for verbo in verbos_validos:
+                if verbo in palavras:
+                    index_verbo = palavras.index(verbo)
+                    if len(palavras) - index_verbo <= 7:
+                        return True
+        return False
+
+    if perguntaMedia(prompt):
+        media = True
+
+
     carros = ["bmw", "ford", "porshe", "lamborguini", "fusca", "opala", "caminhão", "caminhonete", 
               "caminhao", "ferrari"]#porche porshe dps fzr o corretor
     esportes = ["futebol", "xadrez", "volei", "basquete", "hoquei", "ski"]
@@ -59,5 +77,9 @@ def recognizeTheme(prompt):
                     if palavra == frase:
                         add = 1
         BinaryMap.append(add)
+    
+    if media:
+        BinaryMap[4] = 1
+        return "resposta", prompt
 
     return BinaryMap

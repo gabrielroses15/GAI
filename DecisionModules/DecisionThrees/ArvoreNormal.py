@@ -75,4 +75,4 @@ def escolhas(prompt:str, resposta:str):
         if nomes_encontrados:
             resposta += " " + ", ".join(nomes_encontrados)
 
-    return resposta
+    return "resposta", resposta
