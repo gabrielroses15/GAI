@@ -31,6 +31,10 @@ def escolhas(prompt:str, resposta:str):
     if prompt[0] == "prompt":
         prompt = prompt[1]
 
+    words = prompt.split()
+
+    from DecisionModules import recoVerbs as verbs
+    listaVerbos, contexto = verbs.recoVerbs(words, resposta)
     from DecisionModules import frasesMapeadas as fMap
     chaves_encontradas = set()
     valores_encontrados = set()
@@ -44,9 +48,6 @@ def escolhas(prompt:str, resposta:str):
     if any(especial in prompt for especial in ["?", ".", "!", ",", ";", ":", "'", '"', "(", ")", "[", "]", "{", "}", "<", ">", "/", "\\", "|", "_", "-", "+", "=", "*", "&", "%", "$", "#", "@", "~", "`", "^"]):
         from DecisionModules import caracteres_especiais as special
         prompt = special.clearPrompt(prompt)
-
-    words = prompt.split()
-
     for chaves, valor in data.items():
         for name in names:
             for word in words:
