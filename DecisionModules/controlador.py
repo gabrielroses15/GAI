@@ -82,6 +82,9 @@ def controller(prompt:str):
 
     binaryMapOne = Theme.recognizeTheme(prompt)
 
+    if binaryMapOne[0] == "resposta":
+        return binaryMapOne[1]
+
     from DecisionModules import runNeurons as run
     resposta = run.runN(binaryMapOne, True, resposta, prompt)
     if len(resposta) == 2:

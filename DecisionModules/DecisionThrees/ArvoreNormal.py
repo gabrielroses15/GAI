@@ -34,7 +34,10 @@ def escolhas(prompt:str, resposta:str):
     words = prompt.split()
 
     from DecisionModules import recoVerbs as verbs
-    listaVerbos, contexto = verbs.recoVerbs(words, resposta)
+    if verbs.recoVerbs(words, resposta)[0] == "resposta":
+        return verbs.recoVerbs(words, resposta)[1]
+    else:
+        listaVerbos, contexto = verbs.recoVerbs(words, resposta)
     from DecisionModules import frasesMapeadas as fMap
     chaves_encontradas = set()
     valores_encontrados = set()
@@ -72,4 +75,4 @@ def escolhas(prompt:str, resposta:str):
         if nomes_encontrados:
             resposta += " " + ", ".join(nomes_encontrados)
 
-    return resposta
+    return "resposta", resposta
