@@ -29,7 +29,7 @@ def recoVerbs(words:list, respo:str):
                 if value == word:
                     verbos_encontrados.append(value)
 
-    prompt =  " ".join(words)
+    prompt = " ".join(words)
     splitPrompt = []
     
     splitPrompt.append(prompt.split(verbos_encontrados[0], 1)[0])
