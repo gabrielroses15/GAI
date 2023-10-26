@@ -10,3 +10,5 @@ Here is the ideas to optimize, make more effective and a bestt project(I'll add 
 -Search things that he doesn't know on Google.
 
 -Create a server and a localstorage
+
+-Create an api
