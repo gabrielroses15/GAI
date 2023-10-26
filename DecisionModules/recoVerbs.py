@@ -21,6 +21,22 @@ def recoVerbs(words:list, respo:str):
     "falar": ["falou", "fala", "falaste"]
     }
 
+    actionVerbs = {0.62: "recomendar", 0.70: "falar",
+                 0.80: "fazer", 0.75: "ir", 0.75: "ter",
+                 0.78: "ser", 0.50: "estar", 0.60: "poder", 
+                 0.63: "dizer", 0.62: "ver", 0.64: "dar",
+                 0.65: "saber", 0.60: "coseguir", 0.78: "escrever",
+                 0.80: "produzir"}#Pode salvar isso me uma memória e chamar dependendo da complexidade!
+    
+    from DecisionModules import frasesMapeadas as fMap
+    from DecisionModules import StrongVerbs as sVerbs
+    resposta = sVerbs.StrongVerbs(" ".join(words), actionVerbs, fMap.dicio(3), words, fMap.nomes())
+    
+    if resposta[0] == "resposta":
+        return "resposta", resposta
+    
+    #ele = 1 nome(+ provável) eles = mais de 1 nome (+ provável)
+
     for word in words:
         for raiz, values in verbosList.items():
             if raiz == word:
@@ -50,3 +66,5 @@ def recoVerbs(words:list, respo:str):
         return "resposta: ", resposta
     
     return verbos_encontrados, contexto
+
+#10:42 ->
