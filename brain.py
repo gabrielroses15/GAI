@@ -15,8 +15,9 @@ def brain(FalaOuTexto:str):
 
 def APIrequest(prompt:str):
     from DecisionModules import controlador as controller
-    return controller.controller(prompt.lower())
-    
+    resposta = controller.controller(prompt.lower())
+    return resposta
+
 #Eu estava andando no museu da praça jose e vi um quadro de napoleao quem foi ele
 #print(resposta)
                 
