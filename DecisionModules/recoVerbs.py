@@ -44,7 +44,10 @@ def recoVerbs(words:list, respo:str):
     from DecisionModules import frasesMapeadas as fMap
     from DecisionModules import lightSaber as lSaber
 
-    contexto = " ".join(lSaber.teste(prompt, fMap.dicio(3), fMap.nomes()))
+    if lSaber.teste(prompt, fMap.dicio(3), fMap.nomes()) == (None, None):
+        print("No context founded.")
+    else:
+        contexto = " ".join(lSaber.teste(prompt, fMap.dicio(3), fMap.nomes()))
     
     #print(splitPrompt)
 
@@ -52,5 +55,3 @@ def recoVerbs(words:list, respo:str):
         return "resposta: ", resposta
     
     return verbos_encontrados, contexto
-
-#10:42 ->
