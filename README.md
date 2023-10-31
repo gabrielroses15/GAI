@@ -12,3 +12,5 @@ Here is the ideas to optimize, make more effective and a bestt project(I'll add 
 -Create a server and a localstorage
 
 -Think about migrate to microservices
+
+-Better Action Verbs
