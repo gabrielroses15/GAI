@@ -29,6 +29,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, i
                 if word == nome and word not in nomesEncontrados:
                     nomesEncontrados.append(word)
                     break
+            #Mostrar pro greg
             # for nome in nomes:
             #     if nome in words[words.index(word) - 3 : words.index(word) + 3]:
             #         print(nome)
