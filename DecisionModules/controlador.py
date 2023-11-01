@@ -37,7 +37,8 @@ def controller(prompt:str):
                                           "qual é o seu nm", "cual é o seu nome",
                                           "cual e o seu nome", "cual é u seu nome",
                                           "cual e u seu nome", "qual é seu nome",
-                                          "qual seu nome"]} #Dicionário pra correção #"te achei {}"
+                                          "qual seu nome"],
+                    "napoleão": ["napoleao", "nápoleao", "nápoleão", "napoliao", "napoleão bonaparte", "bonaparte"]} #Dicionário pra correção #"te achei {}"
     for valor, palavras in miniCorretor.items():
         for palavra in palavras:
             for word in words:
@@ -87,9 +88,15 @@ def controller(prompt:str):
         return binaryMapOne[1]
 
     from DecisionModules import runNeurons as run
-    resposta = run.runN(binaryMapOne, True, resposta, prompt)
-    if len(resposta) == 2:
-        resposta = resposta[1]
+    respostas = run.runN(binaryMapOne, True, resposta, prompt)
+    if type(respostas) == list:
+        for answer in respostas:
+            if answer != "Sem resposta dada ao runNeurons":
+                return answer
+        if len(resposta) == 2:
+            resposta = resposta[2]
+    elif respostas != "Sem resposta dada ao runNeurons":
+        resposta = respostas
 
     #Lógica pra entender e se lembrar de como o usuário fala
     maxMemory = 98

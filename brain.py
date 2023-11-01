@@ -1,18 +1,29 @@
-FalaOuTexto = input("Coloque:\nT = texto\nF = Fala\n")
+#FalaOuTexto = input("Coloque:\nT = texto\nF = Fala\n")
 
-if str(FalaOuTexto).upper() == "T":
+def brain(FalaOuTexto:str):
+    if str(FalaOuTexto).upper() == "T":
+        from DecisionModules import controlador as controller
+        x = 0
+        while x < 100:
+            prompt = input("Faça uma pergunta: ")
+            resposta = controller.controller(prompt.lower())#Charles Darwin
+            #print("re", resposta)
+            return resposta
+            x += 1
+    #else:
+        #import RecoFala
+        #RecoFala.voiceRecord(True)
+
+def APIrequest(prompt:str):
     from DecisionModules import controlador as controller
-    x = 0
-    while x < 100:
-        prompt = input("Faça uma pergunta: ")
-        resposta = controller.controller(prompt.lower())#Charles Darwin
-        print(resposta)
-        x += 1
-#else:
-    #import RecoFala
-    #RecoFala.voiceRecord(True)
-    
-#Eu estava andando no museu da praça jose e vi um quadro de napoleao quem foi ele
+    resposta = controller.controller(prompt.lower())
+    return resposta
+
+x = 0
+while x < 100:
+    print("A resposta é", brain("T"))
+    x += 1
+
 #print(resposta)
                 
 # ------------------------------Informações Legais------------------------------
