@@ -27,6 +27,9 @@ class PerguntaListView(generics.ListCreateAPIView):
             sys.path.append('C:\\Users\\gabriel.rosa\\Desktop\\GAI')
             import brain
             resposta = brain.APIrequest(pergunta)
+            print("PERGUTA: {} RESPOSTA: {}".format(pergunta.lower(), resposta.lower()))
+            if resposta.lower() == pergunta.lower().replace("?", "").replace(",", "").replace(".", "").replace("!", ""):
+                resposta = "Desculpe, não posso te ajudar quanto a isto."
 
             # Cria um novo objeto Pergunta
             nova_pergunta = Pergunta(pergunta=pergunta, resposta=resposta)

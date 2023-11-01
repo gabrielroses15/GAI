@@ -7,7 +7,8 @@ def brain(FalaOuTexto:str):
         while x < 100:
             prompt = input("Faça uma pergunta: ")
             resposta = controller.controller(prompt.lower())#Charles Darwin
-            print(resposta)
+            #print("re", resposta)
+            return resposta
             x += 1
     #else:
         #import RecoFala
@@ -15,9 +16,14 @@ def brain(FalaOuTexto:str):
 
 def APIrequest(prompt:str):
     from DecisionModules import controlador as controller
-    return controller.controller(prompt.lower())
-    
-#Eu estava andando no museu da praça jose e vi um quadro de napoleao quem foi ele
+    resposta = controller.controller(prompt.lower())
+    return resposta
+
+x = 0
+while x < 100:
+    print("A resposta é", brain("T"))
+    x += 1
+
 #print(resposta)
                 
 # ------------------------------Informações Legais------------------------------
