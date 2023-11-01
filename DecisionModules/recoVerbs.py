@@ -7,15 +7,18 @@ def recoVerbs(words:list, respo:str):
     from DecisionModules import StrongVerbs as sVerbs
 
     verbosList = fMap.verbosList()
+    
+    from DecisionModules import  fraseInfinitiva as raizes
+    frase_infinitiva = raizes.raiz(" ".join(words), verbosList)
 
     actionVerbs = {0.62: "recomendar", 0.70: "falar",
-                 0.80: "fazer", 0.75: "ir", 0.75: "ter",
-                 0.78: "ser", 0.50: "estar", 0.60: "poder", 
-                 0.63: "dizer", 0.62: "ver", 0.64: "dar",
-                 0.65: "saber", 0.60: "coseguir", 0.78: "escrever",
-                 0.80: "produzir"}#Pode salvar isso me uma memória e chamar dependendo da complexidade!
+                 0.80: "fazer", 0.751: "ir", 0.75: "ter",
+                 0.78: "ser", 0.50: "estar", 0.59: "poder", 
+                 0.63: "dizer", 0.619: "ver", 0.64: "dar",
+                 0.65: "saber", 0.60: "coseguir", 0.785: "escrever",
+                 0.81: "produzir"}#Pode salvar isso em uma memória e chamar dependendo da complexidade!
     
-    resposta = sVerbs.StrongVerbs(" ".join(words), actionVerbs, fMap.dicio(3), words, fMap.nomes())
+    resposta = sVerbs.StrongVerbs(" ".join(words), actionVerbs, fMap.dicio(3), words, fMap.nomes(), frase_infinitiva)
     
     if resposta != None:
         if resposta[0] == "resposta":
