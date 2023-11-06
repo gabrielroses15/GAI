@@ -16,3 +16,5 @@ Here is the ideas to optimize, make more effective and a bestt project(I'll add 
 -Better Action Verbs
 
 -Make all the documentation
+
+-make more money
