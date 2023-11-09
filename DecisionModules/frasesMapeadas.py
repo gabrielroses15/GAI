@@ -22,7 +22,8 @@ def verbosList():
     "escrever": ["escreveu", "escrito", "escrevido"],
     "produzir": ["produzido"],
     "recomendar": ["recomendou", "recomendaste", "recomendado"],
-    "falar": ["falou", "fala", "falaste"]
+    "falar": ["falou", "fala", "falaste"],
+    "ajudar": ["ajuda", "ajudou", "ajudava", "ajudaria"]
     }
     return verbosList
 

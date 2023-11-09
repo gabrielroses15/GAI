@@ -17,8 +17,11 @@ def recoVerbs(words:list, respo:str):
                  0.63: "dizer", 0.619: "ver", 0.64: "dar",
                  0.65: "saber", 0.60: "coseguir", 0.785: "escrever",
                  0.81: "produzir"}#Pode salvar isso em uma memória e chamar dependendo da complexidade!
+    verbs = ["recomendar", "falar", "fazer", "ir", "ter", "ser", "estar",
+             "poder", "dizer", "ver", "dar", "saber", "coseguir", "escrever",
+            "produzir"]
     
-    resposta = sVerbs.StrongVerbs(" ".join(words), actionVerbs, fMap.dicio(3), words, fMap.nomes(), frase_infinitiva)
+    resposta = sVerbs.StrongVerbs(" ".join(words), actionVerbs, fMap.dicio(3), words, fMap.nomes(), frase_infinitiva, verbs)
     
     if resposta != None:
         if resposta[0] == "resposta":

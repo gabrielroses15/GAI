@@ -1,4 +1,17 @@
-def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, infinitivos:str):
+def multiVerb(infinitivos, verbs, i):
+    try:
+        if infinitivos.split()[i+1] in verbs:
+            return True
+        if infinitivos.split()[i+1] in ["a", "e", "o"]:
+            if infinitivos.split()[i+2] in verbs:
+                return True
+        if infinitivos.split()[i-2] in ["a", "e", "o"] or infinitivos.split()[i-2] in verbs and infinitivos.split()[i] in verbs:
+            return True
+        return False
+    except:
+        return False
+
+def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, infinitivos:str, verbs:list):
     contexto_count = {}
     verbosForces = [[], []]
 
@@ -20,15 +33,36 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, i
     #             print("nomes_encontrados", nomes_encontrados)
     
     nomesEncontrados = []
+    grupoVerbal = []
+    forcaTotal = 0
+
     for forcas, raizes in actionVerbs.items():
+        i = 0
         for word in infinitivos.split():
             if raizes == word:
-                verbosForces[0].append(forcas)
-                verbosForces[1].append(raizes)
+
+
+                if multiVerb(infinitivos, verbs, i):
+                    grupoVerbal.append(word)
+                    forcaTotal += forcas
+                else:
+                    if grupoVerbal != []:
+                        verbosForces[0].append(forcaTotal)
+                        verbosForces[1].append(grupoVerbal)
+                    grupoVerbal = []
+                    forcaTotal = 0
+
+                if grupoVerbal == []:
+                    verbosForces[0].append(forcas)
+                    verbosForces[1].append(raizes)
             for nome in nomes:
-                if word == nome and word not in nomesEncontrados:
+                if word == nome and word not in nomesEncontrados: 
                     nomesEncontrados.append(word)
                     break
+            i += 1
+    if grupoVerbal != []:
+        verbosForces[0].append(forcaTotal)
+        verbosForces[1].append(grupoVerbal)
             # for nome in nomes:
             #     if nome in words[words.index(word) - 3 : words.index(word) + 3]:
             #         print(nome)
