@@ -35,37 +35,77 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, i
     nomesEncontrados = []
     grupoVerbal = []
     forcaTotal = 0
+    i = 0
 
-    for forcas, raizes in actionVerbs.items():
-        i = 0
-        for word in infinitivos.split():
+    for word in infinitivos.split():
+        for forcas, raizes in actionVerbs.items():
             if raizes == word:
-
-
                 if multiVerb(infinitivos, verbs, i):
                     grupoVerbal.append(word)
                     forcaTotal += forcas
                 else:
                     if grupoVerbal != []:
+                        while "000" in str(forcaTotal):
+                            forcaTotal = str(forcaTotal).replace("000", "00")
                         verbosForces[0].append(forcaTotal)
                         verbosForces[1].append(grupoVerbal)
-                    grupoVerbal = []
-                    forcaTotal = 0
-
-                if grupoVerbal == []:
                     verbosForces[0].append(forcas)
                     verbosForces[1].append(raizes)
             for nome in nomes:
                 if word == nome and word not in nomesEncontrados: 
                     nomesEncontrados.append(word)
                     break
-            i += 1
+        i += 1
+
     if grupoVerbal != []:
+        while "000" in str(forcaTotal):
+            forcaTotal = str(forcaTotal).replace("000", "00")
         verbosForces[0].append(forcaTotal)
         verbosForces[1].append(grupoVerbal)
-            # for nome in nomes:
-            #     if nome in words[words.index(word) - 3 : words.index(word) + 3]:
-            #         print(nome)
+
+    print("nomesEncontrados:", nomesEncontrados)
+    print("verbosForces:", verbosForces)
+    i = 0
+    for verbos in verbosForces[1]:
+        if type(verbos) == list:
+            print("Os verbos {} pertencem a pessoa: {} que contém {} de força(importância) na frase".format(", ".join(verbos), nomesEncontrados[i], verbosForces[0][i]))
+            i += 1
+            break
+        else:
+            print("O verbo {} pertence a pessoa: {} que contém {} de força(importância) na frase".format(verbos, nomesEncontrados[i], verbosForces[0][i]))
+            i += 1
+            break
+    
+    # for forcas, raizes in actionVerbs.items():
+    #     i = 0
+    #     for word in infinitivos.split():
+    #         if raizes == word:
+
+
+    #             if multiVerb(infinitivos, verbs, i):
+    #                 grupoVerbal.append(word)
+    #                 forcaTotal += forcas
+    #             else:
+    #                 if grupoVerbal != []:
+    #                     verbosForces[0].append(forcaTotal)
+    #                     verbosForces[1].append(grupoVerbal)
+    #                 grupoVerbal = []
+    #                 forcaTotal = 0
+
+    #             if grupoVerbal == []:
+    #                 verbosForces[0].append(forcas)
+    #                 verbosForces[1].append(raizes)
+    #         for nome in nomes:
+    #             if word == nome and word not in nomesEncontrados: 
+    #                 nomesEncontrados.append(word)
+    #                 break
+    #         i += 1
+    # if grupoVerbal != []:
+    #     verbosForces[0].append(forcaTotal)
+    #     verbosForces[1].append(grupoVerbal)
+    #     for nome in nomes:
+    #         if nome in words[words.index(word) - 3 : words.index(word) + 3]:
+    #             print(nome)
 
 #Adicionar mais codições como: em nomes, todos tem um "meu amigo" ou "Meus amigos" correspondente (meus amigos será mais complexo pois precisará de uma lógica para compreender a quantos nomes isto se refere)
 #caso apenas alguns tenham meu amigo, e verbos fortes acompanhem "quem foi" ou qualquer str de dicio.items(), logo estes sãos os nomes importantes, caso contrário, os nomes com forças maiores são os importantes
@@ -90,11 +130,48 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, i
         for nom in nomesEncontrados:
             namesForce[nom] = verbosForces[0][count]
             count += 1
-        print(namesForce)
 
     print(infinitivos)
-    print(verbosForces)
-    print(nomesEncontrados)
+    print("verbosForces", verbosForces)
+    print("nomesEncontrados", nomesEncontrados)
+    print("namesForce", namesForce)
+
+    if len(nomesEncontrados) == 1:
+        return "reposta", "biografia de " + nomesEncontrados[0]
+
+    if 1 in contexto_count.values():
+        from DecisionModules import lightSaber as lSaber
+        resposta = " ".join(lSaber.teste(frase, dicio, nomes))
+        return "resposta", resposta
+    else:
+        respostas = []
+        perguntas = list(contexto_count.keys())
+        from DecisionModules import lightSaber as lSaber
+        for pergunta in perguntas:
+            k = 0
+            try:
+                quests = frase.split(pergunta + " ele")
+                for quest in quests:
+                    quest = quest.replace("  ", " ")
+                    if quest[0] == " ":
+                        quest = quest[1:]
+                    if len(quest) > 1:
+                        quest = quest + pergunta + " ele"
+                        print("quest", quest)
+                        respostas.append(lSaber.teste(quest, dicio, nomes))
+                k += 1
+                print("answers", respostas)
+            except:
+                k += 1
+                errorQuest = quests[k]
+                if errorQuest[0] == " ":
+                    errorQuest = errorQuest[1:]
+                from DecisionModules import  fraseInfinitiva as raizes
+                from DecisionModules import frasesMapeadas as fMap
+                errorAnswer = StrongVerbs(errorQuest + pergunta + " ele", actionVerbs, dicio, errorQuest.split(), nomes, raizes.raiz(" ".join(errorQuest.split()), fMap.verbosList()), verbs)#nnms encontrados pra ser mais rapido no lugar d nomes // Infinitivos menores pq ja foi uma parte e verbos tbm, assim fica mais otimizado!
+                
+            
+    print("answers2", respostas, errorAnswer)
     input("eae")
     
 
