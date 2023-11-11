@@ -3,37 +3,29 @@ def recoVerbs(words:list, respo:str):
     verbos_encontrados = []
     contexto = ""
 
-    verbosList = {
-    "fazer": ["faço", "fazia", "fazeis", "feito"],
-    "ir": ["vou", "ia", "ides"],
-    "ter": ["tenho", "tinha", "tendes"],
-    "ser": ["sou", "era", "sereis"],
-    "estar": ["estou", "estava", "esteis"],
-    "poder": ["posso", "podia", "podeis"],
-    "dizer": ["digo", "dizia", "dizeis"],
-    "ver": ["vejo", "via", "veis"],
-    "dar": ["dou", "dava", "dais"],
-    "saber": ["sei", "sabia", "sabeis"],
-    "coseguir": ["cosegue", "conseguia", "consegues"],
-    "escrever": ["escreveu", "escrito", "escrevido"],
-    "produzir": ["produzido"],
-    "recomendar": ["recomendou", "recomendaste", "recomendado"],
-    "falar": ["falou", "fala", "falaste"]
-    }
-
-    actionVerbs = {0.62: "recomendar", 0.70: "falar",
-                 0.80: "fazer", 0.75: "ir", 0.75: "ter",
-                 0.78: "ser", 0.50: "estar", 0.60: "poder", 
-                 0.63: "dizer", 0.62: "ver", 0.64: "dar",
-                 0.65: "saber", 0.60: "coseguir", 0.78: "escrever",
-                 0.80: "produzir"}#Pode salvar isso me uma memória e chamar dependendo da complexidade!
-    
     from DecisionModules import frasesMapeadas as fMap
     from DecisionModules import StrongVerbs as sVerbs
-    resposta = sVerbs.StrongVerbs(" ".join(words), actionVerbs, fMap.dicio(3), words, fMap.nomes())
+
+    verbosList = fMap.verbosList()
     
-    if resposta[0] == "resposta":
-        return "resposta", resposta
+    from DecisionModules import  fraseInfinitiva as raizes
+    frase_infinitiva = raizes.raiz(" ".join(words), verbosList)
+
+    actionVerbs = {0.62: "recomendar", 0.70: "falar",
+                 0.80: "fazer", 0.751: "ir", 0.75: "ter",
+                 0.78: "ser", 0.50: "estar", 0.59: "poder", 
+                 0.63: "dizer", 0.619: "ver", 0.64: "dar",
+                 0.65: "saber", 0.60: "coseguir", 0.785: "escrever",
+                 0.81: "produzir"}#Pode salvar isso em uma memória e chamar dependendo da complexidade!
+    verbs = ["recomendar", "falar", "fazer", "ir", "ter", "ser", "estar",
+             "poder", "dizer", "ver", "dar", "saber", "coseguir", "escrever",
+            "produzir"]
+    
+    resposta = sVerbs.StrongVerbs(" ".join(words), actionVerbs, fMap.dicio(3), words, fMap.nomes(), frase_infinitiva, verbs)
+    
+    if resposta != None:
+        if resposta[0] == "resposta":
+            return "resposta", resposta
     
     #ele = 1 nome(+ provável) eles = mais de 1 nome (+ provável)
 
@@ -58,7 +50,10 @@ def recoVerbs(words:list, respo:str):
     from DecisionModules import frasesMapeadas as fMap
     from DecisionModules import lightSaber as lSaber
 
-    contexto = " ".join(lSaber.teste(prompt, fMap.dicio(3), fMap.nomes()))
+    if lSaber.teste(prompt, fMap.dicio(3), fMap.nomes()) == (None, None):
+        print("No context founded.")
+    else:
+        contexto = " ".join(lSaber.teste(prompt, fMap.dicio(3), fMap.nomes()))
     
     #print(splitPrompt)
 
@@ -66,5 +61,3 @@ def recoVerbs(words:list, respo:str):
         return "resposta: ", resposta
     
     return verbos_encontrados, contexto
-
-#10:42 ->

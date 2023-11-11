@@ -6,6 +6,27 @@ def dicio(complexity):
             frases_mapeadas = {("quem foi", "quem era", "qm era", "qm foi", "qm foram", "quem foram"): "biografia de", ("história de", "história do", "historia da", "história di", "história du", "historia do", "história de", "historia da", "história di", "historia du", "hist da", "hist de", "hist di", "hist di", "hist do", "hist du"): "história"}
             return frases_mapeadas#qm foram? plural?
 
+def verbosList():
+    verbosList = {
+    "fazer": ["faço", "fazia", "fazeis", "feito"],
+    "ir": ["vou", "ia", "ides"],
+    "ter": ["tenho", "tinha", "tendes"],
+    "ser": ["sou", "era", "sereis"],
+    "estar": ["estou", "estava", "esteis"],
+    "poder": ["posso", "podia", "podeis"],
+    "dizer": ["digo", "dizia", "dizeis"],
+    "ver": ["vejo", "via", "veis"],
+    "dar": ["dou", "dava", "dais"],
+    "saber": ["sei", "sabia", "sabeis"],
+    "coseguir": ["cosegue", "conseguia", "consegues"],
+    "escrever": ["escreveu", "escrito", "escrevido"],
+    "produzir": ["produzido"],
+    "recomendar": ["recomendou", "recomendaste", "recomendado"],
+    "falar": ["falou", "fala", "falaste"],
+    "ajudar": ["ajuda", "ajudou", "ajudava", "ajudaria"]
+    }
+    return verbosList
+
 def nomes():
     nomes = ["salomão", "miguel", "gabriel", "josé", "jose",
     "lucas", "joão", "davi", "pedro", "enzo",
@@ -24,7 +45,7 @@ def nomes():
     "martin", "pablo", "natalia", "manuel", "francisco",
     "ricardo", "veronica", "felipe", "alejandro", "carlos", "fernanda", "diana", "thaynara", 
     "salomao", "elizeu", "eliza", "elizabeth", "beth", "gregory", "greg", "maria", "charles", "darwin",
-    "saulo", "cleber"]
+    "saulo", "cleber", "ester", "napoleão"]
     return nomes
 
 def pronomes():
