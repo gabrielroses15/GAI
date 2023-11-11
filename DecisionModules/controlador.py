@@ -1,17 +1,15 @@
-from DecisionModules import recoTheme as Theme
-from DecisionModules import caracteres_especiais as special
-
-lastAsks = []
 def controller(prompt:str):
+    lastAsks = []
     words = prompt.split()  # cortar as palavras apenas uma vez, poupando RAM
     if len(words) <= 1:
         resposta = "Pergunta pequena demais."
         return resposta
 
     prompt = prompt.lower()
+    from DecisionModules import caracteres_especiais as special
     prompt = special.clearPrompt(prompt)
     pronomes = ["você", "voce", "vc", "tu", "gai"]
-    eh = ["é", "e", "eh", "éh", "ehh", "éhh"]
+    eh = ["é", "eh", "éh", "ehh", "éhh"]
     elogios = ["demais", "dimais", "de mais", "dms", "di mais", "incrivel", "incrível", "espetacular", "indescritível", "indescritivel", "insano", "esbelto", "magnífico", "magnificiente", "admirável", "exemplar", "inteligete", "foda"]
     xingamentos = ["um merda", "um bosta", "horrível", "zoado", "hororroso", "horrendo", "um desgraçado", "desgraçado", "um fudido", "um fodido", "fudido", "fodido"]
 
@@ -50,7 +48,6 @@ def controller(prompt:str):
                     "qual e o sentido da vida", "qual é o sentido de viver",
                     "qual e o sentido viver", "qual o sentido de viver", "bom dia", "boa tarde", 
                     "boa noite", "tudo sim e você", "qual é o seu nome", "você é legal"]
-    #Usar o corretor ortográfico emmm
     repairAnswers = ["Uma sucessão de fatos.", "Uma busca energética por mais energia",
                      "Também estou tentando entender",
                      "Não sei ao certo, mas garanto que a resposta deve estar ligada a uma busca incessante por ser feliz, quando na verdade já somos.",
@@ -72,14 +69,23 @@ def controller(prompt:str):
                      #Alocar os usuários as listas pré prontas de "tipos de pessoas" e caso o usuário não se encaixar em nenhuma lista, entender como ele é e criar uma lista para ele.
                      #Se a pessoa demonstrar sentimentos de depressão ou coisas que podem ser incontroláveis, o bot deve perceber e ativar uma trava para apennas falar sobre assuntos positivos
                      #A trava pode ser apenas um "Por favor, pergunte sobere outro tema ou procure um profissional em saúde mental para auxiliar-lo à encontrar a resposta correta."
+    ResponsesLists = []
+    AsksLists = []
     for index, breaks in enumerate(breakPhrases):
         if breaks in prompt:
             resposta = repairAnswers[index] #TBM TEM Q RESPONDER SE A PERGUNTA FOR GRANDE MAS CONTIVER OU RESPODER TBM MSM Q HAJA 2 PERGUNTAS, OU VÁRIAS PERGUNTAS
             #SENDO A VER OU N
-            return resposta
+            ResponsesLists.append(resposta)
+            AsksLists.append(breaks)
+            #return resposta
 
-    resposta = "O contexto da frase escrita não foi compreenndido"
+    if len(ResponsesLists) > 1:
+        import geraRespostas as generateAnswer
+        generateAnswer.gerarRespostas(ResponsesLists, AsksLists)
 
+    resposta = "O contexto da frase escrita não foi compreendido"
+
+    from DecisionModules import recoTheme as Theme
     binaryMapOne = Theme.recognizeTheme(prompt)
 
     if binaryMapOne[0] == "resposta":

@@ -1,8 +1,7 @@
 import speech_recognition as sr
-import RecoResposta_Fala
 import pyaudio
 
-def voiceRecord(passagem):
+def voiceRecord():
     CHUNK = 1024
     RATE = 44100
     CHANNELS = 1
@@ -13,10 +12,6 @@ def voiceRecord(passagem):
     recognizer = sr.Recognizer()
 
     def record_and_recognize():
-        if passagem == True:
-            print("Comece a falar...")
-        else:
-            print("Responda:")
         stream = p.open(format=pyaudio.paInt16,
                         channels=CHANNELS,
                         rate=RATE,
@@ -37,12 +32,9 @@ def voiceRecord(passagem):
 
         try:
             recognized_text = recognizer.recognize_google(audio_chunk, language="pt-BR")
-            if passagem == True:
-                RecoResposta_Fala.BuildAwnswer(str(recognized_text).lower())
-            else:
-                return recognized_text
+            return recognized_text
         except sr.UnknownValueError:
-            print("Não foi possível reconhecer o áudio")
+            return ["404", "Não foi possível reconhecer o áudio"]
 
     recorded_text = record_and_recognize()
 

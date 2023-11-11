@@ -1,29 +1,39 @@
-FalaOuTexto = input("Coloque:\nT = texto\nF = Fala\n")
+def brain(prompt:str, FalaOuTexto="t"):
+    #FalaOuTexto = input("Coloque:\nT = texto\nF = Fala\n")
 
-if str(FalaOuTexto).upper() == "T":
-    from DecisionModules import controlador as controller
-    x = 0
-    while x < 100:
-        prompt = input("Faça uma pergunta: ")
+    if str(FalaOuTexto).upper() == "T":
+        from DecisionModules import controlador as controller
+        #prompt = input("Faça uma pergunta: ")
         resposta = controller.controller(prompt.lower())#Charles Darwin
-        print(resposta)
-        x += 1
-#else:
-    #import RecoFala
-    #RecoFala.voiceRecord(True)
-    
+        return resposta
+    else:
+        import RecoFala
+        texto_falado = RecoFala.voiceRecord()
+
+        if type(texto_falado) == list and texto_falado[0] == "404":
+            texto_falado = RecoFala.voiceRecord()
+
+        from DecisionModules import controlador as controller
+        resposta = controller.controller(texto_falado.lower())  # Charles Darwin
+        return resposta
+
+print(brain(input("Faça uma pergunta: ")))
+
+#Rodar códigos q reconhecem ip loc e tals (API)
 #Eu estava andando no museu da praça jose e vi um quadro de napoleao quem foi ele
 #print(resposta)
                 
 # ------------------------------Informações Legais------------------------------
 # Projeto iniciado a aproximadamente dia 15 de agosto de 2023
 # Total de horas estará errado pois comeceu a contar ontem a noite, porém é legal pra ter uma idéia
-# Total de horas gastas no projeto: 74hr00min
+# Total de horas gastas no projeto: 80hr13min
 # --------------------------------------I---------------------------------------
 # Após 53:00min de projeto, GAI finalmente tem divisores por themas realmente funcionais e consegue
 # Entender algumas frases que definitivamente não são tão simples como por exemplo "Estava na a
 # venida maria e vi as estátuas de davi e salomão, quem foram eles?"
 # GAI já entende q se refere a biografia de davi e salomão, mesmo contendo o nome maria em seu banco
+# --------------------------------------II--------------------------------------
+#Após 76:00Hrs de projetim GAI tem um servidor e uma API, com consultas e retornos adequados
 
 #THE 100 QUESTS TEST:
 #meu amigo gregory me recomendou o livro de salmos, que também foi recomendado pelo meu amigo joão, escrito pelo meu amigo salomão, quem foi ele? ah davi também o ajudou a escrever, quem foi ele?
@@ -36,7 +46,6 @@ if str(FalaOuTexto).upper() == "T":
 #estava andando na praia e vi a estátua de salomão quem foi ele? me lembro de ver tbm a estátua de davi e joão, quem foram eles
 #Estou te testando sabia
 #o que é você
-#quem é você
 #Eu estava andando na praça e vi um coelho, vc sabe quantas patas um coelho tem?
 #Qual seu nome?
 #para que vc foi criado
