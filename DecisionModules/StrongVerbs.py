@@ -31,7 +31,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, i
     #         if "quem foi ele" in " ".join(words[words.index(nome) - 3 : words.index(nome) + 4]):
     #             nomes_encontrados.append(nome)
     #             print("nomes_encontrados", nomes_encontrados)
-    
+
     nomesEncontrados = []
     grupoVerbal = []
     forcaTotal = 0
@@ -52,7 +52,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, i
                     verbosForces[0].append(forcas)
                     verbosForces[1].append(raizes)
             for nome in nomes:
-                if word == nome and word not in nomesEncontrados: 
+                if word == nome and word not in nomesEncontrados:
                     nomesEncontrados.append(word)
                     break
         i += 1
@@ -75,7 +75,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, i
             print("O verbo {} pertence a pessoa: {} que contém {} de força(importância) na frase".format(verbos, nomesEncontrados[i], verbosForces[0][i]))
             i += 1
             break
-    
+
     # for forcas, raizes in actionVerbs.items():
     #     i = 0
     #     for word in infinitivos.split():
@@ -157,10 +157,10 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, i
                         quest = quest[1:]
                     if len(quest) > 1:
                         quest = quest + pergunta + " ele"
-                        print("quest", quest)
+                        print("Dev/ quest", quest)
                         respostas.append(lSaber.teste(quest, dicio, nomes))
                 k += 1
-                print("answers", respostas)
+                print("Dev/ answers", respostas)
             except:
                 k += 1
                 errorQuest = quests[k]
@@ -168,12 +168,40 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, i
                     errorQuest = errorQuest[1:]
                 from DecisionModules import  fraseInfinitiva as raizes
                 from DecisionModules import frasesMapeadas as fMap
-                errorAnswer = StrongVerbs(errorQuest + pergunta + " ele", actionVerbs, dicio, errorQuest.split(), nomes, raizes.raiz(" ".join(errorQuest.split()), fMap.verbosList()), verbs)#nnms encontrados pra ser mais rapido no lugar d nomes // Infinitivos menores pq ja foi uma parte e verbos tbm, assim fica mais otimizado!
-                
-            
-    print("answers2", respostas, errorAnswer)
-    input("eae")
-    
+                errorAnswer = StrongVerbs(errorQuest + pergunta + " ele", actionVerbs, dicio, errorQuest.split(), nomes, raizes.raiz(" ".join(errorQuest.split()), fMap.verbosList()), verbs)
+                #nnms encontrados pra ser mais rapido no lugar d nomes // Infinitivos menores pq ja foi uma parte e verbos tbm, assim fica mais otimizado!
+
+    if len(errorAnswer) == 2:
+        errorAnswer = errorAnswer[1]
+    for resposta in respostas:
+        if resposta != (None, None):
+            if len(resposta) == 2:
+                respostas = resposta[0] + " " + resposta[1]
+            else:
+                print("TO NO STRONG VERBS, CORRE AQ Q EU ME CAGUEI")
+    respostaFinal = respostas + " " + errorAnswer
+    if respostaFinal.count("biografia de") > 1:
+        retorno = ""
+        b = 0
+        d = 0
+        j = 0
+        while j < len(respostaFinal.split()):
+            plvr = respostaFinal.split()[j]
+            if respostaFinal.split()[j] == "biografia":
+                b += 1
+                if b > 1:
+                    plvr = ""
+            elif respostaFinal.split()[j] == "de":
+                d += 1
+                if d == 2:
+                    plvr = "e"
+                elif d > 2:
+                    plvr = ","
+            retorno = retorno + " " + plvr
+            j += 1
+        retorno = retorno.replace("  ", " ")
+        return "resposta", retorno
+
 
     if len(contexto_count) == 1 and sum(contexto_count.values()) == 1:
         from DecisionModules import lightSaber as lSaber
@@ -209,7 +237,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, i
             print('f', frase)
         else:
             print("uma lista é melhor, me encontre no strongVerbs")
-        
+
         if len(indexesMeus) == len(indexesAmigos):#CRIAR LÓGICA PARA CASO A FRASE CONTENHA MEU E MEUS
             print("b")
         else:

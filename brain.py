@@ -34,6 +34,8 @@ print(brain(input("Faça uma pergunta: ")))
 # GAI já entende q se refere a biografia de davi e salomão, mesmo contendo o nome maria em seu banco
 # --------------------------------------II--------------------------------------
 #Após 76:00Hrs de projetim GAI tem um servidor e uma API, com consultas e retornos adequados
+# -------------------------------------III-------------------------------------
+#Após 91Hrs strong verbs entende vários verbos e retorna respostas estranhas mas funcionais
 
 #THE 100 QUESTS TEST:
 #meu amigo gregory me recomendou o livro de salmos, que também foi recomendado pelo meu amigo joão, escrito pelo meu amigo salomão, quem foi ele? ah davi também o ajudou a escrever, quem foi ele?
