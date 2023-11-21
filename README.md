@@ -16,3 +16,5 @@ Here is the ideas to optimize, make more effective and a bestt project(I'll add 
 -Better Action Verbs
 
 -reconhecer perguntas não diretas
+
+-split questions when necessary
