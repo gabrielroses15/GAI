@@ -17,4 +17,4 @@ Here is the ideas to optimize, make more effective and a bestt project(I'll add 
 
 -reconhecer perguntas não diretas
 
--split questions when necessary
+-Split questions when necessary
