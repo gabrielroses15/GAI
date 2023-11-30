@@ -16,5 +16,3 @@ Here is the ideas to optimize, make more effective and a bestt project(I'll add 
 -Reconhecer perguntas não diretas
 
 -Split questions when necessary
-
--Create the discord server
