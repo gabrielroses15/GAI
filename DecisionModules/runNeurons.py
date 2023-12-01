@@ -79,7 +79,9 @@ def runN(lista, tree:bool = False, respo:str = "runNeurons não obteve resposta,
             return respo
         def perguntaMedia():
             from DecisionModules.DecisionThrees import ArvorePerguntaMedia as PerguntaMedia
-            PerguntaMedia.PerguntaMedia()
+            resposta = PerguntaMedia.PerguntaMedia(prompt, respo)
+            if type(resposta) == list:
+                return resposta[0]
         def perguntaDificil():
             from DecisionModules.DecisionThrees import ArvorePerguntaDificil as PerguntaDificil
             PerguntaDificil.PerguntaDificil()

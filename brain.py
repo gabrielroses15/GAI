@@ -38,7 +38,6 @@ print(brain(input("Faça uma pergunta: ")))
 #Após 91Hrs strong verbs entende vários verbos e retorna respostas estranhas mas funcionais
 
 #THE 100 QUESTS TEST:
-#meu amigo gregory me recomendou o livro de salmos, que também foi recomendado pelo meu amigo joão, escrito pelo meu amigo salomão, quem foi ele? ah davi também o ajudou a escrever, quem foi ele?
 #quantos anos tinha rei salomão quando morreu
 #fui na rua de dom joão e vi as estátuas de davi e maria, ah eu também passei na avenida cleber e vi a estátua do cleber, quem foram eles
 #fui na rua de dom joão e vi as estátuas de davi e maria, ah eu também passei na avenida gabriel e vi a estátua do cleber e do seu pai joão, quem foram eles
@@ -145,3 +144,7 @@ print(brain(input("Faça uma pergunta: ")))
 #Explique o conceito de algoritmo de ordenação.
 #O que é a teoria da consciência quântica?
 #Como funciona um sistema de refrigeração por compressão de vapor?
+
+
+#THE 100 QUESTS TEST RETRY:
+#Meu amigo gregory me recomendou o livro de salmos, que também foi recomendado pelo meu amigo joão, escrito pelo meu amigo salomão, quem foi ele? ah davi também o ajudou a escrever, quem foi ele?
