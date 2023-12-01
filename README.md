@@ -13,4 +13,6 @@ Here is the ideas to optimize, make more effective and a bestt project(I'll add 
 
 -Think about migrate to microservices
 
--Better Action Verbs
+-Reconhecer perguntas não diretas
+
+-Split questions when necessary
