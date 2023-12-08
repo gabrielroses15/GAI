@@ -1,37 +1,28 @@
 def recognizeTheme(prompt: str, inicio: list = ["quem", "quando", "onde", "por que", "qm", "ond"], verbos: list = ["escreveu", "escrito", "recomendou", "fez"], nomes: list = ["salomão", "davi", "gabriel"]):
-    
 
 
     carros = ["bmw", "ford", "porshe", "lamborguini", "fusca", "opala", "caminhão", "caminhonete", 
-              "caminhao", "ferrari"]#porche porshe dps fzr o corretor
+              "caminhao", "ferrari"]
     esportes = ["futebol", "xadrez", "volei", "basquete", "hoquei", "ski"]
     casa = ["casa", "mansão"]
     perguntaSimples = ["quem é você", "qm é vc", "qm é você", "qm é voce", "quem e você", "quem é voce",
                        "o que é vc", "o q é vc", "o que e vc", "oq é vc", "oq e vc", "de onde vc veio",
-                       "d ond vc veio", "de onde você veio", "de onde voce veio"]#vc voce você = lista pra ser verificada com {}
+                       "d ond vc veio", "de onde você veio", "de onde voce veio"]
     perguntaMedia = ["quantos"]
-    perguntaDificil = []
+    perguntaDificil = ["por que que a vida é tão difícil", "pq que a vida é tão difícil", "por quê que a vida é tão difícil", "porque que a vida é tão difícil", "porquê que a vida é tão difícil", "por que a vida é tão difícil", "pq a vida é tão difícil", "por quê a vida é tão difícil", "porque a vida é tão difícil", "porquê a vida é tão difícil"]
     financas = ["quanto está o bitcoin", "bitcoin", "onde investir", "como investir", 
                 "investimentos", "criptomoedas"]
     relacionamento = ["namorada", "namorado", "namo", "amiga", "irma", "irmã", "vó", "vo", "vô", 
-                      "tia", "melhor amigo"]#frases com mais de uma palavra 
-                                            #Terão que ter uma lógica diferente, 
-                                            #Pois não dará certgo comparar uma frase de duas palavras 
-                                            #Com uma única palavra, ent talvez eu tenha que implementar 
-                                            #O trenzinho com consumo de RAM conntrolado.
+                      "tia", "melhor amigo"]
     amor = ["amo", "amor", "ama-la"]
     sexo = ["sexo", "transa", "transar", "sequiso"]
     antiNSFW = ["sexo", "transa", "transar", "sequiso"]
     informacoesSimples = [] #"meu nome é {}", ...
-    programacao = ["python", "java", "c#", "c++", "html", "css", "tailwind", "cobol"]#Talvez o bot tenha q ter conntato com as coisas e as
-                                                  #Estruturas pra ele aprendner a defini-las mesmo q
-                                                  #Nunca tenham sido vistas por ele antes, ele entenda
-                                                  #A estrutura por inteiro, seu contexto e significado.
+    programacao = ["python", "java", "c#", "c++", "html", "css", "tailwind", "cobol"]
     morte = ["morrer", "morte", "suicidio", "suicídio"]
-    arte = ["arte", "artista"]#Algumas palavras se trazerem sua sucessora e ela for um nome, ja temos
-                                #Oq buscar no banco
-    historia = ["napoleao", "bonaparte", "einsten", "einstein", "tesla", "gandi", "jesus", "cristo"] # Certos nomes são históricos e não apenas nomes
-    matematica = [] #Número + símbolo matemático + número, funções e/ou formúlas representam matemática
+    arte = ["arte", "artista"]
+    historia = ["napoleao", "bonaparte", "einsten", "einstein", "tesla", "gandi", "jesus", "cristo"]
+    matematica = []
     geografia = ["continente", "rua", "lago", "local", "avenida"]
     portugues = ["verbo", "advérbio", "pronome", "substantivo", "adjetivo"]
     geometria = []
@@ -62,7 +53,5 @@ def recognizeTheme(prompt: str, inicio: list = ["quem", "quando", "onde", "por q
                     if palavra == frase:
                         add = 1
         BinaryMap.append(add)
-    
-
 
     return BinaryMap

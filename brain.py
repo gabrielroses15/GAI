@@ -4,7 +4,7 @@ def brain(prompt:str, FalaOuTexto="t"):
     if str(FalaOuTexto).upper() == "T":
         from DecisionModules import controlador as controller
         #prompt = input("Faça uma pergunta: ")
-        resposta = controller.controller(prompt.lower())#Charles Darwin
+        resposta = controller.controller(prompt.lower())
         return resposta
     else:
         import RecoFala
@@ -14,12 +14,11 @@ def brain(prompt:str, FalaOuTexto="t"):
             texto_falado = RecoFala.voiceRecord()
 
         from DecisionModules import controlador as controller
-        resposta = controller.controller(texto_falado.lower())  # Charles Darwin
+        resposta = controller.controller(texto_falado.lower())
         return resposta
 
 print(brain(input("Faça uma pergunta: ")))
 
-#Rodar códigos q reconhecem ip loc e tals (API)
 #Eu estava andando no museu da praça jose e vi um quadro de napoleao quem foi ele
 #print(resposta)
                 
@@ -36,6 +35,10 @@ print(brain(input("Faça uma pergunta: ")))
 #Após 76:00Hrs de projetim GAI tem um servidor e uma API, com consultas e retornos adequados
 # -------------------------------------III-------------------------------------
 #Após 91Hrs strong verbs entende vários verbos e retorna respostas estranhas mas funcionais
+
+#estava na == eu estava
+#salomão ... ele estava == ele = salomão
+#Fzr uma lógica para entender qm estava
 
 #THE 100 QUESTS TEST:
 #quantos anos tinha rei salomão quando morreu

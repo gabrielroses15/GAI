@@ -8,7 +8,7 @@ def PerguntaMedia(prompt, respo):
 
     def testar(stop, palavras, substantivos):
         from DecisionModules import frasesMapeadas as fMap
-        nomes = fMap.nomes() #PASSAGEM ENTRE CONTROLADORES
+        nomes = fMap.nomes()
         for palavra in palavras:
             if palavra == stop:
                 pass

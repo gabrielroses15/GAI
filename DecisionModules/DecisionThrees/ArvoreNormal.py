@@ -1,4 +1,4 @@
-def escolhas(prompt: str, resposta: str):
+def escolhas(prompt: str, resposta: str, testing:bool=True):
     resposta = "Normal tree não obteve resposta"
     breakPhrases = ["o que é a vida", "o que e a vida", "o q é a vida", "o q e a vida", "oq e a vida",
                     "oq é a vida", "como é morrer", "como e morrer", "cm é morrer", "cm e morrer",
@@ -34,10 +34,10 @@ def escolhas(prompt: str, resposta: str):
     words = prompt.split()
 
     from DecisionModules import recoVerbs as verbs
-    if verbs.recoVerbs(words, resposta)[0] == "resposta":
-        return verbs.recoVerbs(words, resposta)[1]
+    if verbs.recoVerbs(words, resposta, testing)[0] == "resposta":
+        return verbs.recoVerbs(words, resposta, testing)[1]
     else:
-        listaVerbos, contexto = verbs.recoVerbs(words, resposta)
+        listaVerbos, contexto = verbs.recoVerbs(words, resposta, testing)
         print("LISTA DE VERBOS E CONTEXTO", listaVerbos, contexto)
     from DecisionModules import frasesMapeadas as fMap
     chaves_encontradas = set()

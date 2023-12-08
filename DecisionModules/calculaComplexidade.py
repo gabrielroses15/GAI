@@ -28,6 +28,6 @@ def CalcComplex(prompt: str):
             complexidade = 9
         elif num_palavras < 10:
             complexidade = 10
-        return complexidade # N precisa ser de 0 a 100, pd ser d 10 em 10, sendo os 10 primeiros aq e os outros 90 dentro de extrair contexto, usando x como 0, e indo x + 1 até 10, e chamando o calculca complexidade com x valendo 20
+        return complexidade
     else:
         return "Por favor reformule." #Frases menores podem ser difíceis "o que é a vida"
