@@ -5,16 +5,15 @@ def runN(lista, tree:bool = False, respo:str = "runNeurons não obteve resposta,
         import sys
         import os
         
-        sys.path.append(os.path.join(os.path.dirname(__file__), '..'))  # Adiciona o diretório pai ao sys.path
+        sys.path.append(os.path.join(os.path.dirname(__file__), '..'))
         
-        neuronList = ["watch", "calcComplexity", "specialCharacters", "extractContext", "saudacao", "trad_en", "dicio", "botZap", "calcFeeling", "recoFala", "recoTheme", "respostaAudio"] #Neurônios como trad, ou complex podem ter subNeuronios como instancias de "níveis" maiores ou menores, neste caso, poderia ser uma lista de neurônios filhos do neurônio pai, e a lista apenas seria carregada se seu pai fosse chamado, assim se otimiza o tempo de processamento.
-        #Tem neurônios q só por estarem como 1 desencadeiam outros, exemplo, recoResposta, mas nem spm tbm, tem q considerar q nd é 100% e isso q é de complicar o negócio
+        neuronList = ["watch", "calcComplexity", "specialCharacters", "extractContext", "saudacao", "trad_en", "dicio", "botZap", "calcFeeling", "recoFala", "recoTheme", "respostaAudio"]
         activatedNeurons = []
         
         if len(lista) == len(neuronList):
             for index, num in enumerate(lista):
                 if num != 1 and num != 0:
-                    print("O número {} não corresponde ao padrão binário esperado".format(num))#Assistir primeiro ou entender o sentimento do video?
+                    print("O número {} não corresponde ao padrão binário esperado".format(num))
                 else:
                     if num == 1:
                         activatedNeurons.append(neuronList[index])
@@ -25,7 +24,7 @@ def runN(lista, tree:bool = False, respo:str = "runNeurons não obteve resposta,
         
         if activatedNeurons == []:
             print("Nenhum neurônio foi ativado.")
-        else: #Analisar o tamanho da lista pra n passar por tantos if, cancelar se retornar já a resposta no meio
+        else:
             if "watch" in activatedNeurons:
                 import assisteVideo as watch
                 #watch.transcrever_video(url)#Vai ter q fzr uma REQUISIÇÃO pedindo o url pqp kkkkkkk
@@ -80,10 +79,14 @@ def runN(lista, tree:bool = False, respo:str = "runNeurons não obteve resposta,
             return respo
         def perguntaMedia():
             from DecisionModules.DecisionThrees import ArvorePerguntaMedia as PerguntaMedia
-            PerguntaMedia.PerguntaMedia()
+            resposta = PerguntaMedia.PerguntaMedia(prompt, respo)
+            if type(resposta) == list:
+                return resposta[0]
         def perguntaDificil():
             from DecisionModules.DecisionThrees import ArvorePerguntaDificil as PerguntaDificil
-            PerguntaDificil.PerguntaDificil()
+            resposta = PerguntaDificil.PerguntaDificil(prompt)
+            if type(resposta) == list:
+                return resposta[1]
         def financas():
             from DecisionModules.DecisionThrees import ArvoreFinancas as Financas
             Financas.Financas()
@@ -141,7 +144,7 @@ def runN(lista, tree:bool = False, respo:str = "runNeurons não obteve resposta,
             Amigos.Amigos()
         def NPCTalk():
             from DecisionModules.DecisionThrees import ArvoreNPCTalk as NPCTalk
-        def Normal():
+        def Normal(testing:bool=False):
             from DecisionModules.DecisionThrees import ArvoreNormal as choose
             resposta = choose.escolhas(prompt, respo, testing)
             if resposta[0] == "resposta":

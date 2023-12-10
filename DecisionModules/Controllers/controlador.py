@@ -1,6 +1,6 @@
 def controller(prompt:str, testing=True):
     lastAsks = []
-    words = prompt.split()  # cortar as palavras apenas uma vez, poupando RAM
+    words = prompt.split()
     if len(words) <= 1:
         resposta = "Pergunta pequena demais."
         return resposta
@@ -36,7 +36,7 @@ def controller(prompt:str, testing=True):
                                           "cual e o seu nome", "cual é u seu nome",
                                           "cual e u seu nome", "qual é seu nome",
                                           "qual seu nome"],
-                    "napoleão": ["napoleao", "nápoleao", "nápoleão", "napoliao", "napoleão bonaparte", "bonaparte"]} #Dicionário pra correção #"te achei {}"
+                    "napoleão": ["napoleao", "nápoleao", "nápoleão", "napoliao", "napoleão bonaparte", "bonaparte"]}
     for valor, palavras in miniCorretor.items():
         for palavra in palavras:
             for word in words:
@@ -59,23 +59,16 @@ def controller(prompt:str, testing=True):
                      "O sentido da vida é ser feliz.",
                      "O sentido da vida é complexo demais para se resumir em 13Bi de frases",
                      "Hmmm talvez... jantar em família?",
-                     # Pode trocar o "jantar em família" por alguma informação que o bot entendeu que é importante para o usuário
                      "Se meu sentido é responder suas perguntas, talvez o seu seja perguntar.",
                      "Ei, isto não estava no roteiro.",
                      "Hmmm, carregando?", "São tantos sentidos, que não posso resumi-los em palavras.",
                      "bom dia, tudo bem?", "boa tarde, tudo bem?", "boa noite, tudo bem?",
                      "Contente em falar com você!", "Meu nome é GAI!"]
-                     #Dps é legal customizar variantes de respostas padrões baseadas nos padrões da pessoa de escrita.
-                     #Criar uma trava caso a pessoa seja reconhecida como depressiva, criar tipos mapeados de pessoas assim como personalidades, modos de escrita, modos de pergunta e etc
-                     #Alocar os usuários as listas pré prontas de "tipos de pessoas" e caso o usuário não se encaixar em nenhuma lista, entender como ele é e criar uma lista para ele.
-                     #Se a pessoa demonstrar sentimentos de depressão ou coisas que podem ser incontroláveis, o bot deve perceber e ativar uma trava para apennas falar sobre assuntos positivos
-                     #A trava pode ser apenas um "Por favor, pergunte sobere outro tema ou procure um profissional em saúde mental para auxiliar-lo à encontrar a resposta correta."
     ResponsesLists = []
     AsksLists = []
     for index, breaks in enumerate(breakPhrases):
         if breaks in prompt:
-            resposta = repairAnswers[index] #TBM TEM Q RESPONDER SE A PERGUNTA FOR GRANDE MAS CONTIVER OU RESPODER TBM MSM Q HAJA 2 PERGUNTAS, OU VÁRIAS PERGUNTAS
-            #SENDO A VER OU N
+            resposta = repairAnswers[index]
             ResponsesLists.append(resposta)
             AsksLists.append(breaks)
             #return resposta

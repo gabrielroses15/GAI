@@ -1,4 +1,4 @@
-def escolhas(prompt: str, resposta: str, testing):
+def escolhas(prompt: str, resposta: str, testing:bool=True):
     resposta = "Normal tree não obteve resposta"
     breakPhrases = ["o que é a vida", "o que e a vida", "o q é a vida", "o q e a vida", "oq e a vida",
                     "oq é a vida", "como é morrer", "como e morrer", "cm é morrer", "cm e morrer",

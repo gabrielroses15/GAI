@@ -1,4 +1,4 @@
-def recoVerbs(words:list, respo:str, testing=True):
+def recoVerbs(words:list, respo:str, testing:bool=True):
     resposta = 'recoVerbs não reconheceu corretamente, resposta anterior "{}"'.format(respo)
     verbos_encontrados = []
     contexto = ""
@@ -16,7 +16,7 @@ def recoVerbs(words:list, respo:str, testing=True):
                  0.78: "ser", 0.50: "estar", 0.59: "poder",
                  0.63: "dizer", 0.619: "ver", 0.64: "dar",
                  0.65: "saber", 0.60: "coseguir", 0.785: "escrever",
-                 0.81: "produzir"}#Pode salvar isso em uma memória e chamar dependendo da complexidade!
+                 0.81: "produzir", 0.82: "criar"}
     verbs = ["recomendar", "falar", "fazer", "ir", "ter", "ser", "estar",
              "poder", "dizer", "ver", "dar", "saber", "coseguir", "escrever",
             "produzir"]
@@ -39,7 +39,6 @@ def recoVerbs(words:list, respo:str, testing=True):
 
     prompt = " ".join(words)
     splitPrompt = []
-
     try:
         splitPrompt.append(prompt.split(verbos_encontrados[0], 1)[0])
 
