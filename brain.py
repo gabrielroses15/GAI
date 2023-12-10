@@ -39,17 +39,22 @@ contextosEsperados = ["biografia de salomão",
 autoTestes = automatedTests.autoTest(perguntas,contextosEsperados)
 if autoTestes != "Ok":
     print(autoTestes)
-    resposta = brain(input("Faça uma pergunta:\n"), testing=False)
-    input("a resposta é {}".format(resposta))
+    print("Testes não deram certo")
 else:
     print("Testes automáticos ok, pode testar manualmente (2 testes manuais)!")
-    brain(input("Faça uma pergunta:\n"), testing=False)
+    if input("gostaria de limpar o console?\nResposta (s/n): ").lower() == "s":
+        import pyautogui
+        pyautogui.hotkey('alt', 'l')
+    resposta = brain(input("Faça uma pergunta:\n"), testing=False)
+    if resposta[0] == " ":
+        resposta = resposta[1:]
+    input("A resposta gerada foi:\n{}".format(resposta))
 
 #Testes automatizados e testes manuais
 
 #Eu estava andando no museu da praça jose e vi um quadro de napoleao quem foi ele
 #print(resposta)
-                
+
 # ------------------------------Informações Legais------------------------------
 # Projeto iniciado a aproximadamente dia 15 de agosto de 2023
 # Total de horas estará errado pois comeceu a contar ontem a noite, porém é legal pra ter uma idéia
