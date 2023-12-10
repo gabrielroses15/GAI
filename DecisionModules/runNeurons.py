@@ -1,4 +1,5 @@
-def runN(lista, tree:bool = False, respo:str = "runNeurons não obteve resposta, resposta padrão.", prompt:str = ""):
+def runN(lista, tree:bool = False, respo:str = "runNeurons não obteve resposta, resposta padrão.", prompt:str = "", testing=True):
+
     if tree == False:
         resposta = "Sem resposta dada ao runNeurons"
         import sys
@@ -142,7 +143,7 @@ def runN(lista, tree:bool = False, respo:str = "runNeurons não obteve resposta,
             from DecisionModules.DecisionThrees import ArvoreNPCTalk as NPCTalk
         def Normal():
             from DecisionModules.DecisionThrees import ArvoreNormal as choose
-            resposta = choose.escolhas(prompt, respo)
+            resposta = choose.escolhas(prompt, respo, testing)
             if resposta[0] == "resposta":
                 return resposta[1]
             return resposta[1]

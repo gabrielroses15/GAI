@@ -11,7 +11,7 @@ def multiVerb(infinitivos, verbs, i):
     except:
         return False
 
-def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, infinitivos:str, verbs:list):
+def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, infinitivos:str, verbs:list, testing=True):
     contexto_count = {}
     verbosForces = [[], []]
 
@@ -63,18 +63,20 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, i
         verbosForces[0].append(forcaTotal)
         verbosForces[1].append(grupoVerbal)
 
-    print("nomesEncontrados:", nomesEncontrados)
-    print("verbosForces:", verbosForces)
-    i = 0
-    for verbos in verbosForces[1]:
-        if type(verbos) == list:
-            print("Os verbos {} pertencem a pessoa: {} que contém {} de força(importância) na frase".format(", ".join(verbos), nomesEncontrados[i], verbosForces[0][i]))
-            i += 1
-            break
-        else:
-            print("O verbo {} pertence a pessoa: {} que contém {} de força(importância) na frase".format(verbos, nomesEncontrados[i], verbosForces[0][i]))
-            i += 1
-            break
+    #print("SEXO É UMA DELICIA", testing)
+    if testing == False:
+        print("nomesEncontrados:", nomesEncontrados)
+        print("verbosForces:", verbosForces)
+        i = 0
+        for verbos in verbosForces[1]:
+            if type(verbos) == list:
+                print("Os verbos {} pertencem a pessoa: {} que contém {} de força(importância) na frase".format(", ".join(verbos), nomesEncontrados[i], verbosForces[0][i]))
+                i += 1
+                break
+            else:
+                print("O verbo {} pertence a pessoa: {} que contém {} de força(importância) na frase".format(verbos, nomesEncontrados[i], verbosForces[0][i]))
+                i += 1
+                break
 
     # for forcas, raizes in actionVerbs.items():
     #     i = 0
@@ -131,10 +133,11 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, i
             namesForce[nom] = verbosForces[0][count]
             count += 1
 
-    print(infinitivos)
-    print("verbosForces", verbosForces)
-    print("nomesEncontrados", nomesEncontrados)
-    print("namesForce", namesForce)
+    if testing == False:
+        print(infinitivos)
+        print("verbosForces", verbosForces)
+        print("nomesEncontrados", nomesEncontrados)
+        print("namesForce", namesForce)
 
     if len(nomesEncontrados) == 1:
         return "reposta", "biografia de " + nomesEncontrados[0]
@@ -157,7 +160,8 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes:list, i
                         quest = quest[1:]
                     if len(quest) > 1:
                         quest = quest + pergunta + " ele"
-                        print("Dev/ quest", quest)
+                        if testing == False:
+                            print("Dev/ quest", quest)
                         respostas.append(lSaber.teste(quest, dicio, nomes))
                 k += 1
                 print("Dev/ answers", respostas)

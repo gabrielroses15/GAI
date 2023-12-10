@@ -1,4 +1,4 @@
-def controller(prompt:str):
+def controller(prompt:str, testing=True):
     lastAsks = []
     words = prompt.split()  # cortar as palavras apenas uma vez, poupando RAM
     if len(words) <= 1:
@@ -47,7 +47,7 @@ def controller(prompt:str):
                     "oq é a vida", "como é morrer", "como e morrer", "cm é morrer", "cm e morrer",
                     "sentido da vida", "qual o sentido da vida", "qual é o sentido da vida",
                     "qual e o sentido da vida", "qual é o sentido de viver",
-                    "qual e o sentido viver", "qual o sentido de viver", "bom dia", "boa tarde", 
+                    "qual e o sentido viver", "qual o sentido de viver", "bom dia", "boa tarde",
                     "boa noite", "tudo sim e você", "qual é o seu nome", "você é legal"]
     repairAnswers = ["Uma sucessão de fatos.", "Uma busca energética por mais energia",
                      "Também estou tentando entender",
@@ -63,7 +63,7 @@ def controller(prompt:str):
                      "Se meu sentido é responder suas perguntas, talvez o seu seja perguntar.",
                      "Ei, isto não estava no roteiro.",
                      "Hmmm, carregando?", "São tantos sentidos, que não posso resumi-los em palavras.",
-                     "bom dia, tudo bem?", "boa tarde, tudo bem?", "boa noite, tudo bem?", 
+                     "bom dia, tudo bem?", "boa tarde, tudo bem?", "boa noite, tudo bem?",
                      "Contente em falar com você!", "Meu nome é GAI!"]
                      #Dps é legal customizar variantes de respostas padrões baseadas nos padrões da pessoa de escrita.
                      #Criar uma trava caso a pessoa seja reconhecida como depressiva, criar tipos mapeados de pessoas assim como personalidades, modos de escrita, modos de pergunta e etc
@@ -93,7 +93,8 @@ def controller(prompt:str):
         return binaryMapOne[1]
 
     from DecisionModules import runNeurons as run
-    respostas = run.runN(binaryMapOne, True, resposta, prompt)
+
+    respostas = run.runN(binaryMapOne, True, resposta, prompt, testing=testing)
     if type(respostas) == list:
         for answer in respostas:
             if answer != "Sem resposta dada ao runNeurons":
@@ -106,7 +107,7 @@ def controller(prompt:str):
     #Lógica pra entender e se lembrar de como o usuário fala
     maxMemory = 98
     if len(lastAsks) < maxMemory:
-        neuronios = ["carros", "esportes", "casa", "perguntaSimples", "perguntaMedia", "perguntaDificil", 
+        neuronios = ["carros", "esportes", "casa", "perguntaSimples", "perguntaMedia", "perguntaDificil",
              "financas", "relacionamento", "amor", "sexo", "antiNSFW", "informacoesSimples", "programacao",
              "morte", "arte", "historia", "matematica", "geografia", "portugues", "geometria", "reflexao", "badVibes",
              "solidao", "amigos", "NPCTalk", "Normal"]
@@ -119,10 +120,10 @@ def controller(prompt:str):
         lastAsks.append({'prompt': prompt, 'resposta': resposta, 'neuroniosUsados': neuronios_usados, 'words': words})
     else:
         contador = {}
-        prepo = ["a", "afora", "após", "antes", "até", "com", "como", "conforme", "consoante", 
-                 "contra", "conforme", "consoante", "de", "desde", "durante", "em", "entre", 
-                 "mediante", "para", "perante", "por", "salvo", "segundo", "senão", "sob", 
-                 "sobre", "trás", "através", "além", "ante", "aquém", "atrás", "aonde", "após", 
+        prepo = ["a", "afora", "após", "antes", "até", "com", "como", "conforme", "consoante",
+                 "contra", "conforme", "consoante", "de", "desde", "durante", "em", "entre",
+                 "mediante", "para", "perante", "por", "salvo", "segundo", "senão", "sob",
+                 "sobre", "trás", "através", "além", "ante", "aquém", "atrás", "aonde", "após",
                  "aquando", "a par", "à espera", "à medida que", "à medida de", "à moda de", "a par de",
                  "à proporção que", "à queima-roupa", "à roda de", "à semelhança de", "à sombra de",
                  "à volta de", "acerca de", "além de", "ao", "ao lado de", "ao longe de", "ao pé de",
@@ -131,7 +132,7 @@ def controller(prompt:str):
                  "a fim de", "a par", "a propósito de", "a respeito de", "à roda de", "a salvo de",
                  "a semelhança de", "a serviço de", "a troco de","a uma", "a uma distância de",
                  "a uma quadra de", "a uma volta de","a um canto de", "a um tempo", "a vau",
-                 "com a condição de","com a finalidade de", "com base em", "com referência a","contra a", 
+                 "com a condição de","com a finalidade de", "com base em", "com referência a","contra a",
                  "debaixo de", "de baixo de", "de encontro a", "de encontro com","de encontro a",
                  "de harmonia com", "de maneira a", "de maneira que", "de mãos dadas com","de par com",
                  "de perto de", "de resto", "de sabor de", "de sorte que", "é", "o", "da", "um", "e",

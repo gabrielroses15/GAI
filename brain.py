@@ -1,10 +1,11 @@
-def brain(prompt:str, FalaOuTexto="t"):
+import time
+
+def brain(prompt:str, FalaOuTexto="t", testing=False):
     #FalaOuTexto = input("Coloque:\nT = texto\nF = Fala\n")
 
     if str(FalaOuTexto).upper() == "T":
-        from DecisionModules import controlador as controller
-        #prompt = input("Faça uma pergunta: ")
-        resposta = controller.controller(prompt.lower())#Charles Darwin
+        from DecisionModules.Controllers import controlador as controller
+        resposta = controller.controller(prompt.lower(), testing)#Charles Darwin
         return resposta
     else:
         import RecoFala
@@ -13,11 +14,36 @@ def brain(prompt:str, FalaOuTexto="t"):
         if type(texto_falado) == list and texto_falado[0] == "404":
             texto_falado = RecoFala.voiceRecord()
 
-        from DecisionModules import controlador as controller
+        from DecisionModules.Controllers import controlador as controller
         resposta = controller.controller(texto_falado.lower())  # Charles Darwin
         return resposta
 
-print(brain(input("Faça uma pergunta: ")))
+#Testes automatizados e testes manuais
+
+from DecisionModules import automatedTests
+
+perguntas = ["Quem foi salomão",
+             "Quem foi davi",
+             "meu amigo gregory me recomendou o livro de salmos, quem foi ele",
+             "Eu estava andando na rua são joão e vi a estátua de maria, quem foi ela?",
+             "eu estava andando na rua são joão, travessa com a rua maria, quem foi ela",
+             "eu estava andando na rua dona maria, travessa com a rua dão joão e a dona maria, quem foi josé?",
+             "Meu amigo gregory me recomendou o livro de salmos, que também me foi recomendado pelo meu amigo joão, escrito por davi, quem foi ele? ah salomão também o ajudou a escrever, quem foi ele?"]
+contextosEsperados = ["biografia de salomão",
+                      "biografia de davi",
+                      "biografia de gregory",
+                      "biografia de maria",
+                      "biografia de maria",
+                      "biografia de josé",
+                      "biografia de davi e salomão"]
+autoTestes = automatedTests.autoTest(perguntas,contextosEsperados)
+if autoTestes != "Ok":
+    print(autoTestes)
+else:
+    print("Testes automáticos ok, pode testar manualmente (2 testes manuais)!")
+    brain(input("Faça uma pergunta:\n"), testing=False)
+
+#Testes automatizados e testes manuais
 
 #Rodar códigos q reconhecem ip loc e tals (API)
 #Eu estava andando no museu da praça jose e vi um quadro de napoleao quem foi ele
@@ -68,6 +94,7 @@ print(brain(input("Faça uma pergunta: ")))
 #pra que eu te testo
 #quem te fez
 #quando iniciaram seu projeto
+#Meu amigo gregory me recomendou o livro de salmos, que também me foi recomendado pelo meu amigo joão, escrito por davi, quem foi ele? ah salomão também o escreveu, quem foi ele?
 #se eu for joão vc é maria?
 #vc pode me contar um conto?
 #vc consegue repetir "eu sou o joao"?
