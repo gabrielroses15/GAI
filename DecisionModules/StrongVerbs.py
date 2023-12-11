@@ -86,7 +86,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
         verbosForces[0].append(forcaTotal)
         verbosForces[1].append(grupoVerbal)
 
-    if testing == False:
+    if testing:
         print("nomesEncontrados:", nomesEncontrados)
         print("verbosForces:", verbosForces)
         i = 0
@@ -112,7 +112,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
             namesForce[nom] = verbosForces[0][count]
             count += 1
 
-    if testing == False:
+    if testing:
         print(infinitivos)
         print("verbosForces", verbosForces)
         print("nomesEncontrados", nomesEncontrados)
@@ -139,7 +139,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
                         quest = quest[1:]
                     if len(quest) > 1:
                         quest = quest + pergunta + " ele"
-                        if testing == False:
+                        if testing:
                             print("Dev/ quest", quest)
                         respostas.append(lSaber.teste(quest, dicio, nomes))
                 k += 1
@@ -281,7 +281,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
             namesForce[nom] = verbosForces[0][count]
             count += 1
 
-    if testing == False:
+    if testing:
         print(infinitivos)
         print("verbosForces", verbosForces)
         print("nomesEncontrados", nomesEncontrados)
