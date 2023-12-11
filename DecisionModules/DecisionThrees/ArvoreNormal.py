@@ -38,7 +38,7 @@ def escolhas(prompt: str, resposta: str, testing:bool=True):
         return verbs.recoVerbs(words, resposta, testing)[1]
     else:
         listaVerbos, contexto = verbs.recoVerbs(words, resposta, testing)
-        if testing == False:
+        if testing:
             print("LISTA DE VERBOS E CONTEXTO", listaVerbos, contexto)
     from DecisionModules import frasesMapeadas as fMap
     chaves_encontradas = set()

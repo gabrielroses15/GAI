@@ -76,11 +76,14 @@ def controller(prompt:str, testing=True):
     if len(ResponsesLists) > 1:
         import geraRespostas as generateAnswer
         generateAnswer.gerarRespostas(ResponsesLists, AsksLists)
+    
+    from DecisionModules import phraseComplexity
+    complexity = phraseComplexity.calc(prompt, words)
 
     resposta = "O contexto da frase escrita não foi compreendido"
     from DecisionModules import recoTheme as Theme
     from DecisionModules import frasesMapeadas as fMap
-    binaryMapOne = Theme.recognizeTheme(prompt, verbos=fMap.verbosList(), nomes=fMap.nomes())
+    binaryMapOne = Theme.recognizeTheme(prompt, verbos=fMap.verbosList(), nomes=fMap.nomes(), complexity=complexity)
 
     if binaryMapOne[0] == "resposta":
         return binaryMapOne[1]
