@@ -90,7 +90,7 @@ def controller(prompt:str, testing=True):
 
     from DecisionModules import runNeurons as run
 
-    respostas = run.runN(binaryMapOne, True, resposta, prompt, testing=testing)
+    respostas = run.runN(binaryMapOne, resposta, prompt, testing=testing)
     if type(respostas) == list:
         for answer in respostas:
             if answer != "Sem resposta dada ao runNeurons":
