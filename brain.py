@@ -33,9 +33,9 @@ contextosEsperados = ["biografia de salomão",
                       "biografia de davi",
                       "biografia de gregory",
                       "biografia de maria",
-                      "biografia de maria",#
-                      "biografia de josé",#
-                      "biografia de davi e salomão"]#
+                      "biografia de maria",
+                      "biografia de josé",
+                      "biografia de davi e salomão"]
 autoTestes = automatedTests.autoTest(perguntas,contextosEsperados)
 if autoTestes != "Ok":
     print(autoTestes)
@@ -61,7 +61,7 @@ else:
 # ------------------------------Informações Legais------------------------------
 # Projeto iniciado a aproximadamente dia 15 de agosto de 2023
 # Total de horas estará errado pois comeceu a contar ontem a noite, porém é legal pra ter uma idéia
-# Total de horas gastas no projeto: 85hr13min
+# Total de horas gastas no projeto: 93hr17min
 # --------------------------------------I---------------------------------------
 # Após 53:00min de projeto, GAI finalmente tem divisores por themas realmente funcionais e consegue
 # Entender algumas frases que definitivamente não são tão simples como por exemplo "Estava na a
@@ -69,8 +69,10 @@ else:
 # GAI já entende q se refere a biografia de davi e salomão, mesmo contendo o nome maria em seu banco
 # --------------------------------------II--------------------------------------
 #Após 76:00Hrs de projetim GAI tem um servidor e uma API, com consultas e retornos adequados
-# -------------------------------------III-------------------------------------
+# -------------------------------------III--------------------------------------
 #Após 91Hrs strong verbs entende vários verbos e retorna respostas estranhas mas funcionais
+# -------------------------------------IV---------------------------------------
+#Após 91Hrs, iniciando uma compreensão maior dos tempso verbais dos prompts (singular, plural...).
 
 #estava na == eu estava
 #salomão ... ele estava == ele = salomão

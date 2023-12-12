@@ -26,8 +26,6 @@ def verbResponse(verbo: str, words: list, fraseInfinitiva: str):
     else:
         input("verbResponse lenght: {}".format(len(keyWords)))
     return ""
-
-
 def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, infinitivos: str, verbs: list,
                 testing=True):
     
@@ -89,7 +87,8 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
     if nomesEncontrados == []:
         if verbosForces != []:
             if len(verbosForces[1]) == 1:
-                return verbResponse(verbosForces[1], words, infinitivos)
+                from DecisionModules import VerbsResponseGenerator
+                return VerbsResponseGenerator.verbResponse(verbosForces[1], words, infinitivos)
         else:
             print("StrongVerbs não encotrou um nome nem encontrou os verbos, verbosForce: {}".format(verbosForces))
 

@@ -18,7 +18,7 @@ def analisarPergunta(perguntas, frase: str, dicio: dict, nomes: list, actionVerb
             print("Dev/ answers", respostas)
         except:
             indexPerguntas += 1
-            errorQuest = quests[k]
+            errorQuest = quests[indexPerguntas]
             if errorQuest[0] == " ":
                 errorQuest = errorQuest[1:]
             from DecisionModules import fraseInfinitiva as raizes
