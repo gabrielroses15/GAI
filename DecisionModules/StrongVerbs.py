@@ -1,48 +1,3 @@
-def multiVerb(infinitivos, verbs, i):
-    try:
-        if infinitivos.split()[i + 1] in verbs:
-            return True
-        if infinitivos.split()[i + 1] in ["a", "e", "o"]:
-            if infinitivos.split()[i + 2] in verbs:
-                return True
-        if infinitivos.split()[i - 2] in ["a", "e", "o"] or infinitivos.split()[i - 2] in verbs and infinitivos.split()[
-            i] in verbs:
-            return True
-        return False
-    except:
-        return False
-
-
-def verbResponse(verbo: str, words: list, fraseInfinitiva: str):
-    keyWords = []
-    subs = ["livro"]
-    conectivos = ["o", "de"]
-    for word in words:
-        if word == "quem" or word == "quando" or word == "onde" or word == "por que" or word == "pq" or word == "como":
-            keyWords.append(word)
-        if word not in subs and word not in conectivos:
-            context = word
-        else:
-            context = ""
-    if keyWords != [] and len(keyWords) < 2:
-        verbDicio = {"escritor": "escrever", "criou": "criar"}
-        treatedsCount = 0
-        for trated, raizPalavra in verbDicio.items():
-            for word in fraseInfinitiva.split():
-                if word == raizPalavra:
-                    if treatedsCount > 1:
-                        input("STRONGVERBS PROBLEMATICO")
-                    tratedWord = trated
-                    treatedsCount += 1
-        if "quem" in words:
-            tratedWord = "quem " + tratedWord
-        phrase = tratedWord + " " + "o " + context
-        return "resposta", phrase
-    else:
-        input("verbResponse lenght: {}".format(len(keyWords)))
-    return ""
-
-
 def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, infinitivos: str, verbs: list,
                 testing=True):
     contexto_count = {}
@@ -63,7 +18,8 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
     for word in infinitivos.split():
         for forcas, raizes in actionVerbs.items():
             if raizes == word:
-                if multiVerb(infinitivos, verbs, i):
+                from DecisionModules import multiVerb
+                if multiVerb.multiVerb(infinitivos, verbs, i):
                     grupoVerbal.append(word)
                     forcaTotal += forcas
                 else:
@@ -220,7 +176,6 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
             print('f', frase)
         else:
             print("uma lista é melhor, me encontre no strongVerbs")
-
         if len(indexesMeus) == len(indexesAmigos):  # CRIAR LÓGICA PARA CASO A FRASE CONTENHA MEU E MEUS
             print("b")
         else:
@@ -229,7 +184,8 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
     if nomesEncontrados == []:
         if verbosForces != []:
             if len(verbosForces[1]) == 1:
-                return verbResponse(verbosForces[1], words, infinitivos)
+                from DecisionModules import VerbsResponseGenerator
+                return VerbsResponseGenerator.verbResponse(verbosForces[1], words, infinitivos)
         else:
             print("StrongVerbs não encotrou um nome mas encontrou os verbos: {}".format(verbosForces))
 
@@ -309,7 +265,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
                         quest = quest[1:]
                     if len(quest) > 1:
                         quest = quest + pergunta + " ele"
-                        if testing == False:
+                        if testing:
                             print("Dev/ quest", quest)
                         respostas.append(lSaber.teste(quest, dicio, nomes))
                 k += 1
