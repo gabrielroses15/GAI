@@ -43,12 +43,15 @@ if autoTestes != "Ok":
 else:
     print("Testes automáticos ok, pode testar manualmente (2 testes manuais)!")
     if input("gostaria de limpar o console?\nResposta (s/n): ").lower() == "s":
-        import pyautogui
-        pyautogui.hotkey('alt', 'l')
-    resposta = brain(input("Faça uma pergunta:\n"), testing=False)
-    if resposta[0] == " ":
-        resposta = resposta[1:]
-    input("A resposta gerada foi:\n{}".format(resposta))
+        import os
+        os.system("cls")
+        #import pyautogui
+        #pyautogui.hotkey('alt', 'l')
+    while True:
+        resposta = brain(input("Faça uma pergunta:\n"), testing=False)
+        if resposta[0] == " ":
+            resposta = resposta[1:]
+        input("A resposta gerada foi:\n{}".format(resposta))
 
 #Testes automatizados e testes manuais
 
@@ -82,6 +85,7 @@ else:
 #estava andando na praia e vi a estátua de salomão quem foi ele? me lembro de ver tbm a estátua de davi e joão, quem foram eles ah eu vi tbm outra estátua do joão q n sei qm é, quem foi, vi tbm os seus pais, quem foram eles
 #estava andando na praia e vi a estátua de salomão quem foi ele? me lembro de ver tbm a estátua de davi e joão, quem foram eles
 #Estou te testando sabia
+#Foi mal eu queria saber quem é vc
 #o que é você
 #Eu estava andando na praça e vi um coelho, vc sabe quantas patas um coelho tem?
 #Qual seu nome?
