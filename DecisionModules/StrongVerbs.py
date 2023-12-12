@@ -55,34 +55,10 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
             resposta = " ".join(lSaber.teste(frase, dicio, nomes))#Procuramos qm foi e retornamos sua biografia
             return "resposta", resposta
         else:
-            respostas = []
-            perguntas = list(contexto_count.keys())
-            from DecisionModules import lightSaber as lSaber
-            for pergunta in perguntas:
-                k = 0
-                try:
-                    quests = frase.split(pergunta + " ele")
-                    for quest in quests:
-                        quest = quest.replace("  ", " ")
-                        if quest[0] == " ":
-                            quest = quest[1:]
-                        if len(quest) > 1:
-                            quest = quest + pergunta + " ele"
-                            if testing:
-                                print("Dev/ quest", quest)
-                            respostas.append(lSaber.teste(quest, dicio, nomes))
-                    k += 1
-                    print("Dev/ answers", respostas)
-                except:
-                    k += 1
-                    errorQuest = quests[k]
-                    if errorQuest[0] == " ":
-                        errorQuest = errorQuest[1:]
-                    from DecisionModules import fraseInfinitiva as raizes
-                    from DecisionModules import frasesMapeadas as fMap
-                    errorAnswer = StrongVerbs(errorQuest + pergunta + " ele", actionVerbs, dicio, errorQuest.split(), nomes,
-                                            raizes.raiz(" ".join(errorQuest.split()), fMap.verbosList()), verbs)
-                    # nnms encontrados pra ser mais rapido no lugar d nomes // Infinitivos menores pq ja foi uma parte e verbos tbm, assim fica mais otimizado!
+            from DecisionModules import reanalizadorDePerguntas
+            analiseDaPergunta = reanalizadorDePerguntas.analisarPergunta(list(contexto_count.keys()), frase, dicio, nomes, actionVerbs, verbs, testing)
+            respostas = analiseDaPergunta[0]
+            errorAnswer = analiseDaPergunta[1]
         if len(errorAnswer) == 2:
             errorAnswer = errorAnswer[1]
         for resposta in respostas:
@@ -180,34 +156,10 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
             resposta = " ".join(lSaber.teste(frase, dicio, nomes))
             return "resposta", resposta
     else:
-        respostas = []
-        perguntas = list(contexto_count.keys())
-        from DecisionModules import lightSaber as lSaber
-        for pergunta in perguntas:
-            k = 0
-            try:
-                quests = frase.split(pergunta + " ele")
-                for quest in quests:
-                    quest = quest.replace("  ", " ")
-                    if quest[0] == " ":
-                        quest = quest[1:]
-                    if len(quest) > 1:
-                        quest = quest + pergunta + " ele"
-                        if testing:
-                            print("Dev/ quest", quest)
-                        respostas.append(lSaber.teste(quest, dicio, nomes))
-                k += 1
-                print("Dev/ answers", respostas)
-            except:
-                k += 1
-                errorQuest = quests[k]
-                if errorQuest[0] == " ":
-                    errorQuest = errorQuest[1:]
-                from DecisionModules import fraseInfinitiva as raizes
-                from DecisionModules import frasesMapeadas as fMap
-                errorAnswer = StrongVerbs(errorQuest + pergunta + " ele", actionVerbs, dicio, errorQuest.split(), nomes,
-                                          raizes.raiz(" ".join(errorQuest.split()), fMap.verbosList()), verbs, testing)
-                # nnms encontrados pra ser mais rapido no lugar d nomes // Infinitivos menores pq ja foi uma parte e verbos tbm, assim fica mais otimizado!
+        from DecisionModules import reanalizadorDePerguntas
+        analiseDaPergunta = reanalizadorDePerguntas.analisarPergunta(list(contexto_count.keys()), frase, dicio, nomes, actionVerbs, verbs, testing)
+        respostas = analiseDaPergunta[0]
+        errorAnswer = analiseDaPergunta[1]
     try:
         if len(errorAnswer) == 2:
             errorAnswer = errorAnswer[1]
