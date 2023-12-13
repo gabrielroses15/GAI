@@ -1,4 +1,4 @@
-def recognizeTheme(prompt: str, inicio: list = ["quem", "quando", "onde", "por que", "qm", "ond"], verbos: list = ["escreveu", "escrito", "recomendou", "fez"], nomes: list = ["salomão", "davi", "gabriel"], complexity:int = 0):
+def recognizeTheme(prompt: str, complexity:int = 0):
     from DecisionModules.Controllers import controladorDeMemorias
     dicioVerbosoBinaryTheme = controladorDeMemorias.returnoDicioVerbosoToBinaryMap(complexity)
     carros = dicioVerbosoBinaryTheme["carros"]

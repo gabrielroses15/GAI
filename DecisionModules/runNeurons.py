@@ -87,9 +87,6 @@ def runN(lista, respo:str = "runNeurons não obteve resposta, resposta padrão."
         if resposta[0] == "resposta":
             return resposta[1]
         return resposta[1]
-        # from DecisionModules.DecisionThrees import ArvoreDeDecisao as choose
-        # resposta = choose.choose(prompt, respo)
-        # return resposta
     chooseList = [carros, esportes, casa, perguntaSimples, perguntaMedia, perguntaDificil, 
         financas, relacionamento, amor, sexo, antiNSFW, informacoesSimples, programacao,
         morte, arte, historia, matematica, geografia, portugues, geometria, reflexao, badVibes,
@@ -102,24 +99,25 @@ def runN(lista, respo:str = "runNeurons não obteve resposta, resposta padrão."
             if run == 0:
                 index += 1
             else:
-                if type(chooseList[index]()) == str:
-                    resposta = chooseList[index]()
-                elif type(chooseList[index]()) == list:
-                    if chooseList[index]()[0] == "prompt":
-                        prompt = chooseList[index]()[1]
+                retornoDoCodigo = chooseList[index]()
+                if type(retornoDoCodigo) == str:
+                    respostas.append(retornoDoCodigo)
+                elif type(retornoDoCodigo) == list:
+                    if retornoDoCodigo[0] == "prompt":
+                        prompt = retornoDoCodigo[1]
                 index += 1
-                respostas.append(resposta)
         return respostas
     else:
         for run in lista:
             if run == 0:
                 index += 1
             else:
-                if type(chooseList[index]()) == str:
-                    resposta = chooseList[index]()
-                elif type(chooseList[index]()) == list:
-                    if chooseList[index]()[0] == "prompt":
-                        prompt = chooseList[index]()[1]
+                retornoDoCodigo = chooseList[index]()
+                if type(retornoDoCodigo) == str:
+                    resposta = retornoDoCodigo
+                elif type(retornoDoCodigo) == list:
+                    if retornoDoCodigo[0] == "prompt":
+                        prompt = retornoDoCodigo[1]
                 index += 1
     # if type(resposta) == str:
     #     print("str")
