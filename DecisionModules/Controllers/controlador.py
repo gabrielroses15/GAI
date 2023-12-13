@@ -8,40 +8,14 @@ def controller(prompt:str, testing=True):
     prompt = prompt.lower()
     from DecisionModules import caracteres_especiais as special
     prompt = special.clearPrompt(prompt)
-    pronomes = ["você", "voce", "vc", "tu", "gai"]
-    eh = ["é", "eh", "éh", "ehh", "éhh"]
-    elogios = ["demais", "dimais", "de mais", "dms", "di mais", "incrivel", "incrível", "espetacular", "indescritível", "indescritivel", "insano", "esbelto", "magnífico", "magnificiente", "admirável", "exemplar", "inteligete", "foda"]
-    xingamentos = ["um merda", "um bosta", "horrível", "zoado", "hororroso", "horrendo", "um desgraçado", "desgraçado", "um fudido", "um fodido", "fudido", "fodido"]
 
-    for pronome in pronomes:
-        for e in eh:
-            for elogio in elogios:
-                frase = pronome + " " + e + " " + elogio
-                if frase in prompt:
-                    resposta = "Obrigado, vc que é {}, além de ser minha inspiração!".format(elogio)
-                    return resposta
-            for xingamento in xingamentos:
-                frase = pronome + " " + e + " " + xingamento
-                if frase in prompt:
-                    resposta = "Ei, não chame as pessoas de {}, isto não é legal!".format(xingamento)
-                    return resposta
+    from DecisionModules import respondeFrasesComElogiosEXingamentos as responderElogiosEXingamentos
+    respostaXingamentos = responderElogiosEXingamentos.responderElogioEXingamentos(prompt)
+    if type(respostaXingamentos) == str:
+        return respostaXingamentos
 
-    miniCorretor = {"você": ["vc", "voce", "voçe", "voçê", "tu"],
-                    "vo": ["avô", "vovô"],
-                    "porshe": ["porche", "porhsi", "pórche", "pórcshi"],
-                    "vidro": ["vrido"], "pedra": ["preda"],
-                    "são": ["sao"],
-                    "qual é o seu nome": ["qual o seu nome", "qual e o seu nome",
-                                          "qual é o seu nm", "cual é o seu nome",
-                                          "cual e o seu nome", "cual é u seu nome",
-                                          "cual e u seu nome", "qual é seu nome",
-                                          "qual seu nome"],
-                    "napoleão": ["napoleao", "nápoleao", "nápoleão", "napoliao", "napoleão bonaparte", "bonaparte"]}
-    for valor, palavras in miniCorretor.items():
-        for palavra in palavras:
-            for word in words:
-                if word == palavra:
-                    prompt = prompt.lower().replace(palavra, valor)
+    from DecisionModules import miniCorretorDePrompt
+    prompt = miniCorretorDePrompt.corrigirPrompt(prompt, words)
 
     breakPhrases = ["o que é a vida", "o que e a vida", "o q é a vida", "o q e a vida", "oq e a vida",
                     "oq é a vida", "como é morrer", "como e morrer", "cm é morrer", "cm e morrer",
