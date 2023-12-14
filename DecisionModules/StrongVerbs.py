@@ -35,15 +35,15 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
     if type(nomesEncontrados) == str and nomesEncontrados != []:
         return "resposta", nomesEncontrados
 
-    from DecisionModules import calculadorDasForcaDosVerbos as calcNamesForce
-    verbosForces = calcNamesForce.calcularForcaDosVerbos(infinitivos, actionVerbs, verbs, nomesEncontrados, testing)
+    from DecisionModules import calculadorDasForcaDosVerbos as calcVerbsForce
+    verbosForces = calcVerbsForce.calcularForcaDosVerbos(infinitivos, actionVerbs, verbs, nomesEncontrados, testing)
 
     from DecisionModules import calculaForcaDosNomes
     namesForce = calculaForcaDosNomes.calcularForcaDosNomes(verbosForces, nomesEncontrados, testing)
 
     if testing:
         print(infinitivos)
-
+        
     from DecisionModules import contadorDeContexto
     contexto_count = contadorDeContexto.contarContexto(dicio, frase)
 

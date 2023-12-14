@@ -20,6 +20,7 @@ def verificarFrasesComplexasOuSemResposta(prompt: str):
                      "Hmmm, carregando?", "São tantos sentidos, que não posso resumi-los em palavras.",
                      "bom dia, tudo bem?", "boa tarde, tudo bem?", "boa noite, tudo bem?",
                      "Contente em falar com você!", "Meu nome é GAI!"]
+
     ResponsesLists = []
     AsksLists = []
     for index, breaks in enumerate(breakPhrases):

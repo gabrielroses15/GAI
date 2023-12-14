@@ -1,5 +1,6 @@
 def runN(lista, respo:str = "runNeurons não obteve resposta, resposta padrão.", prompt:str = "", testing=True):
     resposta = "Sem resposta dada ao runNeurons"
+    promptFormatadoPelaArvoreDeGeografia = False
     def carros():
         from DecisionModules.DecisionThrees import ArvoreCarros as Carro
         resposta = Carro.Carro(prompt, respo)
@@ -60,6 +61,7 @@ def runN(lista, respo:str = "runNeurons não obteve resposta, resposta padrão."
     def geografia():
         from DecisionModules.DecisionThrees import ArvoreGeografia as Geografia
         newPrompt = Geografia.Geografia(prompt)
+        promptFormatadoPelaArvoreDeGeografia = True
         return newPrompt
     def portugues():
         from DecisionModules.DecisionThrees import ArvorePortugues as Portugues
@@ -81,9 +83,10 @@ def runN(lista, respo:str = "runNeurons não obteve resposta, resposta padrão."
         Amigos.Amigos()
     def NPCTalk():
         from DecisionModules.DecisionThrees import ArvoreNPCTalk as NPCTalk
+        NPCTalk.NPCTalk(prompt)
     def Normal(testing:bool=False):
         from DecisionModules.DecisionThrees import ArvoreNormal as choose
-        resposta = choose.escolhas(prompt, respo, testing)
+        resposta = choose.escolhas(prompt, respo, testing, promptFormatadoPelaArvoreDeGeografia)
         if resposta[0] == "resposta":
             return resposta[1]
         return resposta[1]

@@ -3,23 +3,15 @@ def recoVerbs(words:list, respo:str, testing:bool=True):
     verbos_encontrados = []
     contexto = ""
 
-    from DecisionModules import frasesMapeadas as fMap
-    from DecisionModules import StrongVerbs as sVerbs
+    from DecisionModules import frasesMapeadas as fMap, StrongVerbs as sVerbs, fraseInfinitiva as raizes
+    from DecisionModules.Controllers import controladorDeMemorias
 
     verbosList = fMap.verbosList()
 
-    from DecisionModules import  fraseInfinitiva as raizes
     frase_infinitiva = raizes.raiz(" ".join(words), verbosList)
 
-    actionVerbs = {0.62: "recomendar", 0.70: "falar",
-                 0.80: "fazer", 0.751: "ir", 0.75: "ter",
-                 0.78: "ser", 0.50: "estar", 0.59: "poder",
-                 0.63: "dizer", 0.619: "ver", 0.64: "dar",
-                 0.65: "saber", 0.60: "coseguir", 0.785: "escrever",
-                 0.81: "produzir", 0.82: "criar"}
-    verbs = ["recomendar", "falar", "fazer", "ir", "ter", "ser", "estar",
-             "poder", "dizer", "ver", "dar", "saber", "coseguir", "escrever",
-            "produzir"]
+    actionVerbs = controladorDeMemorias.getActionVerbs()
+    verbs = controladorDeMemorias.getInfinitiveVerbs()
 
     resposta = sVerbs.StrongVerbs(" ".join(words), actionVerbs, fMap.dicio(3), words, fMap.nomes(), frase_infinitiva, verbs, testing)
 
@@ -47,7 +39,6 @@ def recoVerbs(words:list, respo:str, testing:bool=True):
 
         splitPrompt.append(prompt.split(verbos_encontrados[-1], 1)[1])
 
-        from DecisionModules import frasesMapeadas as fMap
         from DecisionModules import lightSaber as lSaber
 
         if lSaber.teste(prompt, fMap.dicio(3), fMap.nomes()) == (None, None):

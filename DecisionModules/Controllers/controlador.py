@@ -30,7 +30,7 @@ def controller(prompt:str, testing=True):
 
     from DecisionModules import recoTheme as Theme
     from DecisionModules import frasesMapeadas as fMap
-    binaryMapOne = Theme.recognizeTheme(prompt, verbos=fMap.verbosList(), nomes=fMap.nomes(), complexity=complexity)
+    binaryMapOne = Theme.recognizeTheme(prompt, complexity=complexity)
     
     if binaryMapOne[0] == "resposta":
         return binaryMapOne[1]

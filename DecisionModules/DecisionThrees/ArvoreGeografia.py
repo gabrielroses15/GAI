@@ -9,7 +9,8 @@ def Geografia(prompt):
     prompt = prompt.replace("  ", " ")
     prompt = prompt.replace("joao", "joão")
     prompt = prompt.replace("são", "")
-    geoList = ["avenida", "rua", "local", "quadra", "mercado", "hospital", "praça"]
+    from DecisionModules.Controllers import controladorDeMemorias
+    geoList = controladorDeMemorias.retornoDaGeografia()
     nomes_encontrados = []
     palavras = prompt.lower().split()
 

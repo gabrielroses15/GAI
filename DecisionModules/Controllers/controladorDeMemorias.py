@@ -48,3 +48,18 @@ def returnoDicioVerbosoToBinaryMap(complexity:int):
         return dicio1
     if complexity > complexidadeMaximaMapeada:
         return retornaDicioAnterior(complexity)
+
+def retornoDaGeografia():
+    return ["avenida", "rua", "local", "quadra", "mercado", "hospital", "praça"]
+
+def getActionVerbs():
+    return {0.62: "recomendar", 0.70: "falar",
+                 0.80: "fazer", 0.751: "ir", 0.75: "ter",
+                 0.78: "ser", 0.50: "estar", 0.59: "poder",
+                 0.63: "dizer", 0.619: "ver", 0.64: "dar",
+                 0.65: "saber", 0.60: "coseguir", 0.785: "escrever",
+                 0.81: "produzir", 0.82: "criar"}
+def getInfinitiveVerbs():
+    return ["recomendar", "falar", "fazer", "ir", "ter", "ser", "estar",
+             "poder", "dizer", "ver", "dar", "saber", "coseguir", "escrever",
+            "produzir"]
