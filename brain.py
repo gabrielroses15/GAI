@@ -1,4 +1,5 @@
 import time
+#Frase atual em desenvolvimento: "fui na rua de dom joão e vi as estátuas de davi e maria, ah eu também passei na avenida cleber e vi a estátua do cleber, quem foram eles"
 
 def brain(prompt:str, FalaOuTexto="t", testing=False):
     #FalaOuTexto = input("Coloque:\nT = texto\nF = Fala\n")
@@ -28,14 +29,16 @@ perguntas = ["Quem foi salomão",
              "Eu estava andando na rua são joão e vi a estátua de maria, quem foi ela?",
              "eu estava andando na rua são joão, travessa com a rua maria, quem foi ela",
              "eu estava andando na rua dona maria, travessa com a rua dão joão e a dona maria, quem foi josé?",
-             "Meu amigo gregory me recomendou o livro de salmos, que também me foi recomendado pelo meu amigo joão, escrito por davi, quem foi ele? ah salomão também o ajudou a escrever, quem foi ele?"]
+             "Meu amigo gregory me recomendou o livro de salmos, que também me foi recomendado pelo meu amigo joão, escrito por davi, quem foi ele? ah salomão também o ajudou a escrever, quem foi ele?", "quantos anos tinha rei salomão quando morreu", "quantos anos tinha rei salomão quando morreu?"]
 contextosEsperados = ["biografia de salomão",
                       "biografia de davi",
                       "biografia de gregory",
                       "biografia de maria",
                       "biografia de maria",
                       "biografia de josé",
-                      "biografia de davi e salomão"]
+                      "biografia de davi e salomão",
+                      "idade do salomão",
+                      "idade do salomão"]
 autoTestes = automatedTests.autoTest(perguntas,contextosEsperados)
 if autoTestes != "Ok":
     print(autoTestes)
@@ -61,7 +64,7 @@ else:
 # ------------------------------Informações Legais------------------------------
 # Projeto iniciado a aproximadamente dia 15 de agosto de 2023
 # Total de horas estará errado pois comeceu a contar ontem a noite, porém é legal pra ter uma idéia
-# Total de horas gastas no projeto: 93hr17min
+# Total de horas gastas no projeto: 100hr17min
 # --------------------------------------I---------------------------------------
 # Após 53:00min de projeto, GAI finalmente tem divisores por themas realmente funcionais e consegue
 # Entender algumas frases que definitivamente não são tão simples como por exemplo "Estava na a
@@ -73,13 +76,18 @@ else:
 #Após 91Hrs strong verbs entende vários verbos e retorna respostas estranhas mas funcionais
 # -------------------------------------IV---------------------------------------
 #Após 91Hrs, iniciando uma compreensão maior dos tempso verbais dos prompts (singular, plural...).
+# --------------------------------------V---------------------------------------
+#Após mais de 100 horas de projeto, a complexidade do código "strongVerbs" trouxe complicações
+#Relacionadas a complexidade do código, que gerou uma falta de compreensão da funcionalidade do mesmo.
+#Porém após mais de 20 reanálises, otimizações, refatorações e perguntas ao gpt. Após apróx. 7 horas
+#Contínuas de análise, aproximadamente 20 horas divididas em 4 dias de análise.
+#Cada parte do código foi mapeada, descrita e compreendida!
 
 #estava na == eu estava
 #salomão ... ele estava == ele = salomão
 #Fzr uma lógica para entender qm estava
 
 #THE 100 QUESTS TEST:
-#quantos anos tinha rei salomão quando morreu
 #fui na rua de dom joão e vi as estátuas de davi e maria, ah eu também passei na avenida cleber e vi a estátua do cleber, quem foram eles
 #fui na rua de dom joão e vi as estátuas de davi e maria, ah eu também passei na avenida gabriel e vi a estátua do cleber e do seu pai joão, quem foram eles
 #fui na rua de dom joão e vi as estátuas de davi e maria, ah eu também passei na avenida gabriel e vi a estátua do cleber e do seu amigo jonas, quem foram eles

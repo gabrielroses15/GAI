@@ -28,15 +28,15 @@ def verbResponse(verbo: str, words: list, fraseInfinitiva: str):
     return ""
 def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, infinitivos: str, verbs: list,
                 testing=True):
-    
+    infinitivosWords = infinitivos.split()
     from DecisionModules import encontrarNomes
-    nomesEncontrados = encontrarNomes.encontrarNomes(infinitivos, nomes)
+    nomesEncontrados = encontrarNomes.encontrarNomes(infinitivosWords, nomes)
 
     if type(nomesEncontrados) == str and nomesEncontrados != []:
         return "resposta", nomesEncontrados
 
     from DecisionModules import calculadorDasForcaDosVerbos as calcVerbsForce
-    verbosForces = calcVerbsForce.calcularForcaDosVerbos(infinitivos, actionVerbs, verbs, nomesEncontrados, testing)
+    verbosForces = calcVerbsForce.calcularForcaDosVerbos(infinitivosWords, actionVerbs, verbs, nomesEncontrados, infinitivos ,testing)
 
     from DecisionModules import calculaForcaDosNomes
     namesForce = calculaForcaDosNomes.calcularForcaDosNomes(verbosForces, nomesEncontrados, testing)
@@ -49,6 +49,23 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
 
     if contexto_count != {}:#Se a contagem de contexto n for nula
         if 1 in contexto_count.values():#E apenas um contexto for encontrado
+            palavraPosContexto = frase.split(str(contexto_count).replace("{", "").replace("'", "").split(":")[0])[1]
+            if len(palavraPosContexto.split()) > 1:
+                print("Ainda deverá ser implementado")
+            else:
+                if palavraPosContexto[0] == " ":
+                    palavraPosContexto = palavraPosContexto[1:]
+                if palavraPosContexto == "eles" or palavraPosContexto == "elas":
+                    indexNomes = 0
+                    fraseDeRetorno = "biografia de "
+                    while indexNomes < len(nomesEncontrados):
+                        if (indexNomes + 1) == len(nomesEncontrados):
+                            fraseDeRetorno += "e " + nomesEncontrados[indexNomes]
+                            return "resposta", fraseDeRetorno
+                        else:
+                            fraseDeRetorno += nomesEncontrados[indexNomes] + ", "
+                        indexNomes +=1
+
             from DecisionModules import lightSaber as lSaber
             resposta = " ".join(lSaber.teste(frase, dicio, nomes))#Procuramos qm foi e retornamos sua biografia
             return "resposta", resposta
