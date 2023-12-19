@@ -1,31 +1,3 @@
-def verbResponse(verbo: str, words: list, fraseInfinitiva: str):
-    keyWords = []
-    subs = ["livro"]
-    conectivos = ["o", "de"]
-    for word in words:
-        if word == "quem" or word == "quando" or word == "onde" or word == "por que" or word == "pq" or word == "como":
-            keyWords.append(word)
-        if word not in subs and word not in conectivos:
-            context = word
-        else:
-            context = ""
-    if keyWords != [] and len(keyWords) < 2:
-        verbDicio = {"escritor": "escrever", "criou": "criar"}
-        treatedsCount = 0
-        for trated, raizPalavra in verbDicio.items():
-            for word in fraseInfinitiva.split():
-                if word == raizPalavra:
-                    if treatedsCount > 1:
-                        input("STRONGVERBS PROBLEMATICO")
-                    tratedWord = trated
-                    treatedsCount += 1
-        if "quem" in words:
-            tratedWord = "quem " + tratedWord
-        phrase = tratedWord + " " + "o " + context
-        return "resposta", phrase
-    else:
-        input("verbResponse lenght: {}".format(len(keyWords)))
-    return ""
 def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, infinitivos: str, verbs: list,
                 testing=True):
     infinitivosWords = infinitivos.split()
@@ -51,7 +23,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
         if 1 in contexto_count.values():#E apenas um contexto for encontrado
             palavraPosContexto = frase.split(str(contexto_count).replace("{", "").replace("'", "").split(":")[0])[1]
             if len(palavraPosContexto.split()) > 1:
-                print("Ainda deverá ser implementado")
+                input("Ainda deverá ser implementado")
             else:
                 if palavraPosContexto[0] == " ":
                     palavraPosContexto = palavraPosContexto[1:]
@@ -81,7 +53,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
                 if len(resposta) == 2:
                     respostas = resposta[0] + " " + resposta[1]
                 else:
-                    print("TO NO STRONG VERBS, CORRE AQ Q EU ME CAGUEI")
+                    input("TO NO STRONG VERBS, CORRE AQ Q EU ME CAGUEI")
         respostaFinal = respostas + " " + errorAnswer
         if respostaFinal.count("biografia de") > 1:
             from DecisionModules import buscadorBiografias
@@ -90,7 +62,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
     if len(contexto_count) == 1 and sum(contexto_count.values()) == 1:
         from DecisionModules import lightSaber as lSaber
         if None in lSaber.teste(frase, dicio, nomes):
-            print("We are in trouble here!")
+            input("We are in trouble here!")
             return None, None
         else:
             resposta = " ".join(lSaber.teste(frase, dicio, nomes))
@@ -146,7 +118,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
                         indexNomes += 1
                     return "resposta", "biografia de {}".format(fraseDeRetorno)
                 else:
-                    print("StrongVerbs got some problems here")
+                    input("StrongVerbs got some problems here")
             i += 1
             break
 
@@ -186,7 +158,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
             if len(resposta) == 2:
                 respostas = resposta[0] + " " + resposta[1]
             else:
-                print("TO NO STRONG VERBS, CORRE AQ Q EU ME CAGUEI")
+                input("TO NO STRONG VERBS, CORRE AQ Q EU ME CAGUEI")
     if respostas != []:
         respostaFinal = respostas + " " + errorAnswer
         if respostaFinal.count("biografia de") > 1:  # Corrigir o fato de não acessar algumas variáveis
@@ -196,7 +168,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
     if len(contexto_count) == 1 and sum(contexto_count.values()) == 1:
         from DecisionModules import lightSaber as lSaber
         if None in lSaber.teste(frase, dicio, nomes):
-            print("We are in trouble here!")
+            input("We are in trouble here!")
             return None, None
         else:
             resposta = " ".join(lSaber.teste(frase, dicio, nomes))

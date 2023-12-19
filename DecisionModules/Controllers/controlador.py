@@ -29,7 +29,6 @@ def controller(prompt:str, testing=True):
     resposta = "O contexto da frase escrita não foi compreendido"
 
     from DecisionModules import recoTheme as Theme
-    from DecisionModules import frasesMapeadas as fMap
     binaryMapOne = Theme.recognizeTheme(prompt, complexity=complexity)
     
     if binaryMapOne[0] == "resposta":
