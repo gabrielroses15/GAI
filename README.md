@@ -14,3 +14,5 @@ The idea of the project is innovate in all of things that U can think about
 -Reconhecer perguntas não diretas
 
 -Dont stop never
+
+-make a todo list to my days
