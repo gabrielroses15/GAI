@@ -1,6 +1,6 @@
-def encontrarNomes(infinitivos:str, nomes: list):
+def encontrarNomes(infinitivosWords:list, nomes: list):
     nomesEncontrados = []
-    for word in infinitivos.split():
+    for word in infinitivosWords:#WORDS??
         for nome in nomes:
             if word == nome and word not in nomesEncontrados:
                 nomesEncontrados.append(word)

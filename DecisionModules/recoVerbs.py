@@ -42,7 +42,7 @@ def recoVerbs(words:list, respo:str, testing:bool=True):
         from DecisionModules import lightSaber as lSaber
 
         if lSaber.teste(prompt, fMap.dicio(3), fMap.nomes()) == (None, None):
-            if testing == False:
+            if testing:
                 print("No context founded.")
         else:
             contexto = " ".join(lSaber.teste(prompt, fMap.dicio(3), fMap.nomes()))

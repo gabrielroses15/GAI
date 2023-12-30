@@ -28,4 +28,9 @@ def analisarPergunta(perguntas, frase: str, dicio: dict, nomes: list, actionVerb
                                     raizes.raiz(" ".join(errorQuest.split()), fMap.verbosList()), verbs, testing)
             # nomes encontrados pra ser mais rapido no lugar d nomes
             # Infinitivos menores pq ja foi uma parte e verbos tbm, assim fica mais otimizado!
-    return [respostas, errorAnswer]
+    try:
+        return [respostas, errorAnswer]
+    except:
+        input("SZXZ")
+        input(StrongVerbs.StrongVerbs(errorQuest + pergunta + " ele", actionVerbs, dicio, errorQuest.split(), nomes,
+                                    raizes.raiz(" ".join(errorQuest.split()), fMap.verbosList()), verbs, testing))

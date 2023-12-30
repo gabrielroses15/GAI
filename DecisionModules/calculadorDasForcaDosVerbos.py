@@ -1,10 +1,10 @@
-def calcularForcaDosVerbos(infinitivos:str, actionVerbs:dict, verbs, nomesEncontrados, testing:bool):
+def calcularForcaDosVerbos(infinitivosWords:list, actionVerbs:dict, verbs, nomesEncontrados, infinitivos, testing:bool):
     verbosForces = [[], []]
     grupoVerbal = []
     forcaTotal = 0
     i = 0
 
-    for word in infinitivos.split():
+    for word in infinitivosWords:#Words???
         for forcas, raizes in actionVerbs.items():
             if raizes == word:
                 from DecisionModules import reconheceGruposVerbais
