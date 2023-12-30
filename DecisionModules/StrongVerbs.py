@@ -150,7 +150,7 @@ def StrongVerbs(frase: str, actionVerbs: dict, dicio, words: list, nomes: list, 
         return "reposta", "biografia de " + nomesEncontrados[0]
 
     if 1 in contexto_count.values():
-        if ["foram", "eram"] not in infinitivos:  # VERBOS Q INDICAM SINGULAR
+        if ["foram", "eram"] not in infinitivos:  # VERBOS Q INDICAM SINGULAR (caso eles não estejam)
             from DecisionModules import lightSaber as lSaber
             resposta = " ".join(lSaber.teste(frase, dicio, nomes))
             return "resposta", resposta
