@@ -13,7 +13,7 @@ def analisarPergunta(perguntas, frase: str, dicio: dict, nomes: list, actionVerb
                     quest = quest + pergunta + " ele"
                     if testing:
                         print("Dev/ quest", quest)
-                    respostas.append(lSabr.teste(quest, dicio, nomes))
+                    respostas.append(lSaber.teste(quest, dicio, nomes))
             indexPerguntas += 1
             print("Dev/ answers", respostas)
         except:

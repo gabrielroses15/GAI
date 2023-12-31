@@ -1,0 +1,276 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="69fbae8a-6929-4647-bfac-3dd1fbf9cfc8" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/testes/apiCadastro.py" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/testes/testeBanco.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/DecisionModules/reanalizadorDePerguntas.py" beforeDir="false" afterPath="$PROJECT_DIR$/DecisionModules/reanalizadorDePerguntas.py" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/brain.py" beforeDir="false" afterPath="$PROJECT_DIR$/brain.py" afterDir="false" />
+    </list>
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="FlaskConsoleOptions" custom-start-script="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))">
+    <envs>
+      <env key="FLASK_APP" value="app" />
+    </envs>
+    <option name="myCustomStartScript" value="import sys&#10;sys.path.extend([WORKING_DIR_AND_PYTHON_PATHS])&#10;from flask.cli import ScriptInfo&#10;locals().update(ScriptInfo(create_app=None).load_app().make_shell_context())&#10;print(&quot;Python %s on %s\nApp: %s [%s]\nInstance: %s&quot; % (sys.version, sys.platform, app.import_name, app.env, app.instance_path))" />
+    <option name="myEnvs">
+      <map>
+        <entry key="FLASK_APP" value="app" />
+      </map>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$" />
+  </component>
+  <component name="MarkdownSettingsMigration">
+    <option name="stateVersion" value="1" />
+  </component>
+  <component name="ProjectColorInfo">{
+  &quot;associatedIndex&quot;: 4
+}</component>
+  <component name="ProjectId" id="2W86UpVqGyZAswsKepBsMMIedDU" />
+  <component name="ProjectLevelVcsManager">
+    <ConfirmationsSetting value="2" id="Add" />
+  </component>
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent">{
+  &quot;keyToString&quot;: {
+    &quot;RunOnceActivity.OpenProjectViewOnStart&quot;: &quot;true&quot;,
+    &quot;RunOnceActivity.ShowReadmeOnStart&quot;: &quot;true&quot;,
+    &quot;WebServerToolWindowFactoryState&quot;: &quot;false&quot;,
+    &quot;git-widget-placeholder&quot;: &quot;master&quot;,
+    &quot;last_opened_file_path&quot;: &quot;C:/Users/win/Desktop/GAI/GAI&quot;,
+    &quot;node.js.detected.package.eslint&quot;: &quot;true&quot;,
+    &quot;node.js.detected.package.tslint&quot;: &quot;true&quot;,
+    &quot;node.js.selected.package.eslint&quot;: &quot;(autodetect)&quot;,
+    &quot;node.js.selected.package.tslint&quot;: &quot;(autodetect)&quot;,
+    &quot;settings.editor.selected.configurable&quot;: &quot;com.jetbrains.python.configuration.PythonContentEntriesConfigurable&quot;,
+    &quot;vue.rearranger.settings.migration&quot;: &quot;true&quot;
+  },
+  &quot;keyToStringList&quot;: {
+    &quot;DatabaseDriversLRU&quot;: [
+      &quot;redshift&quot;
+    ]
+  }
+}</component>
+  <component name="RecentsManager">
+    <key name="MoveFile.RECENT_KEYS">
+      <recent name="C:\Users\win\Desktop\GAI\DecisionModules\Controllers" />
+    </key>
+  </component>
+  <component name="RunManager">
+    <configuration name="GAI" type="PythonConfigurationType" factoryName="Python">
+      <module name="GAI" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/server.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="brain" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
+      <module name="GAI" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <envs>
+        <env name="PYTHONUNBUFFERED" value="1" />
+      </envs>
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="$PROJECT_DIR$" />
+      <option name="IS_MODULE_SDK" value="true" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="SCRIPT_NAME" value="$PROJECT_DIR$/brain.py" />
+      <option name="PARAMETERS" value="" />
+      <option name="SHOW_COMMAND_LINE" value="false" />
+      <option name="EMULATE_TERMINAL" value="false" />
+      <option name="MODULE_MODE" value="false" />
+      <option name="REDIRECT_INPUT" value="false" />
+      <option name="INPUT_FILE" value="" />
+      <method v="2" />
+    </configuration>
+    <configuration name="GAI" type="Python.FlaskServer">
+      <module name="GAI" />
+      <option name="target" value="$PROJECT_DIR$/server.py" />
+      <option name="targetType" value="PATH" />
+      <option name="INTERPRETER_OPTIONS" value="" />
+      <option name="PARENT_ENVS" value="true" />
+      <option name="SDK_HOME" value="" />
+      <option name="WORKING_DIRECTORY" value="" />
+      <option name="IS_MODULE_SDK" value="false" />
+      <option name="ADD_CONTENT_ROOTS" value="true" />
+      <option name="ADD_SOURCE_ROOTS" value="true" />
+      <EXTENSION ID="PythonCoverageRunConfigurationExtension" runner="coverage.py" />
+      <option name="launchJavascriptDebuger" value="false" />
+      <method v="2" />
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Python.brain" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="69fbae8a-6929-4647-bfac-3dd1fbf9cfc8" name="Changes" comment="" />
+      <created>1696101879065</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1696101879065</updated>
+      <workItem from="1696101880104" duration="6754000" />
+      <workItem from="1696124827475" duration="753000" />
+      <workItem from="1696177873995" duration="453000" />
+      <workItem from="1696211397409" duration="1351000" />
+      <workItem from="1696249800284" duration="1041000" />
+      <workItem from="1696290019481" duration="2436000" />
+      <workItem from="1696295132904" duration="9000" />
+      <workItem from="1696983473458" duration="1290000" />
+      <workItem from="1697063274287" duration="3093000" />
+      <workItem from="1697075513560" duration="7564000" />
+      <workItem from="1697123972884" duration="1401000" />
+      <workItem from="1697139785573" duration="2714000" />
+      <workItem from="1697143617645" duration="31000" />
+      <workItem from="1697149816130" duration="899000" />
+      <workItem from="1697320610440" duration="9288000" />
+      <workItem from="1697415918243" duration="1662000" />
+      <workItem from="1697501257512" duration="2792000" />
+      <workItem from="1697576340533" duration="27000" />
+      <workItem from="1698280440657" duration="1353000" />
+      <workItem from="1698288055479" duration="1320000" />
+      <workItem from="1698444049436" duration="2238000" />
+      <workItem from="1698446963134" duration="11190000" />
+      <workItem from="1698504399609" duration="1433000" />
+      <workItem from="1698586681858" duration="1723000" />
+      <workItem from="1698941313247" duration="1167000" />
+      <workItem from="1698964995192" duration="9825000" />
+      <workItem from="1699024742060" duration="2742000" />
+      <workItem from="1699199260939" duration="842000" />
+      <workItem from="1699217614835" duration="3285000" />
+      <workItem from="1699307951616" duration="1357000" />
+      <workItem from="1699386141819" duration="247000" />
+      <workItem from="1699670307126" duration="1249000" />
+      <workItem from="1699673114285" duration="91000" />
+      <workItem from="1699673212348" duration="6491000" />
+      <workItem from="1699838291122" duration="2544000" />
+      <workItem from="1699903759591" duration="753000" />
+      <workItem from="1699905082191" duration="70000" />
+      <workItem from="1699905159658" duration="2022000" />
+      <workItem from="1700072794018" duration="5160000" />
+      <workItem from="1700165892417" duration="6472000" />
+      <workItem from="1700322276867" duration="1181000" />
+      <workItem from="1700331327001" duration="2407000" />
+      <workItem from="1700516717606" duration="806000" />
+      <workItem from="1700788258364" duration="2898000" />
+      <workItem from="1701144195976" duration="33000" />
+      <workItem from="1701190382807" duration="1879000" />
+      <workItem from="1701287464505" duration="426000" />
+      <workItem from="1701909054106" duration="2838000" />
+      <workItem from="1701979266518" duration="108000" />
+      <workItem from="1702083661348" duration="709000" />
+      <workItem from="1702171266421" duration="4562000" />
+      <workItem from="1702325238582" duration="5608000" />
+      <workItem from="1702340292709" duration="2338000" />
+      <workItem from="1702416723209" duration="901000" />
+      <workItem from="1702422057012" duration="3958000" />
+      <workItem from="1702426971815" duration="26000" />
+      <workItem from="1702513332227" duration="24000" />
+      <workItem from="1702682372288" duration="6996000" />
+      <workItem from="1703187159628" duration="84000" />
+      <workItem from="1703272302560" duration="1376000" />
+      <workItem from="1703957122823" duration="844000" />
+      <workItem from="1703961998291" duration="2896000" />
+      <workItem from="1703965052653" duration="3252000" />
+      <workItem from="1703970905920" duration="116000" />
+      <workItem from="1703983363594" duration="625000" />
+      <workItem from="1703992339169" duration="5301000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DecisionModules/DecisionThrees/ArvoreNormal.py</url>
+          <line>13</line>
+          <option name="timeStamp" value="10" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DecisionModules/DecisionThrees/ArvoreNormal.py</url>
+          <line>14</line>
+          <option name="timeStamp" value="11" />
+        </line-breakpoint>
+        <line-breakpoint enabled="true" suspend="THREAD" type="python-line">
+          <url>file://$PROJECT_DIR$/DecisionModules/DecisionThrees/ArvoreNormal.py</url>
+          <line>17</line>
+          <option name="timeStamp" value="12" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/GAI$l.coverage" NAME="l Coverage Results" MODIFIED="1696212413884" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DecisionModules" />
+    <SUITE FILE_PATH="coverage/ArvoreDeDecisao_py$redeNeural.coverage" NAME="redeNeural Coverage Results" MODIFIED="1701911304364" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testes" />
+    <SUITE FILE_PATH="coverage/GAI$testeMysql.coverage" NAME="testeMysql Coverage Results" MODIFIED="1703971006658" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testes" />
+    <SUITE FILE_PATH="coverage/ArvoreDeDecisao_py$brawlhalla.coverage" NAME="brawlhalla Coverage Results" MODIFIED="1699308692890" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testes" />
+    <SUITE FILE_PATH="coverage/GAI$brain.coverage" NAME="brain Coverage Results" MODIFIED="1696211454870" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ArvoreDeDecisao_py$testemongo.coverage" NAME="testemongo Coverage Results" MODIFIED="1698454880005" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GAI$mostradorDefrase.coverage" NAME="mostradorDefrase Coverage Results" MODIFIED="1696212689809" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DecisionModules" />
+    <SUITE FILE_PATH="coverage/ArvoreDeDecisao_py$CRUD_SQL.coverage" NAME="CRUD_SQL Coverage Results" MODIFIED="1698455638048" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GAI$ArvoreDeDecisao.coverage" NAME="ArvoreDeDecisao Coverage Results" MODIFIED="1696102109800" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DecisionModules" />
+    <SUITE FILE_PATH="coverage/ArvoreDeDecisao_py$brain.coverage" NAME="brain Coverage Results" MODIFIED="1702691849503" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GAI$mostra.coverage" NAME="mostra Coverage Results" MODIFIED="1696212554177" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DecisionModules" />
+    <SUITE FILE_PATH="coverage/ArvoreDeDecisao_py$server.coverage" NAME="server Coverage Results" MODIFIED="1698504429387" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GAI$apiCadastro.coverage" NAME="apiCadastro Coverage Results" MODIFIED="1704000549173" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testes" />
+    <SUITE FILE_PATH="coverage/ArvoreDeDecisao_py$user.coverage" NAME="user Coverage Results" MODIFIED="1698445511194" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ArvoreDeDecisao_py$aulanlp.coverage" NAME="aulanlp Coverage Results" MODIFIED="1701979343209" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testes" />
+    <SUITE FILE_PATH="coverage/ArvoreDeDecisao_py$Codigo.coverage" NAME="Codigo Coverage Results" MODIFIED="1700322721031" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ArvoreDeDecisao_py$Classe_de_Usuarios.coverage" NAME="Classe de Usuarios Coverage Results" MODIFIED="1700322792927" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/ArvoreDeDecisao_py$exemplo.coverage" NAME="exemplo Coverage Results" MODIFIED="1699906098851" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/GAI$GAI.coverage" NAME="GAI Coverage Results" MODIFIED="1703965087245" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+    <SUITE FILE_PATH="coverage/GAI$retorno.coverage" NAME="retorno Coverage Results" MODIFIED="1696211979058" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DecisionModules" />
+    <SUITE FILE_PATH="coverage/ArvoreDeDecisao_py$separador.coverage" NAME="separador Coverage Results" MODIFIED="1700788469486" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/AppData/Local/Packages/5319275A.WhatsAppDesktop_cv1g1gvanyjgm/TempState/8E19A39C36B8E5E3AFD2A3B2692AEA96" />
+    <SUITE FILE_PATH="coverage/ArvoreDeDecisao_py$assisteVideo.coverage" NAME="assisteVideo Coverage Results" MODIFIED="1698281947586" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/DecisionModules" />
+    <SUITE FILE_PATH="coverage/GAI$app.coverage" NAME="app Coverage Results" MODIFIED="1703965217919" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$USER_HOME$/AppData/Local/Packages/PythonSoftwareFoundation.Python.3.11_qbz5n2kfra8p0/LocalCache/local-packages/Python311/site-packages/flask" />
+    <SUITE FILE_PATH="coverage/GAI$testeBanco.coverage" NAME="testeBanco Coverage Results" MODIFIED="1703998728204" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$/testes" />
+    <SUITE FILE_PATH="coverage/GAI$Flask__testes_apiCadastro_py_.coverage" NAME="Flask (testes/apiCadastro.py) Coverage Results" MODIFIED="1704000737981" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="true" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
+  </component>
+</project>
