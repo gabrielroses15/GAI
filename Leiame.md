@@ -47,3 +47,39 @@ Algoritmo para gerar a certeza da resposta e as palavras usadas, ai as palavras 
 </ol>
 <h1>Observação</h1>
 <p>Mais informações serão adicionadas conforme suas implementações, tenha calma, sou um desenvolvedor solo...</p>
+
+<h1>Exemplo das prováveis métricas das análises:</h1>
+<p>
+  {
+    "answerFounded": boolean,
+    answer: string,
+    "answersFounded": boolean,
+    answers: string list,
+    context: string,
+    contexts: string list,
+    words: string list,
+    tokens: string list,
+    importance: int list,
+    themes: string list,
+    multipleThemes: boolean
+    mainTheme: string,
+    mainThemes: string list,
+    info: string list,
+    names: string list,
+    verbs: string list,
+    verb-tenses: string list,
+    locationOfAnswer: {
+      precision: float,
+      locate: string,
+      references: string,
+      context: string
+      }
+    objects: {
+      found: boolean,
+      number: int,
+      objectsList: string,,
+      importance: int list or int
+    }
+    noSenseSentences: string list
+  }
+</p>
