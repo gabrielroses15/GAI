@@ -48,3 +48,39 @@ Algorithm to generate the certainty of the answer and the words used, and the wo
 </ol>
 <h1>Comments:</h1>
 <p>More information will be added as its implementations, don't worry, I'm a solo developer...</p>
+
+<h1>Example of probably the analyses metrics:</h1>
+<p>
+  {
+    "answerFounded": boolean,
+    answer: string,
+    "answersFounded": boolean,
+    answers: string list,
+    context: string,
+    contexts: string list,
+    words: string list,
+    tokens: string list,
+    importance: int list,
+    themes: string list,
+    multipleThemes: boolean
+    mainTheme: string,
+    mainThemes: string list,
+    info: string list,
+    names: string list,
+    verbs: string list,
+    verb-tenses: string list,
+    locationOfAnswer: {
+      precision: float,
+      locate: string,
+      references: string,
+      context: string
+      }
+    objects: {
+      found: boolean,
+      number: int,
+      objectsList: string,,
+      importance: int list or int
+    }
+    noSenseSentences: string list
+  }
+</p>
