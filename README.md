@@ -9,7 +9,7 @@ The idea of the project is innovate in all of things that U can think about
 <p>Search things that he doesn't know on Google.</p>
 
 <p>Ignore oq está aqui</p>
-<p>Focar full no resolvaki</p>
+<p>Focar full no reso
 
 <h1>Implementing:</h1>
 
