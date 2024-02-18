@@ -8,7 +8,7 @@ The idea of the project is innovate in all of things that U can think about
 <p>Código ser capaz de reparar a si mesmo (ignore a loucura desta idéia)</p>
 <p>Search things that he doesn't know on Google.</p>
 
-<p>Ignore oq es
+<p>
 
 <h1>Implementing:</h1>
 
