@@ -1,5 +1,5 @@
 # GAI
-The idea of the project is innovate in all of things that U can think about
+The idea of the project is innovate in all of things that U can think about.
 
 <h1>Probably the next implementations in the system:</h1>
 <p>Have the bot learn the way the user speaks, and use the same way to speak to the user, making them feel like they are talking to someone who understands them</p>
