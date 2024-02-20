@@ -2,7 +2,7 @@
 The idea of the project is innovate in all of things that U can think about.
 
 <h1>Probably the next implementations in the system:</h1>
-<p>Have the bot learn the way the user speaks, and use the same way to speak to the user, making them feel like they are talking to someone who understands them</p>
+<p>Have the bot learn the way the user speaks, and use the same way to speak to the user, making them feel like they are talking to someone who understands them.</p>
 <p>Procurar coisas que ele não sabe no google</p>
 <p>Reconhecer perguntas indiretas</p>
 <p>Código ser capaz de reparar a si mesmo (ignore a loucura desta idéia)</p>
