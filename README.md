@@ -16,7 +16,7 @@ Algorithm to generate the certainty of the answer and the words used, and the wo
 <h2>This sentence can be separated into:</h2>
 <p>["I was walking on the beach and I saw the statue of Solomon, who was he", "I remember also seeing the statue of David and John", "who were they", "ah I also saw another statue of John who I don't know who he is ,", "who was it," "I also saw your parents," "who were they"]</p>
 <h3>Treating the sentences separately:</h3>
-<p>After separating, each sentence will have its analysis resulting in a list of answers such as ["solomão's biography", "information", "keyword", "john's biography", "keyword", "information", "keyword"</p>
+<p>After separating, each sentence will have its analysis resulting in a list of answers such as ["solomão's biography", "information", "keyword", "john's biography", "keyword", "information", "keyword".</p>
 <h4>Dictionary of meanings:</h4>
 <p>Well, the standard answers are biographies and such, but there will be terms that represent key words at a lower level, for example, instead of returning ["answer", "biography of solomon"] it could be returned ["information", "I also remember seeing the statue of David and John"], clearly every answer will have a series of important information taken from it, which will be linked to it as an object, so let's analyze the sentence with GAI's perspective...</p>
 <h1>GAI's vision about the phrase</h1>
