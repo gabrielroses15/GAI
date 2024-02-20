@@ -35,7 +35,7 @@ Algorithm to generate the certainty of the answer and the words used, and the wo
 <p>Search for more information: returns the system to the reading state, keeping the information of the sentence that was read last (more information can be added if necessary) and reading the next sentences considering the previous sentence read (and, if it has its information and metrics)</p>
 <p>Seeking verb: This action is called if a person is found without a nearby verb, as for example in the sentence "ah eu" where "eu" does not contain a verb, obviously the previous sentences can be considered before calling this action</p>
 <p>Generating a response/loose context: This action generates a response/context referring to everything that has already been read, and keeps the information that has not yet been linked with more "strength" than the information that already contains a link</p>
-<p>Generate response and final context: Last action taken, takes into account the entire phrase, sentences, metrics, responses and contexts seen, generates a final context such as "location: beach, time: past" ... and a "response" as "biography of x, y and z"</p>
+<p>Generate response and final context: Last action taken, takes into account the entire phrase, sentences, metrics, responses and contexts seen, generates a final context such as "location: beach, time: past" ... and a "response" as "biography of x, y and z".</p>
 <h2>Readings breaks:</h2>
 <p>There are characters, key words and things that force you to stop reading for analysis and decision making, below is the list:</p>
 <ol>
