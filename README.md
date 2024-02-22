@@ -94,6 +94,6 @@ Algorithm to generate the certainty of the answer and the words used, and the wo
 <p>Update github</p>
 <p>Update issues place</p>
 <p>Update money helps</p>
-<p>Update social media</p>
+<p>Update my social media</p>
 <p>put the readme to change, if the user is from us or br</p>
 <p>create a private file for my ideas</p>
