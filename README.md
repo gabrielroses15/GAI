@@ -97,3 +97,4 @@ Algorithm to generate the certainty of the answer and the words used, and the wo
 <p>Update social media</p>
 <p>use my business mail (found one free)</p>
 <p>put the readme to change, if the user is from us or br</p>
+<p>create a private file for my ideas</p>
