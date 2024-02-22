@@ -96,3 +96,4 @@ Algorithm to generate the certainty of the answer and the words used, and the wo
 <p>Update money helps</p>
 <p>Update social media</p>
 <p>use my business mail (found one free)</p>
+<p>put the readme to change, if the user is from us or br</p>
